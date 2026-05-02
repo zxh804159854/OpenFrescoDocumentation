@@ -14,7 +14,12 @@ release = '0.0.1'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser'] #支持markdown
+extensions = ['myst_parser', 'sphinx.ext.mathjax'] #md文档，数学公式
+
+myst_enable_extensions = [
+    "dollarmath",
+    "amsmath",
+]#dollarmath解析$x$和$$xxx$$,amsmath解析latex语法。
 
 numfig = True   #开启md的图编号
 
