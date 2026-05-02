@@ -16,6 +16,8 @@ release = '0.0.1'
 
 extensions = ['myst_parser'] #支持markdown
 
+numfig = True   #开启md的图编号
+
 templates_path = ['_templates']
 exclude_patterns = []
 
