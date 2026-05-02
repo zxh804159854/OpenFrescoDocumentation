@@ -54,10 +54,13 @@ expControl SimDomain tag -trialCP cpTags -outCP cpTags \<-ctrlFilters (5 \$filte
 
 上述示例使用标签为 1 的试件控制点和标签为 2 的输出控制点。试件控制点发送 OpenSees 中定义的非线性梁柱单元节点 2 在 ux、uy 和 rz 方向的位移。控制点 2 在同一节点测量 ux、uy 和 rz 方向的位移和力。有关 expControlPoint 命令的详细说明，请参阅本手册第 7 章。
 
-<figure>
-<img src="image/ch01/SimDomain.jpg" style="width:80.0%" />
-<figcaption>SimDomain 实验控制</figcaption>
-</figure>
+
+```{figure} fig/SimDomain.jpg
+:width: 80%
+:name: fig-SimDomain
+
+SimDomain 实验控制
+```
 
 ## 记录Recorder
 

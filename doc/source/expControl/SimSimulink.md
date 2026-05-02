@@ -24,10 +24,13 @@ expControl SimSimulink tag ipAddr ipPort \<-udp\> -trialCP cpTags -outCP cpTags 
 
 案例在EXAMPLES/OneBayFrame/ControlSystem
 
-<figure>
-<img src="image/ch01/SimSimulink.png" style="width:80.0%" />
-<figcaption>SimSimulink 实验控制</figcaption>
-</figure>
+
+```{figure} fig/SimSimulink.png
+:width: 80%
+:name: fig-SimSimulink
+
+SimSimulink 实验控制
+```
 
 ## 记录Recorder
 

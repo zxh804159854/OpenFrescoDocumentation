@@ -24,10 +24,15 @@ expControl SCRAMNet tag -nodeID id memOffset -trialCP cpTags -outCP cpTags \<-ct
 
 上述示例命令使用内存偏移量 381020 字节。
 
-<figure>
-<img src="image/ch01/SCRAMNet .jpg" style="width:80.0%" />
-<figcaption>SCRAMNet 实验控制</figcaption>
-</figure>
+<!-- ![SCRAMNet 实验控制](fig/SCRAMNet.jpg)
+<center>SCRAMNet 实验控制</center> -->
+
+```{figure} fig/SCRAMNet.jpg
+:width: 80%
+:name: fig-scramnet
+
+SCRAMNet 实验控制
+```
 
 ## 记录Recorder
 

@@ -7,6 +7,5 @@ Introduction引言
    IntroductiontoOpenFresco
    ChangeNotesforVersion2_6
    Notation
-   Copyright
    TCL
    OpenFrescoInterpreter

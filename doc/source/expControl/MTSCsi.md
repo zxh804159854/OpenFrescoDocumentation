@@ -24,10 +24,12 @@ expControl MTSCsi tag configFileName rampTime -trialCP cpTags -outCP cpTags \<-c
 
 上述示例命令使用路径`C:/MTSCsi/Example/OpenFresco_uNEES.mtscs`，斜坡时间为 0.1 秒。
 
-<figure>
-<img src="image/ch01/MTSCsi.jpg" style="width:80.0%" />
-<figcaption>MTSCsi 实验控制</figcaption>
-</figure>
+```{figure} fig/MTSCsi.jpg
+:width: 80%
+:name: fig-mtscsi
+
+MTSCsi 实验控制
+```
 
 ## 记录Recorder
 

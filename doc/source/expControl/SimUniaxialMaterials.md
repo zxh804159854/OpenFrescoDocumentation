@@ -23,10 +23,13 @@ expControl SimUniaxialMaterials tag matTags \<-ctrlFilters (5 \$filterTag)\> \<-
 
 上述示例命令使用标签为 2、刚度为 5.6 的 OpenSees 单轴弹性材料模型。OpenSees 命令语言手册包含所有可用单轴材料模型的完整列表。
 
-<figure>
-<img src="image/ch01/SimUniaxialMaterials.jpg" style="width:80.0%" />
-<figcaption>SimUniaxialMaterials 实验控制</figcaption>
-</figure>
+
+```{figure} fig/SimUniaxialMaterials.jpg
+:width: 80%
+:name: fig-SimUniaxialMaterials
+
+SimUniaxialMaterials 实验控制
+```
 
 ## 记录Recorder
 

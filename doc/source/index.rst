@@ -25,3 +25,9 @@ OpenFresco文档
    expRecorder/index
    Server/index
    Miscellaneous/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 附录:
+
+   Appendix1/index

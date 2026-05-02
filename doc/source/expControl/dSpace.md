@@ -33,10 +33,11 @@
 
 上述示例命令用于与运行在 DS1103 数字信号处理器板卡上的 Simulink 模型进行通信，该模型使用位移进行预测和校正。ErrorSimUndershoot 信号滤波器应用于发送至控制系统的位移。
 
-<figure>
-<img src="image/ch01/dSpace.jpg" style="width:80.0%" />
-<figcaption>dSpace 实验控制</figcaption>
-</figure>
+```{figure} fig/dSpace.jpg
+:width: 80%
+:name: fig-dspace
+dSpace 实验控制
+```
 
 ## 记录Recorder
 

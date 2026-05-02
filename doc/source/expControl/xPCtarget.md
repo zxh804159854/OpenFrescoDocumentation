@@ -11,10 +11,13 @@
 
 对应的simulink模型如下：
 
-<figure>
-<img src="image/ch01/xpc.png" style="width:80.0%" />
-<figcaption>dSpace 实验控制</figcaption>
-</figure>
+
+```{figure} fig/xpc.png
+:width: 80%
+:name: fig-xpc
+
+xpc 的simulink模型
+```
 
 <div class="definition">
 
@@ -39,10 +42,14 @@ expControl xPCtarget tag ipAddr ipPort appFile -trialCP cpTags -outCP cpTags \<-
 
 上述示例命令使用名为 `HybridControllerD2D2sim.slx` 的 Simulink 模型，该模型利用位移进行预测和校正。它与 IP 地址为 `192.168.2.20`、端口为 22222 的 xPC-Target 机器通信。Simulink 模型的路径为`C:/Users/Andreas/Documents/OpenFresco/SourceCode/SRC/experimentalControl/Simulink/RTActualTestModels/cmAPI-xPCTarget-SCRAMNetGT-MTS_STS/`。
 
-<figure>
-<img src="image/ch01/xPCtarget.jpg" style="width:80.0%" />
-<figcaption>xPCtarget 实验控制</figcaption>
-</figure>
+
+
+```{figure} fig/xPCtarget.jpg
+:width: 80%
+:name: fig-xPCtarget
+
+xPCtarget 实验控制
+```
 
 ## 记录Recorder
 

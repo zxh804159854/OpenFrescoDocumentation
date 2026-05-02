@@ -25,10 +25,13 @@ expControl SimFEAdapter tag ipAddr ipPort -trialCP cpTags -outCP cpTags \<-ssl\>
 
 上述示例使用 IP 地址为 127.0.0.1、端口号为 44000 的 SimFEAdapter 实验控制器。
 
-<figure>
-<img src="image/ch01/SimFEAdapter.jpg" style="width:80.0%" />
-<figcaption>SimFEAdapter 实验控制</figcaption>
-</figure>
+
+```{figure} fig/SimFEAdapter.jpg
+:width: 80%
+:name: fig-SimFEAdapter
+
+SimFEAdapter 实验控制
+```
 
 ### 记录Recorder
 
