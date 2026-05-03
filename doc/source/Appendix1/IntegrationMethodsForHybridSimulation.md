@@ -13,7 +13,9 @@
 结构在离散自由度处的运动方程的推导始于写出无限小体的平衡方程，包括惯性力。这导致结构动力学问题的平衡的强形式。
 
 $$
-\begin{array}{l} \rho u _ {i, t t} (x _ {i}, t) = \sigma_ {j i, j} (x _ {i}, t) + b _ {i} (x _ {i}, t) \quad f o r x _ {i} \in V \\ u _ {i} \left(x _ {i}, t\right) = u _ {b i} \left(x _ {i}, t\right) \quad f o r x _ {i} \in \partial V _ {d} \\ n _ {j} \sigma_ {j i} (x _ {i}, t) = t _ {i} (x _ {i}, t) \quad f o r x _ {i} \in \partial V _ {t} \tag {4.1} \\ u _ {i} \left(x _ {i}, 0\right) = u _ {0 i} \left(x _ {i}\right) \\ u _ {i, t} \left(x _ {i}, 0\right) = \dot {u} _ {0 i} \left(x _ {i}\right) \\ \end{array}
+\begin{array}{l} \rho u _ {i, t t} (x _ {i}, t) = \sigma_ {j i, j} (x _ {i}, t) + b _ {i} (x _ {i}, t) \quad f o r x _ {i} \in V \\ u _ {i} \left(x _ {i}, t\right) = u _ {b i} \left(x _ {i}, t\right) \quad f o r x _ {i} \in \partial V _ {d} \\ n _ {j} \sigma_ {j i} (x _ {i}, t) = t _ {i} (x _ {i}, t) \quad f o r x _ {i} \in \partial V _ {t}  \\ u _ {i} \left(x _ {i}, 0\right) = u _ {0 i} \left(x _ {i}\right) \\ u _ {i, t} \left(x _ {i}, 0\right) = \dot {u} _ {0 i} \left(x _ {i}\right) \\ \end{array}
+\quad\quad\text{(4.1)}
+% \tag {4.1}
 $$
 
 其中$\rho$是材料的质量密度，$u _ { i }$是位移向量，$\sigma _ { j i }$是应力张量，$b _ { i }$是单位体积施加的体积力。由于微分方程（4.1）形成边界和初值问题，其余四个方程定义了域边界上的规定位移$u _ { b i }$和牵引力$t _ { i }$，以及问题的初始位移$u _ { 0 i }$和初始速度$\dot { u } _ { 0 i }$。
@@ -27,7 +29,9 @@ $$
 利用Gauss散度定理对方程（4.2）进行积分并纳入边界条件。简化和替换边界值方程后，获得结构动力学问题的弱形式。
 
 $$
-\begin{array}{l} \int_ {V} \delta u _ {i} \cdot \rho \ddot {u} _ {i} (t) d V + \int_ {V} \delta \varepsilon_ {i j} \cdot \sigma_ {j i} (t) d V = \int_ {V} \delta u _ {i} \cdot b _ {i} (t) d V + \int_ {\partial V} \delta u _ {i} \cdot t _ {i} (t) d S \\ \int_ {V} \delta u _ {i} \cdot \rho u _ {i} (0) d V = \int_ {V} \delta u _ {i} \cdot \rho u _ {0 i} d V \tag {4.3} \\ \int_ {V} \delta u _ {i} \cdot \rho \dot {u} _ {i} (0) d V = \int_ {V} \delta u _ {i} \cdot \rho \dot {u} _ {0 i} d V \\ \end{array}
+\begin{array}{l} \int_ {V} \delta u _ {i} \cdot \rho \ddot {u} _ {i} (t) d V + \int_ {V} \delta \varepsilon_ {i j} \cdot \sigma_ {j i} (t) d V = \int_ {V} \delta u _ {i} \cdot b _ {i} (t) d V + \int_ {\partial V} \delta u _ {i} \cdot t _ {i} (t) d S \\ \int_ {V} \delta u _ {i} \cdot \rho u _ {i} (0) d V = \int_ {V} \delta u _ {i} \cdot \rho u _ {0 i} d V \\ \int_ {V} \delta u _ {i} \cdot \rho \dot {u} _ {i} (0) d V = \int_ {V} \delta u _ {i} \cdot \rho \dot {u} _ {0 i} d V \\ \end{array}
+\quad\quad\text{(4.3)}
+% \tag {4.3}
 $$
 
 为简单起见，上述方程中所有函数所依赖的位移场参数$x _ { i }$被省略。在方程（4.3）中，左侧两项分别表示惯性力和抗力，它们与右侧施加的体积力和表面荷载平衡。剩余两个方程对应于两个初始条件的弱形式。
@@ -75,7 +79,9 @@ $$
 空间离散化的微分方程可以通过全局矩阵和向量在结构自由度处包含所有单元贡献来进一步简化。这导致结构自由度处运动方程的一般形式。
 
 $$
-\begin{array}{l} \mathbf {M} \ddot {\mathbf {U}} (t) + \mathbf {P} _ {\mathrm {r}} (\mathbf {U} (t), \dot {\mathbf {U}} (t)) = \mathbf {P} (t) - \mathbf {P} _ {\mathbf {0}} (t) \\ \mathbf {U} (0) = \mathbf {U} _ {0} \tag {4.7} \\ \dot {\mathbf {U}} (0) = \dot {\mathbf {U}} _ {\mathbf {0}} \\ \end{array}
+\begin{array}{l} \mathbf {M} \ddot {\mathbf {U}} (t) + \mathbf {P} _ {\mathrm {r}} (\mathbf {U} (t), \dot {\mathbf {U}} (t)) = \mathbf {P} (t) - \mathbf {P} _ {\mathbf {0}} (t) \\ \mathbf {U} (0) = \mathbf {U} _ {0}  \\ \dot {\mathbf {U}} (0) = \dot {\mathbf {U}} _ {\mathbf {0}} \\ \end{array}
+\quad\quad\text{(4.7)}
+% \tag {4.7}
 $$
 
 其中质量矩阵M是从节点和单元质量矩阵组装的，U&&是结构自由度处的加速度向量，$\mathbf { P _ { r } }$是组装的单元抗力（取决于结构位移和速度），P是外部施加的节点荷载，$\mathbf { P _ { 0 } }$是组装的单元荷载。如果施加的荷载完全由地面加速度引起，则方程（4.7）右侧的节点荷载向量$\mathbf { P }$可以用以下表达式替换。
@@ -157,17 +163,18 @@ $$
 求解方程（4.7）中半离散运动方程的另一种策略是首先将二阶微分方程转换为一阶常微分方程组。这种转换也是直接积分方法收敛分析的基本步骤，并导致以下系统。
 
 $$
-\dot {\mathbf {y}} (t) = \mathbf {f} (t, \mathbf {y}) = \left\{ \begin{array}{c} \dot {\mathbf {U}} (t) \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} (t) - \mathbf {P} _ {0} (t) - \mathbf {P} _ {\mathrm {r}} (\mathbf {U} (t), \dot {\mathbf {U}} (t))\right) \end{array} \right\} \tag {4.14}
-$$
-
-$$
+\dot {\mathbf {y}} (t) = \mathbf {f} (t, \mathbf {y}) = \left\{ \begin{array}{c} \dot {\mathbf {U}} (t) \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} (t) - \mathbf {P} _ {0} (t) - \mathbf {P} _ {\mathrm {r}} (\mathbf {U} (t), \dot {\mathbf {U}} (t))\right) \end{array} \right\} \\
 \mathbf {y} \left(0\right) = \left\{ \begin{array}{c} \mathbf {U} _ {\mathbf {0}} \\ \dot {\mathbf {U}} _ {\mathbf {0}} \end{array} \right\}
+\quad\quad\text{(4.14)}
+% \tag {4.14}
 $$
 
 其中$\mathbf { y } = \left\{ \mathbf { U } \left( t \right) , \dot { \mathbf { U } } \left( t \right) \right\} ^ { T }$是包含结构位移和速度的堆叠向量。一旦结构动力学问题成功转换为一阶初值问题，数值分析领域就有大量方法可用于求解这种一阶微分方程组。求解此系统最简单的方法是下面显示的显式Euler方法。
 
 $$
-\begin{array}{l} \left\{ \begin{array}{l} \mathbf {U} \\ \dot {\mathbf {U}} \end{array} \right\} _ {i + 1} = \left\{ \begin{array}{l} \mathbf {U} \\ \dot {\mathbf {U}} \end{array} \right\} _ {i} + \Delta t \left\{ \begin{array}{c} \dot {\mathbf {U}} _ {i} \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} _ {i} - \mathbf {P} _ {\mathbf {0}, i} - \mathbf {P} _ {\mathbf {r}} \left(\mathbf {U} _ {i}, \dot {\mathbf {U}} _ {i}\right)\right) \end{array} \right\} \tag {4.15} \\ \left\{ \begin{array}{c} \mathbf {U} \\ \dot {\mathbf {U}} \end{array} \right\} _ {i = 1} = \left\{ \begin{array}{c} \mathbf {U} _ {\mathbf {0}} \\ \dot {\mathbf {U}} _ {\mathbf {0}} \end{array} \right\} \\ \end{array}
+\begin{array}{l} \left\{ \begin{array}{l} \mathbf {U} \\ \dot {\mathbf {U}} \end{array} \right\} _ {i + 1} = \left\{ \begin{array}{l} \mathbf {U} \\ \dot {\mathbf {U}} \end{array} \right\} _ {i} + \Delta t \left\{ \begin{array}{c} \dot {\mathbf {U}} _ {i} \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} _ {i} - \mathbf {P} _ {\mathbf {0}, i} - \mathbf {P} _ {\mathbf {r}} \left(\mathbf {U} _ {i}, \dot {\mathbf {U}} _ {i}\right)\right) \end{array} \right\} \\ \left\{ \begin{array}{c} \mathbf {U} \\ \dot {\mathbf {U}} \end{array} \right\} _ {i = 1} = \left\{ \begin{array}{c} \mathbf {U} _ {\mathbf {0}} \\ \dot {\mathbf {U}} _ {\mathbf {0}} \end{array} \right\} \\ \end{array}
+\quad\quad\text{(4.15)}
+% \tag {4.15}
 $$
 
 然而，显式Euler方法仅为$p = 1$阶精度，因此不应用于分析。此类求解方案中最广泛使用的类是Runge-Kutta方法族。Runge-Kutta求解方案属于单步方法类，它们只需要时间$t _ { i }$处的当前解状态来计算$t _ { i } + \Delta t$处的新解。它们不依赖于过去的解状态，并且本质上总是稳定的。相比之下，多步方法不仅根据当前解状态，还根据k-1个先前解状态来形成时间$t _ { i } + \Delta t$处的新解。Runge-Kutta方法在混合模拟中的适用性在第4.5节中研究。
@@ -205,7 +212,9 @@ $$
 对于Runge-Kutta和多步方法，函数调用被认为是确定一阶常微分方程中的导数f。
 
 $$
-\dot {\mathbf {y}} = \mathbf {f} = \left\{ \begin{array}{c} \dot {\mathbf {U}} _ {i + 1} \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} _ {i + 1} - \mathbf {P} _ {\mathbf {0}, i + 1} - \mathbf {P} _ {\mathbf {r}} \left(\mathbf {U} _ {i + 1}, \dot {\mathbf {U}} _ {i + 1}\right)\right) \end{array} \right\} \tag {4.19}
+\dot {\mathbf {y}} = \mathbf {f} = \left\{ \begin{array}{c} \dot {\mathbf {U}} _ {i + 1} \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} _ {i + 1} - \mathbf {P} _ {\mathbf {0}, i + 1} - \mathbf {P} _ {\mathbf {r}} \left(\mathbf {U} _ {i + 1}, \dot {\mathbf {U}} _ {i + 1}\right)\right) \end{array} \right\} 
+\quad\quad\text{(4.19)}
+% \tag {4.19}
 $$
 
 直接求解二阶微分方程的经典显式积分方法是非迭代方法，因为每个分析时间步只需要一次函数调用。显式Runge-Kutta方法需要的函数调用次数与其级数相同。另一方面，隐式算法包含需要求解的代数公式，以确定时间步结束处的新解。求解此类隐式方程的一种方法是使用显式表达式预测解，然后利用隐式表达式随后校正1到m次。根据基本思想，这些算法称为预测-多校正积分方法。它们每个分析时间步总共需要m次函数调用来推进解。求解非线性隐式方程的第二种方法是利用众所周知的Newton-Raphson算法迭代地找到解。因此，函数调用的次数直接与每个分析时间步执行的迭代次数相关。隐式方法的主要缺点是它们可能计算量非常大，并且比显式方法更难实现。例如，在部署Newton-Raphson算法的第二种方法中，每个迭代步骤都需要求解涉及Jacobian的线性代数方程组。Jacobian的形成和大型线性方程组的求解是计算量很大的操作。仅在时间步开始时更新Jacobian并在迭代期间保持恒定，或者在整个分析过程中使用初始Jacobian的算法可以降低计算成本。然而，它们通常需要更多的迭代，因为失去了二次收敛性。另一种可以显著降低计算成本的选项是使用线性隐式算法，这等效于仅执行一次Newton-Raphson迭代。在Runge-Kutta方法类中，线性隐式算法称为Rosenbrock方法。对于刚性问题，Rosenbrock方法最容易实现，因此非常受欢迎。单次Newton-Raphson迭代所需的Jacobian可以再次为每个时间步更新，也可以仅确定一次并在整个分析过程中保持恒定。
@@ -457,13 +466,17 @@ $$
 在上述线性方程组中，依赖于迭代 k 的有效刚度矩阵和有效力向量具有以下形式。
 
 $$
-\begin{array}{l} \mathbf {K} _ {\mathrm {e f f}} ^ {(k)} = c _ {3} \mathbf {M} + c _ {2} \mathbf {C} + c _ {1} \mathbf {K} _ {\mathrm {t}} \left(\mathbf {U} _ {i + 1} ^ {(k)}\right) \\ \mathbf {P} _ {\text {e f f}} ^ {(k)} = \mathbf {P} _ {i + 1} - \mathbf {P} _ {\mathbf {0}, i + 1} - \mathbf {P} _ {\mathbf {r}} \left(\mathbf {U} _ {i + 1} ^ {(k)}\right) - \mathbf {M} \ddot {\mathbf {U}} _ {i + 1} ^ {(k)} - \mathbf {C} \dot {\mathbf {U}} _ {i + 1} ^ {(k)} \tag {4.40} \\ \end{array}
+\begin{array}{l} \mathbf {K} _ {\mathrm {e f f}} ^ {(k)} = c _ {3} \mathbf {M} + c _ {2} \mathbf {C} + c _ {1} \mathbf {K} _ {\mathrm {t}} \left(\mathbf {U} _ {i + 1} ^ {(k)}\right) \\ \mathbf {P} _ {\text {e f f}} ^ {(k)} = \mathbf {P} _ {i + 1} - \mathbf {P} _ {\mathbf {0}, i + 1} - \mathbf {P} _ {\mathbf {r}} \left(\mathbf {U} _ {i + 1} ^ {(k)}\right) - \mathbf {M} \ddot {\mathbf {U}} _ {i + 1} ^ {(k)} - \mathbf {C} \dot {\mathbf {U}} _ {i + 1} ^ {(k)} \\ \end{array}
+\quad\quad\text{(4.40)}
+% \tag {4.40}
 $$
 
 其中 $c _ { \scriptscriptstyle 1 } = 1$ , $c _ { 2 } = \gamma / ( \Delta t \beta )$ , 和 $c _ { 3 } = 1 / ( \Delta t ^ { 2 } \beta )$ 。由于 Newton-Raphson 算法仅在位移向量的初始近似足够接近实际解时才保证收敛，因此时间 $t _ { i }$ 处的收敛位移向量被用作时间 $t _ { i } + \Delta t$ 处所求位移向量的初始近似。
 
 $$
-\begin{array}{l} \mathbf {U} _ {i + 1} ^ {(k = 1)} = \mathbf {U} _ {i} \\ \dot {\mathbf {U}} _ {i + 1} ^ {(k = 1)} = - \left(\frac {\gamma}{\beta} - 1\right) \dot {\mathbf {U}} _ {i} - \Delta t \left(\frac {\gamma}{2 \beta} - 1\right) \ddot {\mathbf {U}} _ {i} \tag {4.41} \\ \ddot {\mathbf {U}} _ {i + 1} ^ {(k = 1)} = - \frac {1}{\Delta t \beta} \dot {\mathbf {U}} _ {i} - \left(\frac {1}{2 \beta} - 1\right) \ddot {\mathbf {U}} _ {i} \\ \end{array}
+\begin{array}{l} \mathbf {U} _ {i + 1} ^ {(k = 1)} = \mathbf {U} _ {i} \\ \dot {\mathbf {U}} _ {i + 1} ^ {(k = 1)} = - \left(\frac {\gamma}{\beta} - 1\right) \dot {\mathbf {U}} _ {i} - \Delta t \left(\frac {\gamma}{2 \beta} - 1\right) \ddot {\mathbf {U}} _ {i}  \\ \ddot {\mathbf {U}} _ {i + 1} ^ {(k = 1)} = - \frac {1}{\Delta t \beta} \dot {\mathbf {U}} _ {i} - \left(\frac {1}{2 \beta} - 1\right) \ddot {\mathbf {U}} _ {i} \\ \end{array}
+\quad\quad\text{(4.41)}
+% \tag {4.41}
 $$
 
 一旦方程 (4.39) 解出迭代 k 处的位移增量，响应量如位移、速度和加速度就会被更新。
@@ -522,6 +535,7 @@ $$
 
 $$
 \mathbf {M} _ {\mathbf {e f f}} ^ {(k)} = c _ {3} \mathbf {M} + c _ {2} \mathbf {C} + c _ {1} \mathbf {K} _ {\mathbf {t}} \left(\mathbf {U} _ {i + 1} ^ {(k)}\right) \tag {4.46}
+
 $$
 
 $$
@@ -765,7 +779,9 @@ $$
 将这些速度和加速度代入加权平衡方程 (4.51)，并使这些方程等于零，得到一个非线性方程组，其中未知量是新时间步 $t _ { i } + \Delta t$ 处的位移。
 
 $$
-\begin{array}{l} F \left(\mathbf {U} _ {i + 1}\right) = \left(1 - \alpha_ {m}\right) \mathbf {M} \ddot {\mathbf {U}} _ {i} + \alpha_ {m} \mathbf {M} \ddot {\mathbf {U}} _ {i + 1} + \left(1 - \alpha_ {f}\right) \mathbf {C} \dot {\mathbf {U}} _ {i} + \alpha_ {f} \mathbf {C} \dot {\mathbf {U}} _ {i + 1} \tag {4.56} \\ + \mathbf {P} _ {\mathbf {r}, i + \alpha_ {f}} (\mathbf {U} _ {i + 1}) - \mathbf {P} _ {i + \alpha_ {f}} + \mathbf {P} _ {\mathbf {0}, i + \alpha_ {f}} = 0 \\ \end{array}
+\begin{array}{l} F \left(\mathbf {U} _ {i + 1}\right) = \left(1 - \alpha_ {m}\right) \mathbf {M} \ddot {\mathbf {U}} _ {i} + \alpha_ {m} \mathbf {M} \ddot {\mathbf {U}} _ {i + 1} + \left(1 - \alpha_ {f}\right) \mathbf {C} \dot {\mathbf {U}} _ {i} + \alpha_ {f} \mathbf {C} \dot {\mathbf {U}} _ {i + 1} \\ + \mathbf {P} _ {\mathbf {r}, i + \alpha_ {f}} (\mathbf {U} _ {i + 1}) - \mathbf {P} _ {i + \alpha_ {f}} + \mathbf {P} _ {\mathbf {0}, i + \alpha_ {f}} = 0 \\ \end{array}
+\quad\quad\text{(4.56)}
+% \tag {4.56}
 $$
 
 为了求解这个关于未知位移的非线性方程组，采用了著名的迭代 Newton-Raphson 算法。
@@ -783,7 +799,9 @@ $$
 在上述线性方程组中，依赖于迭代 k 的有效刚度矩阵和有效力向量具有以下形式。
 
 $$
-\begin{array}{l} \mathbf {K} _ {\text {e f f}} ^ {(k)} = \alpha_ {m} c _ {3} \mathbf {M} + \alpha_ {f} c _ {2} \mathbf {C} + \alpha_ {f} c _ {1} \mathbf {K} _ {\mathbf {t}} \left(\mathbf {U} _ {i + 1} ^ {(k)}\right) \\ \mathbf {P} _ {\text {e f f}} ^ {(k)} = \mathbf {P} _ {i + \alpha_ {f}} - \mathbf {P} _ {\mathbf {0}, i + \alpha_ {f}} - \mathbf {P} _ {\mathbf {r}, i + \alpha_ {f}} \left(\mathbf {U} _ {i + 1} ^ {(k)}\right) \tag {4.59} \\ - \mathbf {M} \left[ \left(1 - \alpha_ {m}\right) \ddot {\mathbf {U}} _ {i} + \alpha_ {m} \ddot {\mathbf {U}} _ {i + 1} \right] - \mathbf {C} \left[ \left(1 - \alpha_ {f}\right) \dot {\mathbf {U}} _ {i} + \alpha_ {f} \dot {\mathbf {U}} _ {i + 1} \right] \\ \end{array}
+\begin{array}{l} \mathbf {K} _ {\text {e f f}} ^ {(k)} = \alpha_ {m} c _ {3} \mathbf {M} + \alpha_ {f} c _ {2} \mathbf {C} + \alpha_ {f} c _ {1} \mathbf {K} _ {\mathbf {t}} \left(\mathbf {U} _ {i + 1} ^ {(k)}\right) \\ \mathbf {P} _ {\text {e f f}} ^ {(k)} = \mathbf {P} _ {i + \alpha_ {f}} - \mathbf {P} _ {\mathbf {0}, i + \alpha_ {f}} - \mathbf {P} _ {\mathbf {r}, i + \alpha_ {f}} \left(\mathbf {U} _ {i + 1} ^ {(k)}\right) \\ - \mathbf {M} \left[ \left(1 - \alpha_ {m}\right) \ddot {\mathbf {U}} _ {i} + \alpha_ {m} \ddot {\mathbf {U}} _ {i + 1} \right] - \mathbf {C} \left[ \left(1 - \alpha_ {f}\right) \dot {\mathbf {U}} _ {i} + \alpha_ {f} \dot {\mathbf {U}} _ {i + 1} \right] \\ \end{array}
+\quad\quad\text{(4.59)}
+% \tag {4.59}
 $$
 
 其中 $c _ { \scriptscriptstyle 1 } = 1$ , $c _ { 2 } = \gamma / ( \Delta t \beta )$ , 和 $c _ { 3 } = 1 / ( \Delta t ^ { 2 } \beta )$ 。由于 Newton-Raphson 算法仅在位移向量的初始近似足够接近实际解时才保证收敛，因此时间 $t _ { i }$ 处的收敛位移向量被用作时间 $t _ { i } + \Delta t$ 处所求位移向量的初始近似。
@@ -934,7 +952,9 @@ $$
 在上述线性方程组中，有效刚度矩阵和有效力向量具有以下形式。
 
 $$
-\begin{array}{l} \mathbf {K} _ {\text {e f f}} = \alpha_ {m} c _ {3} \mathbf {M} + \alpha_ {f} c _ {2} \mathbf {C} + \alpha_ {f} c _ {1} \mathbf {K} _ {\mathrm {i}} \\ \mathbf {P} _ {\text {e f f}} = \mathbf {P} _ {i + \alpha_ {f}} - \mathbf {P} _ {\mathbf {0}, i + \alpha_ {f}} - \left[ \tilde {\mathbf {P}} _ {\mathbf {r}, i + \alpha_ {f}} + \mathbf {K} _ {\mathbf {i}} \left(1 - \alpha_ {f}\right) \left(\mathbf {U} _ {i} - \tilde {\mathbf {U}} _ {i}\right) \right] \tag {4.71} \\ - \mathbf {M} \left(1 - \alpha_ {m}\right) \ddot {\mathbf {U}} _ {i} - \mathbf {C} \left[ \left(1 - \alpha_ {f}\right) \dot {\mathbf {U}} _ {i} + \alpha_ {f} \dot {\bar {\mathbf {U}}} _ {i + 1} \right] \\ \end{array}
+\begin{array}{l} \mathbf {K} _ {\text {e f f}} = \alpha_ {m} c _ {3} \mathbf {M} + \alpha_ {f} c _ {2} \mathbf {C} + \alpha_ {f} c _ {1} \mathbf {K} _ {\mathrm {i}} \\ \mathbf {P} _ {\text {e f f}} = \mathbf {P} _ {i + \alpha_ {f}} - \mathbf {P} _ {\mathbf {0}, i + \alpha_ {f}} - \left[ \tilde {\mathbf {P}} _ {\mathbf {r}, i + \alpha_ {f}} + \mathbf {K} _ {\mathbf {i}} \left(1 - \alpha_ {f}\right) \left(\mathbf {U} _ {i} - \tilde {\mathbf {U}} _ {i}\right) \right]  \\ - \mathbf {M} \left(1 - \alpha_ {m}\right) \ddot {\mathbf {U}} _ {i} - \mathbf {C} \left[ \left(1 - \alpha_ {f}\right) \dot {\mathbf {U}} _ {i} + \alpha_ {f} \dot {\bar {\mathbf {U}}} _ {i + 1} \right] \\ \end{array}
+\quad\quad\text{(4.71)}
+% \tag {4.71}
 $$
 
 其中 $c _ { \scriptscriptstyle 1 } = 1$ , $c _ { 2 } = \gamma / ( \Delta t \beta )$ , 和 $c _ { 3 } = 1 / ( \Delta t ^ { 2 } \beta )$ 。一旦方程 (4.70) 解出位移增量，响应量如位移、速度和加速度就会按如下方式更新。
@@ -969,7 +989,8 @@ $$
 其中基本坐标系中的协调矩阵 a 和弹性单元刚度矩阵 $\mathbf { k _ { \mathbf { b } } }$ 由公式 (4.74) 给出。在这些公式中，$\mathbf { u } _ { \mathrm { 1 } }$ 和 $\mathbf { p } _ { 1 }$ 是局部坐标系中的单元位移和力，${ \bf u _ { \mathrm { b } } }$ 和 $\mathbf { q }$ 是基本坐标系中的单元变形和力，$\alpha$ 是弦转角，$L _ { n }$ 是变形后的弦长。
 
 $$
-\mathbf {a} = \left[ \begin{array}{l l l l l l} - \cos (\alpha) & - \sin (\alpha) & 0 & \cos (\alpha) & \sin (\alpha) & 0 \\ - \frac {\sin (\alpha)}{L _ {n}} & \frac {\cos (\alpha)}{L _ {n}} & 1 & \frac {\sin (\alpha)}{L _ {n}} & - \frac {\cos (\alpha)}{L _ {n}} & 0 \\ - \frac {\sin (\alpha)}{L _ {n}} & \frac {\cos (\alpha)}{L _ {n}} & 0 & \frac {\sin (\alpha)}{L _ {n}} & - \frac {\cos (\alpha)}{L _ {n}} & 1 \end{array} \right] \tag {4.74}
+\mathbf {a} = \left[ \begin{array}{l l l l l l} - \cos (\alpha) & - \sin (\alpha) & 0 & \cos (\alpha) & \sin (\alpha) & 0 \\ - \frac {\sin (\alpha)}{L _ {n}} & \frac {\cos (\alpha)}{L _ {n}} & 1 & \frac {\sin (\alpha)}{L _ {n}} & - \frac {\cos (\alpha)}{L _ {n}} & 0 \\ - \frac {\sin (\alpha)}{L _ {n}} & \frac {\cos (\alpha)}{L _ {n}} & 0 & \frac {\sin (\alpha)}{L _ {n}} & - \frac {\cos (\alpha)}{L _ {n}} & 1 \end{array} \right] \quad\quad\text{(4.74)}
+% \tag {4.74}
 $$
 
 $$
@@ -979,7 +1000,9 @@ $$
 此外，(4.73) 中局部刚度矩阵的第一部分代表材料刚度，第二部分代表几何刚度。这两部分可以用任何计算机代数系统 (CAS) 如 Mathematica (Wolfram) 或 Maple (Maplesoft) 轻松求值。然而，得到的 6x6 刚度矩阵相当复杂，因此这里不展示。对于本例中使用的弹性悬臂柱（见图 4.18a），底部的三个固定自由度不进入运动方程，局部初始和切线刚度矩阵缩减为 3x3 矩阵。切线刚度矩阵仍然相当复杂，因此这里也不展示，但对于弦转角 $\alpha = 0$ 和弦长 $L _ { \mathfrak { n } } = L$，得到以下初始刚度矩阵。
 
 $$
-\mathbf {k} _ {\mathrm {l}, \mathrm {i}} = \left[ \begin{array}{c c c} \frac {E A}{L} & 0 & 0 \\ 0 & \frac {1 2 E I}{L ^ {3}} & - \frac {6 E I}{L ^ {2}} \\ 0 & - \frac {6 E I}{L ^ {2}} & \frac {4 E I}{L} \end{array} \right] \tag {4.75}
+\mathbf {k} _ {\mathrm {l}, \mathrm {i}} = \left[ \begin{array}{c c c} \frac {E A}{L} & 0 & 0 \\ 0 & \frac {1 2 E I}{L ^ {3}} & - \frac {6 E I}{L ^ {2}} \\ 0 & - \frac {6 E I}{L ^ {2}} & \frac {4 E I}{L} \end{array} \right] 
+\quad\quad\text{(4.75)}
+% \tag {4.75}
 $$
 
 接下来通过确定其特征值来评估 $\delta \mathbf { K }$ 的半正定性。为了获得最小特征值的闭式解，首先考虑无荷载的弹性共旋桁架的特殊情况（$\begin{array} { r } { E I = q _ { 1 } = q _ { 2 } = q _ { 3 } = 0 } \end{array}$）。最小特征值由以下表达式给出。
@@ -1152,13 +1175,16 @@ $$
     \hline
     & \mathbf{b}^T
 \end{array} 
-\tag {4.83}
+\quad\quad\text{(4.83)}
+% \tag {4.83}
 $$
 
 如前所述，二阶运动方程必须转换为一阶微分方程组，为方便起见在此重复。
 
 $$
-\dot {\mathbf {y}} (t) = \mathbf {f} (t, \mathbf {y}) = \left\{ \begin{array}{c} \mathbf {y} _ {2} \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} (t) - \mathbf {P} _ {0} (t) - \mathbf {C y} _ {2} - \mathbf {P} _ {\mathrm {r}} (\mathbf {y} _ {1})\right) \end{array} \right\} \tag {4.84}
+\dot {\mathbf {y}} (t) = \mathbf {f} (t, \mathbf {y}) = \left\{ \begin{array}{c} \mathbf {y} _ {2} \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} (t) - \mathbf {P} _ {0} (t) - \mathbf {C y} _ {2} - \mathbf {P} _ {\mathrm {r}} (\mathbf {y} _ {1})\right) \end{array} \right\} 
+\quad\quad\text{(4.84)}
+% \tag {4.84}
 $$
 
 $$
@@ -1186,7 +1212,8 @@ $$
 \hline
 & 0 & 1
 \end{array}
-\tag {4.85}
+\quad\quad\text{(4.85)}
+% \tag {4.85}
 $$
 
 
@@ -1228,7 +1255,8 @@ $$
 \hline
 & \frac{1}{4} & 0 & \frac{3}{4}
 \end{array}
-\tag {4.86}
+\quad\quad\text{(4.86)}
+% \tag {4.86}
 $$
 
 显式 Heun 方法是一致的，精度阶为 $p = 3$，因此满足要求 1。该方法每个时间步需要三次函数调用。由于它比任何直接积分方法都更精确，因此是一个极好的替代方案。
@@ -1252,7 +1280,8 @@ $$
 \hline
 & \frac{1}{8} & \frac{3}{8} & \frac{3}{8} & \frac{1}{8}
 \end{array}
-\tag {4.87}
+\quad\quad\text{(4.87)}
+% \tag {4.87}
 $$
 
 显式 3/8 法则是一致的，精度阶为 $p = 4$，满足要求 1。根据四个阶段，该方法每个时间步也需要四次函数调用。然而，最后阶段确定了当前时间步结束时导数的近似，而第一阶段确定了新时间步开始时导数的近似。这意味着在 $t _ { i + 1 }$ 处获取了两次抗力，这对于产生严格递增或递减且均匀的位移增量（如要求 6 和 7 所述）并不理想。
@@ -1291,7 +1320,8 @@ $$
 \hline
 & 1
 \end{array}
-\tag {4.88}
+\quad\quad\text{(4.88)}
+% \tag {4.88}
 $$
 
 隐式中点法则是一致的，精度阶为 $p = 2$，因此满足要求 1。由于该方法只包含一个阶段，每个时间步的函数求值次数等于达到收敛所需的迭代次数。
@@ -1310,25 +1340,33 @@ $$
 1 & \frac{1}{2} & \frac{1}{2} \\[3pt]
 \hline
 & \frac{1}{2} & \frac{1}{2}
-\end{array} \tag {4.89}
+\end{array} 
+\quad\quad\text{(4.89)}
+% \tag {4.89}
 $$
 
 与隐式中点法则一样，隐式梯形法则也是一致的，精度阶为 $p = 2$。因此它满足要求 1。但它包含两个阶段而不是一个，这意味着它每个时间步所需的函数求值次数是隐式中点法的两倍。应该注意到，通过一些代数运算，可以证明隐式梯形法则等价于隐式恒定加速度 Newmark 方法。
 
 $$
-\dot {\mathbf {y}} _ {i + 1} = \mathbf {f} \left(t _ {i + 1}, \mathbf {y} _ {i + 1}\right) = \left\{ \begin{array}{c} \dot {\mathbf {U}} _ {i + 1} \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} _ {i + 1} - \mathbf {P} _ {\mathbf {0}, i + 1} - \mathbf {C} \dot {\mathbf {U}} _ {i + 1} - \mathbf {P} _ {\mathbf {r}} \left(\mathbf {U} _ {i + 1}\right)\right) \end{array} \right\} \tag {4.90}
+\dot {\mathbf {y}} _ {i + 1} = \mathbf {f} \left(t _ {i + 1}, \mathbf {y} _ {i + 1}\right) = \left\{ \begin{array}{c} \dot {\mathbf {U}} _ {i + 1} \\ \mathbf {M} ^ {- 1} \left(\mathbf {P} _ {i + 1} - \mathbf {P} _ {\mathbf {0}, i + 1} - \mathbf {C} \dot {\mathbf {U}} _ {i + 1} - \mathbf {P} _ {\mathbf {r}} \left(\mathbf {U} _ {i + 1}\right)\right) \end{array} \right\} 
+\quad\quad\text{(4.90)}
+% \tag {4.90}
 $$
 
 从 (4.90) 的第二个公式中，恢复了时间 $t _ { i + 1 }$ 处的平衡方程。
 
 $$
-\mathbf {M} \ddot {\mathbf {U}} _ {i + 1} + \mathbf {C} \dot {\mathbf {U}} _ {i + 1} + \mathbf {P} _ {\mathbf {r}} (\mathbf {U} _ {i + 1}) = \mathbf {P} _ {i + 1} - \mathbf {P} _ {\mathbf {0}, i + 1} \tag {4.91}
+\mathbf {M} \ddot {\mathbf {U}} _ {i + 1} + \mathbf {C} \dot {\mathbf {U}} _ {i + 1} + \mathbf {P} _ {\mathbf {r}} (\mathbf {U} _ {i + 1}) = \mathbf {P} _ {i + 1} - \mathbf {P} _ {\mathbf {0}, i + 1} 
+\quad\quad\text{(4.91)}
+% \tag {4.91}
 $$
 
 因为第二阶段等于 $\mathbf { k } _ { 2 } = \mathbf { f } \left( t _ { i + 1 } , \mathbf { y } _ { i + 1 } \right)$，将 $\dot { \mathbf { y } } = \mathbf { f }$ 代入隐式梯形法则 (4.89) 得到以下表达式。
 
 $$
-\mathbf {y} _ {i + 1} = \left\{ \begin{array}{l} \mathbf {U} _ {i + 1} \\ \dot {\mathbf {U}} _ {i + 1} \end{array} \right\} = \left\{ \begin{array}{l} \mathbf {U} _ {i} \\ \dot {\mathbf {U}} _ {i} \end{array} \right\} + \Delta t \left(\frac {1}{2} \left\{\dot {\mathbf {U}} _ {i} \right\} + \frac {1}{2} \left\{\dot {\mathbf {U}} _ {i + 1} \right\}\right) \tag {4.92}
+\mathbf {y} _ {i + 1} = \left\{ \begin{array}{l} \mathbf {U} _ {i + 1} \\ \dot {\mathbf {U}} _ {i + 1} \end{array} \right\} = \left\{ \begin{array}{l} \mathbf {U} _ {i} \\ \dot {\mathbf {U}} _ {i} \end{array} \right\} + \Delta t \left(\frac {1}{2} \left\{\dot {\mathbf {U}} _ {i} \right\} + \frac {1}{2} \left\{\dot {\mathbf {U}} _ {i + 1} \right\}\right) 
+\quad\quad\text{(4.92)}
+% \tag {4.92}
 $$
 
 这两个方程显然等价于 $\beta = 1 / 4$ 和 $\gamma = 1 / 2$ 时 Newmark 的有限差分公式 (4.13)。
@@ -1350,7 +1388,8 @@ $$
 \hline
 & \frac{1}{4} & \frac{3}{4}
 \end{array} 
-\tag {4.93}
+\quad\quad\text{(4.93)}
+% \tag {4.93}
 $$
 
 隐式 2 阶段 Radau IA 方案是一致的，精度阶为 $p = 3$，因此满足要求 1。
@@ -1372,13 +1411,16 @@ $$
 \hline
 & \frac{1}{2} & \frac{1}{2}
 \end{array}
-\tag {4.94}
+\quad\quad\text{(4.94)}
+% \tag {4.94}
 $$
 
 隐式 2 阶段 Gauss 方案是一致的，精度阶为 $p = 4$，因此满足要求 1。由于这是一个具有非奇异矩阵 A 的隐式算法，接下来将方程 (4.94) 转换为形式 (4.82)，以减少舍入误差的影响。从这两个阶段，得到以下以未知量 $\mathbf { z }$ 表示的非线性方程组。
 
 $$
-F (\mathbf {z}) = \left\{ \begin{array}{l} \mathbf {z} _ {1} \\ \mathbf {z} _ {2} \end{array} \right\} - \Delta t \left\{ \begin{array}{l} a _ {1 1} \mathbf {f} (\mathbf {z} _ {1}) + a _ {1 2} \mathbf {f} (\mathbf {z} _ {2}) \\ a _ {2 1} \mathbf {f} (\mathbf {z} _ {1}) + a _ {2 2} \mathbf {f} (\mathbf {z} _ {2}) \end{array} \right\} = \left\{ \begin{array}{l} \mathbf {0} \\ \mathbf {0} \end{array} \right\} \tag {4.95}
+F (\mathbf {z}) = \left\{ \begin{array}{l} \mathbf {z} _ {1} \\ \mathbf {z} _ {2} \end{array} \right\} - \Delta t \left\{ \begin{array}{l} a _ {1 1} \mathbf {f} (\mathbf {z} _ {1}) + a _ {1 2} \mathbf {f} (\mathbf {z} _ {2}) \\ a _ {2 1} \mathbf {f} (\mathbf {z} _ {1}) + a _ {2 2} \mathbf {f} (\mathbf {z} _ {2}) \end{array} \right\} = \left\{ \begin{array}{l} \mathbf {0} \\ \mathbf {0} \end{array} \right\} 
+\quad\quad\text{(4.95)}
+% \tag {4.95}
 $$
 
 为了求解这个关于未知阶段 z 的非线性方程组，再次采用了著名的迭代 Newton-Raphson 算法。
@@ -1397,13 +1439,16 @@ DF\left(\mathbf{z}^{(k)}\right) =
 \mathbf{0} & -\Delta t a_{21}\mathbf{I} & \mathbf{I} & -\Delta t a_{22}\mathbf{I} \\[6pt]
 \Delta t a_{21}\mathbf{K}_\mathbf{t}\left(\mathbf{z}_{11}^{(k)}\right) & \Delta t a_{21}\mathbf{C} & \Delta t a_{22}\mathbf{K}_\mathbf{t}\left(\mathbf{z}_{21}^{(k)}\right) & \mathbf{M} + \Delta t a_{22}\mathbf{C}
 \end{bmatrix} 
-\tag {4.97}
+\quad\quad\text{(4.97)}
+% \tag {4.97}
 $$
 
 有了方程 (4.96) 的所有部分，迭代可以从 ${ \bf z } ^ { ( k = 1 ) } = \{ { \bf 0 } \}$ 开始，这是一个足够接近实际解的起始向量。利用张量积，Newton-Raphson 迭代可以总结如下。
 
 $$
-\begin{array}{l} \left(\mathbf {I} - \Delta t \mathbf {A} \otimes \mathbf {f} _ {, z} \left(\mathbf {z} ^ {(k)}\right)\right) \Delta \mathbf {z} ^ {(k)} = - \mathbf {z} ^ {(k)} + \Delta t (\mathbf {A} \otimes \mathbf {I}) \mathbf {f} \left(\mathbf {z} ^ {(k)}\right) \tag {4.98} \\ \mathbf {z} ^ {(k + 1)} = \mathbf {z} ^ {(k)} + \Delta \mathbf {z} ^ {(k)} \\ \end{array}
+\begin{array}{l} \left(\mathbf {I} - \Delta t \mathbf {A} \otimes \mathbf {f} _ {, z} \left(\mathbf {z} ^ {(k)}\right)\right) \Delta \mathbf {z} ^ {(k)} = - \mathbf {z} ^ {(k)} + \Delta t (\mathbf {A} \otimes \mathbf {I}) \mathbf {f} \left(\mathbf {z} ^ {(k)}\right)  \\ \mathbf {z} ^ {(k + 1)} = \mathbf {z} ^ {(k)} + \Delta \mathbf {z} ^ {(k)} \\ \end{array}
+\quad\quad\text{(4.98)}
+% \tag {4.98}
 $$
 
 与任何迭代方法一样，Jacobian 矩阵可以在每次迭代时更新，或在时间步开始时更新，或在整个非线性动态分析过程中保持初始值不变。此外，可以只执行一次 Newton 迭代，这相当于线性隐式方法。一旦对时间步 $t _ { i + 1 }$ 的线性方程组 (4.98) 的迭代过程收敛，响应量如位移、速度和加速度就根据方程 (4.99) 更新。最后，对整个 N 个时间步重复此过程，每个时间步内进行 Newton-Raphson 迭代，即可得到所求解。隐式 2 阶段 Gauss 方法总结为图 4.32 中的伪代码。
@@ -1415,7 +1460,8 @@ $$
 \dot{\mathbf{U}}_{i+1} &= \dot{\mathbf{U}}_i + \Delta \mathbf{y}_2 \\
 \ddot{\mathbf{U}}_{i+1} &= \ddot{\mathbf{U}}_i + \frac{\Delta \mathbf{y}_2}{\Delta t}
 \end{aligned}
-\tag {4.99}
+\quad\quad\text{(4.99)}
+% \tag {4.99}
 $$
 
 ![](images/4_32.jpg)
@@ -1444,7 +1490,8 @@ $$
 \begin{array}{l} \mathbf {k} _ {m} = \mathbf {f} \left(t _ {i + c _ {m}}, \mathbf {y} _ {i} + \Delta t \sum_ {n = 1} ^ {m - 1} a _ {m n} \mathbf {k} _ {n}\right) + 
 \\\gamma_ {m} \Delta t \mathbf {f} _ {, t} \left(t _ {i}, \mathbf {y} _ {i}\right) + \Delta t \mathbf {f} _ {, y} \left(t _ {i}, \mathbf {y} _ {i}\right) \sum_ {n = 1} ^ {m} \alpha_ {m n} \mathbf {k} _ {n} 
 \\\text {for}\quad  m = 1.. s  \\ \mathbf {y} _ {i + 1} = \mathbf {y} _ {i} + \Delta t \sum_ {n = 1} ^ {s} b _ {n} \mathbf {k} _ {n} \\ \end{array}
-\tag {4.100}
+\quad\quad\text{(4.100)}
+% \tag {4.100}
 $$
 
 其中额外的系数由下式给出
@@ -1461,7 +1508,8 @@ $$
 \quad 
 \\m = 1, \dots, s\\
 y_{i+1} = y_i + \Delta t \sum_{n=1}^{s} b_n k_n
-\tag {4.102}
+\quad\quad\text{(4.102)}
+% \tag {4.102}
 $$
 
 与 IRK 方法一样，第 2 行和第 4 行再次左乘质量矩阵，以消除对该矩阵求逆的需要，并使方案适用于具有
@@ -1469,7 +1517,9 @@ $$
 奇异质量矩阵的问题。在上式中，函数 f 对时间 $t$ 和解向量 y 的导数由以下表达式近似。
 
 $$
-\mathbf {f} _ {, t} = \frac {1}{\Delta t} \left\{ \begin{array}{c} \mathbf {0} \\ \Delta \mathbf {P} _ {i} - \Delta \mathbf {P} _ {\mathbf {0}, i} \end{array} \right\} \quad a n d \quad \mathbf {f} _ {, y} = \left[ \begin{array}{c c} \mathbf {0} & \mathbf {I} \\ \mathbf {K} _ {\mathrm {t}} (\mathbf {y} _ {\mathbf {1}, i}) & \mathbf {C} \end{array} \right] \tag {4.103}
+\mathbf {f} _ {, t} = \frac {1}{\Delta t} \left\{ \begin{array}{c} \mathbf {0} \\ \Delta \mathbf {P} _ {i} - \Delta \mathbf {P} _ {\mathbf {0}, i} \end{array} \right\} \quad a n d \quad \mathbf {f} _ {, y} = \left[ \begin{array}{c c} \mathbf {0} & \mathbf {I} \\ \mathbf {K} _ {\mathrm {t}} (\mathbf {y} _ {\mathbf {1}, i}) & \mathbf {C} \end{array} \right] 
+\quad\quad\text{(4.103)}
+% \tag {4.103}
 $$
 
 Rosenbrock 方法由以下修改后的 Butcher 数组象征。
@@ -1479,7 +1529,9 @@ $$
 c & \mathbf{A} & \alpha \\
 \hline
 & \mathbf{b}^T &
-\end{array} \tag {4.104}
+\end{array} 
+\quad\quad\text{(4.104)}
+% \tag {4.104}
 $$
 
 **2 阶段 Rosenbrock (RRK2):**
@@ -1497,7 +1549,8 @@ $$
 \hline
 & 0 & 1 & &
 \end{array}
-\tag{4.105}
+\quad\quad\text{(4.105)}
+% \tag {4.105}
 $$
 
 一旦从 Rosenbrock 方法应为 L-稳定的要求确定了参数 $\alpha { = } 1 { - } \sqrt { 2 }          / 2$，其余参数的选择使得所有满足二阶精度的阶次条件 (Kaps & Wanner 1981)。L-稳定的 2 阶段 Rosenbrock 方法是一致的，精度阶为 $p = 2$，满足要求 1。
@@ -1521,7 +1574,8 @@ $$
 \hline
 & \frac{1}{4} & 0 & \frac{3}{4} & & &
 \end{array}
-\tag {4.106}
+\quad\quad\text{(4.106)}
+% \tag {4.106}
 $$
 
 参数 $\alpha = 0 . 4 3 5 8 6 5 2 1 5$ 再次从 Rosenbrock 方法应为 L-稳定的要求中确定。虽然大多数其他参数随后可以从三阶精度的阶次条件中确定，但 $a _ { 3 1 }$ 和 $a _ { 3 2 }$ 仍然可以自由选择

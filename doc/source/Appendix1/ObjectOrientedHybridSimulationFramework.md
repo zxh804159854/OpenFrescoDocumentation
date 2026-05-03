@@ -473,15 +473,13 @@ $$
 假设两个支撑在其端部铰接，这意味着忽略节点转动并将力矩设为零。从图3.21可以看出，试验单元的变形由支撑交叉点k处的两个平动自由度控制。然而，为了正确捕捉倒V支撑子组件的屈曲行为，抗力由支撑支撑i和j处的两个荷载传感器获取，然后根据单元平衡计算k处的力。与前面讨论的试验单元相比，倒V支撑单元的控制和数据采集自由度因此不再共置。从全局自由度到基本自由度的试位移的线性变换采用以下形式。
 
 $$
-u _ {b} = T u \quad w i t h
-$$
-
-$$
-T = \left[ \begin{array}{c c c c c c c c} - \frac {\Delta x _ {1} \Delta y _ {2}}{D} & - \frac {\Delta y _ {1} \Delta y _ {2}}{D} & 0 & \frac {\Delta y _ {1} \Delta x _ {2}}{D} & \frac {\Delta y _ {1} \Delta y _ {2}}{D} & 0 & 1 & 0 & 0 \\ \frac {\Delta x _ {1} \Delta x _ {2}}{D} & - \frac {\Delta y _ {1} \Delta x _ {2}}{D} & 0 & - \frac {\Delta x _ {1} \Delta x _ {2}}{D} & - \frac {\Delta x _ {1} \Delta y _ {2}}{D} & 0 & 0 & 1 & 0 \end{array} \right] \tag {3.4}
-$$
-
-$$
-D = \Delta x _ {1} \Delta y _ {2} - \Delta y _ {1} \Delta x _ {2}
+u_b = T u \quad \text{with} \\[1em]
+T = \begin{bmatrix}
+-\dfrac{\Delta x_1 \Delta y_2}{D} & -\dfrac{\Delta y_1 \Delta y_2}{D} & 0 & \dfrac{\Delta y_1 \Delta x_2}{D} & \dfrac{\Delta y_1 \Delta y_2}{D} & 0 & 1 & 0 & 0 \\[1.5em]
+\dfrac{\Delta x_1 \Delta x_2}{D} & -\dfrac{\Delta y_1 \Delta x_2}{D} & 0 & -\dfrac{\Delta x_1 \Delta x_2}{D} & -\dfrac{\Delta x_1 \Delta y_2}{D} & 0 & 0 & 1 & 0
+\end{bmatrix} \\[1em]
+D = \Delta x_1 \Delta y_2 - \Delta y_1 \Delta x_2 \quad\quad\text{(3.4)}
+% \tag {3.4} 部分环境不支持tag
 $$
 
 从两个荷载传感器测量的力到全局自由度的变换考虑了荷载传感器轴向和剪力通道之间的串扰效应。这导致在EEInvertedVBrace2d类中实现的以下表达式。
@@ -542,7 +540,9 @@ ESOneActuator试验设置可用于控制试验单元的任何基本自由度。E
 从单元自由度到作动器自由度并返回的所有响应量的变换可以实现为简单的线性几何变换，也可以实现为考虑大位移效应的复杂非线性几何变换。为了演示实现过程，下面总结了ESTwoActuators2d子类的线性和非线性变换。所有其他具体试验设置子类的实现遵循类似的方法。试位移的线性（3.6）和非线性（3.7）变换采用以下形式。
 
 $$
-\begin{array}{l} d _ {1} = u _ {b, 1} \tag {3.6} \\ d _ {2} = u _ {b, 1} - L u _ {b, 3} \\ d _ {1} = u _ {b, 1} \\ \end{array}
+\begin{array}{l} d _ {1} = u _ {b, 1}\\ d _ {2} = u _ {b, 1} - L u _ {b, 3} \\ d _ {1} = u _ {b, 1} \\ \end{array}
+\quad\quad\text{(3.6)}
+% \tag {3.6}
 $$
 
 $$
