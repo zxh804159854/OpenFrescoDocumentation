@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appendix1: Advanced Implementation of Hybrid Simulation &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="摘要" href="Abstract.html" />
+    <link rel="prev" title="3.7. bearing 实验单元" href="../expElement/bearing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Appendix1: Advanced Implementation of Hybrid Simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Abstract.html">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html">1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridsimulationFundamentals.html">2 混合模拟基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ObjectOrientedHybridSimulationFramework.html">3 面向对象混合模拟框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationMethodsForHybridSimulation.html">4 混合模拟的积分方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EventDrivenStrategiesInHybridSimulation.html">5 混合仿真中的事件驱动策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridSimulationCaseStudies.html">6 混合模拟案例研究</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConclusionsAndRecommendations.html">7 结论和建议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConclusionsAndRecommendations.html#id9">参考文献</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Appendix1: Advanced Implementation of Hybrid Simulation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Appendix1/index.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendix1-advanced-implementation-of-hybrid-simulation">
+<h1>Appendix1: Advanced Implementation of Hybrid Simulation<a class="headerlink" href="#appendix1-advanced-implementation-of-hybrid-simulation" title="链接到此标题。"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Abstract.html">摘要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1 引言</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#id2">1.1 动机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#id3">1.2 问题定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#id4">1.3 研究目标和范围</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#id5">1.4 报告组织</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="HybridsimulationFundamentals.html">2 混合模拟基础</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HybridsimulationFundamentals.html#id2">2.1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridsimulationFundamentals.html#id3">2.2 优势和挑战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridsimulationFundamentals.html#id4">2.3 历史</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridsimulationFundamentals.html#id5">2.4 组件和程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridsimulationFundamentals.html#id6">2.5 本地与地理分布试验</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridsimulationFundamentals.html#id7">2.6 慢速与快速与实时试验</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridsimulationFundamentals.html#id8">2.7 数值和试验误差</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridsimulationFundamentals.html#id9">2.8 总结</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ObjectOrientedHybridSimulationFramework.html">3 面向对象混合模拟框架</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ObjectOrientedHybridSimulationFramework.html#id2">3.1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ObjectOrientedHybridSimulationFramework.html#openfresco">3.2 OPENFRESCO软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ObjectOrientedHybridSimulationFramework.html#id3">3.3 多层软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ObjectOrientedHybridSimulationFramework.html#id4">3.4 面向对象设计细节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ObjectOrientedHybridSimulationFramework.html#id5">3.5 具体子类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ObjectOrientedHybridSimulationFramework.html#opensees">3.6 OPENSEES作为计算框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ObjectOrientedHybridSimulationFramework.html#id10">3.7 总结</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="IntegrationMethodsForHybridSimulation.html">4 混合模拟的积分方法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationMethodsForHybridSimulation.html#id2">4.1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationMethodsForHybridSimulation.html#id3">4.2 结构动力学问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationMethodsForHybridSimulation.html#id6">4.3 积分器特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationMethodsForHybridSimulation.html#id10">4.4 直接积分方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationMethodsForHybridSimulation.html#id13">4.5 龙格-库塔方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationMethodsForHybridSimulation.html#id17">4.6 总结</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="EventDrivenStrategiesInHybridSimulation.html">5 混合仿真中的事件驱动策略</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="EventDrivenStrategiesInHybridSimulation.html#id2">5.1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EventDrivenStrategiesInHybridSimulation.html#id3">5.2 先前的发展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EventDrivenStrategiesInHybridSimulation.html#id6">5.3 预测-校正算法理论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EventDrivenStrategiesInHybridSimulation.html#id13">5.4 自适应事件驱动策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EventDrivenStrategiesInHybridSimulation.html#id20">5.5 总结</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="HybridSimulationCaseStudies.html">6 混合模拟案例研究</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HybridSimulationCaseStudies.html#id2">6.1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridSimulationCaseStudies.html#id3">6.2 快速地理分布测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridSimulationCaseStudies.html#id9">6.3 结构倒塌模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HybridSimulationCaseStudies.html#id16">6.4 总结</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConclusionsAndRecommendations.html">7 结论和建议</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConclusionsAndRecommendations.html#id2">7.1 总结和结论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConclusionsAndRecommendations.html#id8">7.2 未来工作建议</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConclusionsAndRecommendations.html#id9">参考文献</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../expElement/bearing.html" class="btn btn-neutral float-left" title="3.7. bearing 实验单元" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Abstract.html" class="btn btn-neutral float-right" title="摘要" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

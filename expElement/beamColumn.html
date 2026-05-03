@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.1. beamColumn 实验单元 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="3.2. generic 实验单元" href="generic.html" />
+    <link rel="prev" title="3. expElement 命令" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. expElement 命令</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. beamColumn 实验单元</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.1.1. 命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.1.2. 示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recorder">3.1.3. 记录Recorder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kij">3.1.4. 初始刚度矩阵Kij</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.1.5. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generic.html">3.2. generic 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="invertedVBrace.html">3.3. invertedVBrace 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="truss.html">3.4. truss 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="corotTruss.html">3.5. corotTruss 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twoNodeLink.html">3.6. twoNodeLink 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bearing.html">3.7. bearing 实验单元</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">3. </span>expElement 命令</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.1. </span>beamColumn 实验单元</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expElement/beamColumn.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="beamcolumn">
+<h1><span class="section-number">3.1. </span>beamColumn 实验单元<a class="headerlink" href="#beamcolumn" title="链接到此标题。"></a></h1>
+<section id="id1">
+<h2><span class="section-number">3.1.1. </span>命令<a class="headerlink" href="#id1" title="链接到此标题。"></a></h2>
+<p>此命令用于构建梁-柱实验单元对象。该单元由两个节点定义。</p>
+<div class="definition">
+<p>expElement beamColumn eleTag iNode jNode transTag -site siteTag -initStif Kij &lt;-iMod&gt; &lt;-noRayleigh&gt; &lt;-rho rho&gt; &lt;-cMass&gt;</p>
+</div>
+<p>注：从源代码看貌似支持&lt;-tangStif tangStifTag&gt;或者&lt;-tangStiff tangStifTag&gt;，在实验过程中使用切线刚度可以替换初始刚度。从其他代码看，这个参数一般在-initStif Kij后面。</p>
+<div class="definition">
+<p>expElement beamColumn eleTag iNode jNode transTag -server ipPort &lt;ipAddr&gt; &lt;-ssl&gt; &lt;-udp&gt; &lt;-dataSize size&gt; -initStif Kij &lt;-iMod&gt; &lt;-noRayleigh&gt; &lt;-rho rho&gt; &lt;-cMass&gt;</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>$eletag</p></td>
+<td class="text-left"><p>唯一单元标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$iNode,$jNode</p></td>
+<td class="text-left"><p>端节点标签</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>$transTag</p></td>
+<td class="text-left"><p>先前定义的坐标变换对象的标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$siteTag</p></td>
+<td class="text-left"><p>先前定义的站点对象的标签</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>$Kij</p></td>
+<td class="text-left"><p>单元的初始刚度矩阵分量（按行排列）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>-iMod</p></td>
+<td class="text-left"><p>使用Nakashima初始刚度修正法进行误差校正（可选，默认值为false）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>-noRayleigh</p></td>
+<td class="text-left"><p>不考虑瑞雷阻尼（可选，默认值为考虑）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$rho</p></td>
+<td class="text-left"><p>单位长度质量（可选，默认值为0.0）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>-cMass</p></td>
+<td class="text-left"><p>用于形成一致质量矩阵（可选）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$ipPort</p></td>
+<td class="text-left"><p>中间层服务器的IP端口</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>ipAddr</p></td>
+<td class="text-left"><p>中间层服务器的IP地址（可选）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>-ssl</p></td>
+<td class="text-left"><p>使用OpenSSL进行安全传输（可选）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>-udp</p></td>
+<td class="text-left"><p>使用udp进行数据传输（默认是tcp/ip）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$size</p></td>
+<td class="text-left"><p>发送的数据大小（可选）</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2><span class="section-number">3.1.2. </span>示例<a class="headerlink" href="#id2" title="链接到此标题。"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># 定义模型几何
+# 
+set mass 0.12
+# node $tag $xCrd $yCrd $mass
+node 1 0.0 0.00
+node 2 108.0 -54.00
+node 3 216.0 -42.00
+node 4 324.0 0.00
+node 5 0.0 0.00 -mass $mass $mass 116.6
+node 6 108.0 0.00 -mass $mass $mass 116.6
+node 7 216.0 0.00 -mass $mass $mass 116.6
+node 8 324.0 0.00 -mass $mass $mass 116.6
+node 9 108.0 0.00 -mass $mass $mass 116.6
+node 10 216.0 0.00 -mass $mass $mass 116.6 
+
+# 定义实验站点
+# -
+# expSite RemoteSite $tag &lt;-setup $setupTag&gt; $ipAddr $ipPort &lt;$dataSize&gt;
+expSite RemoteSite 1 &quot;127.0.0.1&quot; 8090
+expSite RemoteSite 2 &quot;127.0.0.1&quot; 8091
+
+# 定义几何变换
+#  
+# geomTransf type $tag  
+geomTransf Linear 1  
+geomTransf Corotational 2
+
+# 定义实验单元
+#  
+expElement beamColumn 2 2 9 1 -site 1 -initStif1213 0 0 0 11.2 -302.4 0 -302.4 10886.4
+</pre></div>
+</div>
+<p>节点2和9连接上述二维梁-柱实验单元。使用线性坐标变换。该单元定义为远程实验站点，IP地址为&quot;127.0.0.1&quot;，端口号为8090。该单元的初始刚度矩阵为<span class="math notranslate nohighlight">\(\mathbf{K}_i\)</span>：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{K}_{i} = \left[ \begin{array}{ccc} 
+1213 &amp; 0 &amp; 0 \\ 
+0 &amp; 11.2 &amp; -302.4 \\ 
+0 &amp; -302.4 &amp; 10886.4 
+\end{array} \right]\end{split}\]</div>
+</section>
+<section id="recorder">
+<h2><span class="section-number">3.1.3. </span>记录Recorder<a class="headerlink" href="#recorder" title="链接到此标题。"></a></h2>
+<p>在创建 ElementRecorder 对象时（参见 OpenSees 手册），对梁-柱实验单元的有效查询包括：</p>
+<ul class="simple">
+<li><p>全局力：force, forces, globalForce, globalForces</p></li>
+<li><p>局部力：localForce, localForces</p></li>
+<li><p>基本力：basicForce, basicForces, daqForce, daqForces</p></li>
+<li><p>控制（命令）位移：defo, deformation, deformations, basicDefo, basicDeformation, basicDeformations, ctrlDisp, ctrlDisplacement, ctrlDisplacements</p></li>
+<li><p>控制（命令）速度：ctrlVel, ctrlVelocity, ctrlVelocities</p></li>
+<li><p>控制（命令）加速度：ctrlAccel, ctrlAcceleration, ctrlAccelerations</p></li>
+<li><p>控制（命令）力：ctrlForce, ctrlForces</p></li>
+<li><p>控制（命令）时间：ctrlTime, ctrlTimes</p></li>
+<li><p>数据采集位移：daqDisp, daqDisplacement, daqDisplacements</p></li>
+<li><p>数据采集（反馈）速度：daqVel, daqVelocity, daqVelocities</p></li>
+<li><p>数据采集（反馈）加速度：daqAccel, daqAcceleration, daqAccelerations</p></li>
+<li><p>数据采集（反馈）力：daqForce, daqForces</p></li>
+<li><p>数据采集（反馈）时间：daqTime, daqTimes</p></li>
+</ul>
+<p>说明：除了全局力局部力，其他的变量都是在基本坐标系（basic system B）下。</p>
+</section>
+<section id="kij">
+<h2><span class="section-number">3.1.4. </span>初始刚度矩阵Kij<a class="headerlink" href="#kij" title="链接到此标题。"></a></h2>
+<p>1、2D（对应ux，uy，rz）与有限元教材一致 $<span class="math notranslate nohighlight">\(K_{init} = \begin{bmatrix}
+\dfrac{EA}{L} &amp; 0 &amp; 0 \\[15pt]
+0 &amp; \dfrac{12EI}{L^{3}} &amp; -\dfrac{6EI}{L^{2}} \\[15pt]
+0 &amp; -\dfrac{6EI}{L^{2}} &amp; \dfrac{4EI}{L}
+\end{bmatrix}
+\quad \text{对应分量：} \begin{bmatrix} u_{x} \\ u_{y} \\ R_{z} \end{bmatrix}\)</span><span class="math notranslate nohighlight">\( 2、 3D（对应ux，uy，rz，uz，ry，rx） 与有限元教材（ux，uy，uz，rx，ry，rz）不一致 \)</span><span class="math notranslate nohighlight">\(\mathbf{K}_{init} = \begin{bmatrix}
+\dfrac{EA}{L} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\[15pt]
+0 &amp; \dfrac{12EI_{z}}{L^{3}} &amp; -\dfrac{6EI_{z}}{L^{2}} &amp; 0 &amp; 0 &amp; 0 \\[15pt]
+0 &amp; -\dfrac{6EI_{z}}{L^{2}} &amp; \dfrac{4EI_{z}}{L} &amp; 0 &amp; 0 &amp; 0 \\[15pt]
+0 &amp; 0 &amp; 0 &amp; \dfrac{12EI_{y}}{L^{3}} &amp; \dfrac{6EI_{y}}{L^{2}} &amp; 0 \\[15pt]
+0 &amp; 0 &amp; 0 &amp; \dfrac{6EI_{y}}{L^{2}} &amp; \dfrac{4EI_{y}}{L} &amp; 0 \\[15pt]
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dfrac{GJ}{L}
+\end{bmatrix}
+\quad \text{对应分量：} \begin{bmatrix} u_{x} \\ u_{y} \\ R_{z} \\ u_{z} \\ R_{y} \\ R_{x} \end{bmatrix}\)</span>$</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.1.5. </span>参考<a class="headerlink" href="#id3" title="链接到此标题。"></a></h2>
+<p>初始刚度修正参考文献 [1] Nakashima, M. and Kato, H. (1987). &quot;Experimental error growth behavior and error growth controlling on-line computer test control method,&quot; Building Research Institute, BRI-Report No. 123, Ministry of Construction, Tsukuba, Japan.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="3. expElement 命令" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="generic.html" class="btn btn-neutral float-right" title="3.2. generic 实验单元" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

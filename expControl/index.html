@@ -1,0 +1,219 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. expControl 命令 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="2.1. dSpace 实验控制" href="dSpace.html" />
+    <link rel="prev" title="1.5. OpenFresco 解释器" href="../Introduction/OpenFrescoInterpreter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. expControl 命令</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dSpace.html">2.1. dSpace 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LabVIEW.html">2.2. LabVIEW 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MTSCsi.html">2.3. MTSCsi 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNet.html">2.4. SCRAMNet 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNetGT.html">2.5. SCRAMNetGT 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimDomain.html">2.6. SimDomain 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimFEAdapter.html">2.7. SimFEAdapter 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimUniaxialMaterials.html">2.8. SimUniaxialMaterials 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xPCtarget.html">2.9. xPCtarget 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimSimulink.html">2.10. SimSimulink 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Speedgoat.html">2.11. Speedgoat 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GenericTCP.html">2.12. GenericTCP 实验控制</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>expControl 命令</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expControl/index.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="expcontrol">
+<h1><span class="section-number">2. </span>expControl 命令<a class="headerlink" href="#expcontrol" title="链接到此标题。"></a></h1>
+<p>这些命令用于构建 expControl 对象。expControl 对象用于连接实验室中不同的控制和数据采集系统。此外，这些命令还可用于模拟物理试件。expSetup 对象可以使用 expControl 对象来定义。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dSpace.html">2.1. dSpace 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dSpace.html#id1">2.1.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dSpace.html#id2">2.1.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dSpace.html#recorder">2.1.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dSpace.html#id3">2.1.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="LabVIEW.html">2.2. LabVIEW 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="LabVIEW.html#id1">2.2.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LabVIEW.html#id2">2.2.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LabVIEW.html#recorder">2.2.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LabVIEW.html#id3">2.2.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="MTSCsi.html">2.3. MTSCsi 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="MTSCsi.html#id1">2.3.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MTSCsi.html#id2">2.3.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MTSCsi.html#recorder">2.3.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MTSCsi.html#id3">2.3.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SCRAMNet.html">2.4. SCRAMNet 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNet.html#id1">2.4.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNet.html#id2">2.4.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNet.html#recorder">2.4.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNet.html#id3">2.4.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SCRAMNetGT.html">2.5. SCRAMNetGT 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNetGT.html#id1">2.5.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNetGT.html#id2">2.5.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNetGT.html#recorder">2.5.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNetGT.html#id3">2.5.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SimDomain.html">2.6. SimDomain 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SimDomain.html#id1">2.6.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimDomain.html#id2">2.6.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimDomain.html#recorder">2.6.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimDomain.html#id3">2.6.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SimFEAdapter.html">2.7. SimFEAdapter 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SimFEAdapter.html#id1">2.7.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimFEAdapter.html#id2">2.7.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimFEAdapter.html#recorder">2.7.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimFEAdapter.html#id3">2.7.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SimUniaxialMaterials.html">2.8. SimUniaxialMaterials 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SimUniaxialMaterials.html#id1">2.8.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimUniaxialMaterials.html#id2">2.8.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimUniaxialMaterials.html#recorder">2.8.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimUniaxialMaterials.html#id3">2.8.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xPCtarget.html">2.9. xPCtarget 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="xPCtarget.html#id1">2.9.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xPCtarget.html#id2">2.9.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xPCtarget.html#recorder">2.9.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xPCtarget.html#id3">2.9.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SimSimulink.html">2.10. SimSimulink 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SimSimulink.html#id1">2.10.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimSimulink.html#id2">2.10.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimSimulink.html#recorder">2.10.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimSimulink.html#id3">2.10.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Speedgoat.html">2.11. Speedgoat 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Speedgoat.html#id1">2.11.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Speedgoat.html#id2">2.11.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Speedgoat.html#recorder">2.11.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Speedgoat.html#id3">2.11.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="GenericTCP.html">2.12. GenericTCP 实验控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="GenericTCP.html#id1">2.12.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GenericTCP.html#id2">2.12.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GenericTCP.html#recorder">2.12.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GenericTCP.html#id3">2.12.4. 参考</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../Introduction/OpenFrescoInterpreter.html" class="btn btn-neutral float-left" title="1.5. OpenFresco 解释器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="dSpace.html" class="btn btn-neutral float-right" title="2.1. dSpace 实验控制" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

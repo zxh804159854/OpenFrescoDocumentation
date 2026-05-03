@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.1. dSpace 实验控制 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="2.2. LabVIEW 实验控制" href="LabVIEW.html" />
+    <link rel="prev" title="2. expControl 命令" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. expControl 命令</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. dSpace 实验控制</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.1.1. 命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.1.2. 示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recorder">2.1.3. 记录Recorder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.1.4. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="LabVIEW.html">2.2. LabVIEW 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MTSCsi.html">2.3. MTSCsi 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNet.html">2.4. SCRAMNet 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCRAMNetGT.html">2.5. SCRAMNetGT 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimDomain.html">2.6. SimDomain 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimFEAdapter.html">2.7. SimFEAdapter 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimUniaxialMaterials.html">2.8. SimUniaxialMaterials 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xPCtarget.html">2.9. xPCtarget 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SimSimulink.html">2.10. SimSimulink 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Speedgoat.html">2.11. Speedgoat 实验控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GenericTCP.html">2.12. GenericTCP 实验控制</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">2. </span>expControl 命令</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.1. </span>dSpace 实验控制</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expControl/dSpace.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="dspace">
+<h1><span class="section-number">2.1. </span>dSpace 实验控制<a class="headerlink" href="#dspace" title="链接到此标题。"></a></h1>
+<section id="id1">
+<h2><span class="section-number">2.1.1. </span>命令<a class="headerlink" href="#id1" title="链接到此标题。"></a></h2>
+<p>此命令用于构建 dSpace 实验控制对象。</p>
+<div class="definition">
+<p><span id="def:dSpace" label="def:dSpace"></span> expControl dSpace tag boardName -trialCP cpTags -outCP cpTags &lt;-ctrlFilters (5 $filterTag)&gt; &lt;-daqFilters (5 $filterTag)&gt;</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>$tag</p></td>
+<td class="text-left"><p>唯一控制标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>boardName</p></td>
+<td class="text-left"><p>dSpace 板卡名称（支持 DS1103 和 DS1104）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>$cpTags</p></td>
+<td class="text-left"><p>先前定义的控制点标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$filterTag</p></td>
+<td class="text-left"><p>先前定义的滤波器标签标识；滤波器标签标识大小为 5（条目：[位移, 速度, 加速度, 力, 时间][disp, vel, accel, force, time]）</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.1.2. </span>示例<a class="headerlink" href="#id2" title="链接到此标题。"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># 定义实验信号滤波器
+# expSignalFilter $tag $tag $error
+expSignalFilter ErrorSimUndershoot 1 0.01
+
+# 定义实验控制点
+expControlPoint 1  1 disp
+expControlPoint 2  1 disp 1 force
+
+# 定义实验控制
+# expControl dSpace $tag boardName -trialCP $cpTags -outCP $cpTags &lt;-ctrlFilters (5 $filterTag)&gt;
+expControl dSpace 1 DS1104 -trialCP 1 -outCP 2 -ctrlFilters 1 0 0 0 0
+</pre></div>
+</div>
+<p>上述示例命令用于与运行在 DS1103 数字信号处理器板卡上的 Simulink 模型进行通信，该模型使用位移进行预测和校正。ErrorSimUndershoot 信号滤波器应用于发送至控制系统的位移。</p>
+<figure class="align-default" id="fig-dspace">
+<a class="reference internal image-reference" href="../_images/dSpace.jpg"><img alt="../_images/dSpace.jpg" src="../_images/dSpace.jpg" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">图 2.1 </span><span class="caption-text">dSpace 实验控制</span><a class="headerlink" href="#fig-dspace" title="链接到此图片"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="recorder">
+<h2><span class="section-number">2.1.3. </span>记录Recorder<a class="headerlink" href="#recorder" title="链接到此标题。"></a></h2>
+<p>在创建 ExpControlRecorder 对象时，对 dSpace 实验控制的有效查询包括（代码setResponse部分）：</p>
+<ul class="simple">
+<li><p>控制（命令）信号：ctrlSig, ctrlSignal, ctrlSignals</p></li>
+<li><p>数据采集（反馈）信号：daqSig, daqSignal, daqSignals</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.1.4. </span>参考<a class="headerlink" href="#id3" title="链接到此标题。"></a></h2>
+<p><a class="reference external" href="http://www.dspaceinc.com/ww/en/inc/home/products/hw/singbord.cfm">http://www.dspaceinc.com/ww/en/inc/home/products/hw/singbord.cfm</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="2. expControl 命令" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="LabVIEW.html" class="btn btn-neutral float-right" title="2.2. LabVIEW 实验控制" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

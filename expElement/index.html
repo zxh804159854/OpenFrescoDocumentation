@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. expElement 命令 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="3.1. beamColumn 实验单元" href="beamColumn.html" />
+    <link rel="prev" title="2.12. GenericTCP 实验控制" href="../expControl/GenericTCP.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. expElement 命令</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="beamColumn.html">3.1. beamColumn 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic.html">3.2. generic 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="invertedVBrace.html">3.3. invertedVBrace 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="truss.html">3.4. truss 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="corotTruss.html">3.5. corotTruss 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twoNodeLink.html">3.6. twoNodeLink 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bearing.html">3.7. bearing 实验单元</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>expElement 命令</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expElement/index.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="expelement">
+<h1><span class="section-number">3. </span>expElement 命令<a class="headerlink" href="#expelement" title="链接到此标题。"></a></h1>
+<p>这些命令用于构建实验单元对象。OpenFresco 提供了两种定义实验单元的方式。第一种也是更常用的方式是在中间层服务器端定义实验单元，并在有限元软件中使用通用客户端单元，如图6a所示。对于所有实验单元命令，此方法以黄色高亮显示。第二种选择是直接在有限元软件中定义实验单元，因此不在中间层服务器端使用任何单元，如图6b所示。具体来说，如果使用 OpenSees 作为有限元软件，可以使用灰色高亮的命令。其他有限元分析软件也可以使用此选项。每个单元都可以使用记录器命令来捕获仿真过程中的响应量。
+<a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>{figure} fig/expElement1.jpg
+:width: 80%
+:name: fig-SimSimulink</p>
+<p>有限元软件中定义的通用客户端单元</p>
+<p><a href="#id5"><span class="problematic" id="id6">``</span></a>`
+<a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a>{figure} fig/expElement2.jpg
+:width: 80%
+:name: fig-SimSimulink</p>
+<p>有限元软件中定义的实验单元
+<a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beamColumn.html">3.1. beamColumn 实验单元</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="beamColumn.html#id1">3.1.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beamColumn.html#id2">3.1.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beamColumn.html#recorder">3.1.3. 记录Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beamColumn.html#kij">3.1.4. 初始刚度矩阵Kij</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beamColumn.html#id3">3.1.5. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generic.html">3.2. generic 实验单元</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generic.html#id1">3.2.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic.html#id2">3.2.2. 示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic.html#recorder">3.2.3. 记录Recorder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="invertedVBrace.html">3.3. invertedVBrace 实验单元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="truss.html">3.4. truss 实验单元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="corotTruss.html">3.5. corotTruss 实验单元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twoNodeLink.html">3.6. twoNodeLink 实验单元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bearing.html">3.7. bearing 实验单元</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../expControl/GenericTCP.html" class="btn btn-neutral float-left" title="2.12. GenericTCP 实验控制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="beamColumn.html" class="btn btn-neutral float-right" title="3.1. beamColumn 实验单元" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
