@@ -609,7 +609,7 @@ ESThreeActuators2d试验设置可用于控制试验单元的两个平动和转�
 
 还实现并提供了非常类似的ESThreeActuatorsJntOff2d子类，该子类考虑了作动器叉形铰链和加载梁之间的刚性节点偏移。
 
-![](images/3_25jpg)  
+![](images/3_25.jpg)  
 图 3.25 三作动器试验设置（ESThreeActuators2d）。
 
 **倒V支撑：Inverted-VBrace:**

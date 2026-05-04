@@ -4,11 +4,11 @@
 
 ## 命令
 
-<div class="definition">
-
-expControl SimSimulink tag ipAddr ipPort \<-udp\> -trialCP cpTags -outCP cpTags \<-ctrlFilters (5 \$filterTag)\> \<-daqFilters (5 \$filterTag)\>
-
-</div>
+```tcl
+expControl SimSimulink tag ipAddr ipPort <-udp>
+-trialCP cpTags -outCP cpTags 
+<-ctrlFilters (5 $filterTag)> <-daqFilters (5 $filterTag)>
+```
 
 |             |                                                                                                                             |
 |:------------|:----------------------------------------------------------------------------------------------------------------------------|
@@ -19,9 +19,9 @@ expControl SimSimulink tag ipAddr ipPort \<-udp\> -trialCP cpTags -outCP cpTags 
 | \$filterTag | 先前定义的滤波器标签标识；滤波器标签标识大小为 5（条目：\[位移, 速度, 加速度, 力, 时间\]\[disp, vel, accel, force, time\]） |
 
 ## 示例
-
-    expControl SimSimulink 1 "127.0.0.1" 8090 -trialCP 1 -outCP 2 
-
+```tcl
+expControl SimSimulink 1 "127.0.0.1" 8090 -trialCP 1 -outCP 2 
+```
 案例在EXAMPLES/OneBayFrame/ControlSystem
 
 

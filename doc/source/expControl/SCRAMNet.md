@@ -4,11 +4,9 @@
 
 此命令用于构建 SCRAMNet 实验控制对象。SCRAMNet（共享公共内存网络）是一种实时通信网络，基于复制的共享内存概念。每台计算机拥有一个 2 MB 的内存模块，该模块被镜像到网络中的所有其他计算机。写入一台计算机本地内存的数据会被复制到网络中的其他计算机。图 4 展示了 SCRAMNet 在 nees@berkeley 的实现方式。
 
-<div class="definition">
-
-expControl SCRAMNet tag -nodeID id memOffset -trialCP cpTags -outCP cpTags \<-ctrlFilters (5 \$filterTag)\> \<-daqFilters (5 \$filterTag)\>
-
-</div>
+```tcl
+expControl SCRAMNet tag -nodeID id memOffset -trialCP cpTags -outCP cpTags <-ctrlFilters (5 $filterTag)> <-daqFilters (5 $filterTag)>
+```
 
 |             |                                                                                                                             |
 |:------------|:----------------------------------------------------------------------------------------------------------------------------|
@@ -19,9 +17,9 @@ expControl SCRAMNet tag -nodeID id memOffset -trialCP cpTags -outCP cpTags \<-ct
 | \$filterTag | 先前定义的滤波器标签标识；滤波器标签标识大小为 5（条目：\[位移, 速度, 加速度, 力, 时间\]\[disp, vel, accel, force, time\]） |
 
 ## 示例
-
-    expControl SCRAMNet 1 381020 8 -trialCP 1 -outCP 2
-
+```tcl
+expControl SCRAMNet 1 381020 8 -trialCP 1 -outCP 2
+```
 上述示例命令使用内存偏移量 381020 字节。
 
 <!-- ![SCRAMNet 实验控制](fig/SCRAMNet.jpg)

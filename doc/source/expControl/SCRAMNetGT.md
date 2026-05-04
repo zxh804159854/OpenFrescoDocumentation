@@ -4,11 +4,9 @@
 
 此命令用于构建 SCRAMNetGT 实验控制对象。SCRAMNet的升级版。
 
-<div class="definition">
-
-expControl SCRAMNetGT tag -nodeID id memOffset -trialCP cpTags -outCP cpTags \<-ctrlFilters (5 \$filterTag)\> \<-daqFilters (5 \$filterTag)\>
-
-</div>
+```tcl
+expControl SCRAMNetGT tag -nodeID id memOffset -trialCP cpTags -outCP cpTags <-ctrlFilters (5 $filterTag)> <-daqFilters (5 $filterTag)>
+```
 
 |             |                                                                                                                             |
 |:------------|:----------------------------------------------------------------------------------------------------------------------------|
@@ -19,8 +17,9 @@ expControl SCRAMNetGT tag -nodeID id memOffset -trialCP cpTags -outCP cpTags \<-
 | \$filterTag | 先前定义的滤波器标签标识；滤波器标签标识大小为 5（条目：\[位移, 速度, 加速度, 力, 时间\]\[disp, vel, accel, force, time\]） |
 
 ## 示例
-
-    expControl SCRAMNetGT 1 4096 -trialCP 1 -outCP 2
+```tcl
+expControl SCRAMNetGT 1 4096 -trialCP 1 -outCP 2
+```
 
 上述示例命令使用内存偏移量 4096 字节。
 

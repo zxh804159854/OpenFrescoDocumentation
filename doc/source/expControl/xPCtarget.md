@@ -19,11 +19,9 @@
 xpc 的simulink模型
 ```
 
-<div class="definition">
-
-expControl xPCtarget tag ipAddr ipPort appFile -trialCP cpTags -outCP cpTags \<-timeOut t\> \<-ctrlFilters (5 \$filterTag)\> \<-daqFilters (5 \$filterTag)\>
-
-</div>
+```tcl
+expControl xPCtarget tag ipAddr ipPort appFile -trialCP cpTags -outCP cpTags <-timeOut t>  <-ctrlFilters (5 $filterTag)> <-daqFilters (5 $filterTag)>
+```
 
 |             |                                                                                                                             |
 |:------------|:----------------------------------------------------------------------------------------------------------------------------|
@@ -37,9 +35,9 @@ expControl xPCtarget tag ipAddr ipPort appFile -trialCP cpTags -outCP cpTags \<-
 **注：**\* appName 最好使用引号括起来，尤其是当路径名中包含空格时；路径名中应使用正斜杠。
 
 ## 示例
-
-    expControl xPCtarget 1 "10.10.10.100" 22222 "C:/Users/Andreas/Documents/OpenFresco/SourceCode/SRC/experimentalControl/Simulink/RTActualTestModels/cmAPI-xPCTarget-SCRAMNetGT-MTS_STS/HybridControllerD2D2sim" -trialCP 1 -outCP 2
-
+```tcl
+expControl xPCtarget 1 "10.10.10.100" 22222 "C:/Users/Andreas/Documents/OpenFresco/SourceCode/SRC/experimentalControl/Simulink/RTActualTestModels/cmAPI-xPCTarget-SCRAMNetGT-MTS_STS/HybridControllerD2D2sim" -trialCP 1 -outCP 2
+```
 上述示例命令使用名为 `HybridControllerD2D2sim.slx` 的 Simulink 模型，该模型利用位移进行预测和校正。它与 IP 地址为 `192.168.2.20`、端口为 22222 的 xPC-Target 机器通信。Simulink 模型的路径为`C:/Users/Andreas/Documents/OpenFresco/SourceCode/SRC/experimentalControl/Simulink/RTActualTestModels/cmAPI-xPCTarget-SCRAMNetGT-MTS_STS/`。
 
 

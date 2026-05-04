@@ -4,11 +4,9 @@
 
 此命令用于构建 Speedgoat 实验控制对象，模型运行在 Speedgoat 实时机上。貌似是xpc的升级版。资料太少，待补充。
 
-<div class="definition">
-
-expControl Speedgoat tag ipAddr ipPort \<-udp\> -trialCP cpTags -outCP cpTags \<-timeOut t\> \<-ctrlFilters (5 \$filterTag)\> \<-daqFilters (5 \$filterTag)\>
-
-</div>
+```tcl
+expControl Speedgoat tag ipAddr ipPort <-udp> -trialCP cpTags -outCP cpTags <-timeOut t>  <-ctrlFilters (5 $filterTag)> <-daqFilters (5 $filterTag)>
+```
 
 |             |                                                                                                                             |
 |:------------|:----------------------------------------------------------------------------------------------------------------------------|
@@ -19,9 +17,9 @@ expControl Speedgoat tag ipAddr ipPort \<-udp\> -trialCP cpTags -outCP cpTags \<
 | \$filterTag | 先前定义的滤波器标签标识；滤波器标签标识大小为 5（条目：\[位移, 速度, 加速度, 力, 时间\]\[disp, vel, accel, force, time\]） |
 
 ## 示例
-
-    expControl 
-
+```tcl
+expControl 
+```
 解析
 
 ## 记录Recorder

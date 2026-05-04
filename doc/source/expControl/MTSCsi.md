@@ -4,11 +4,9 @@
 
 此命令用于构建 MTSCsi 实验控制对象。MTSCsi（MTS 计算机仿真接口）实验控制对象用于通过 CSI API 与 MTS 硬件进行通信。
 
-<div class="definition">
-
-expControl MTSCsi tag configFileName rampTime -trialCP cpTags -outCP cpTags \<-ctrlFilters (5 \$filterTag)\> \<-daqFilters (5 \$filterTag)\>
-
-</div>
+```tcl
+ expControl MTSCsi tag configFileName rampTime -trialCP cpTags -outCP cpTags <-ctrlFilters (5 $filterTag)> <-daqFilters (5 $filterTag)>
+```
 
 |                |                                                                                                                             |
 |:---------------|:----------------------------------------------------------------------------------------------------------------------------|
@@ -20,7 +18,9 @@ expControl MTSCsi tag configFileName rampTime -trialCP cpTags -outCP cpTags \<-c
 
 ## 示例
 
-    expControl MTSCsi 1 "C:/MTSCsi/Example/OpenFresco_uNEES.mtscs" 0.1 -trialCP 1 -outCP 2
+```tcl
+expControl MTSCsi 1 "C:/MTSCsi/Example/OpenFresco_uNEES.mtscs" 0.1 -trialCP 1 -outCP 2
+```
 
 上述示例命令使用路径`C:/MTSCsi/Example/OpenFresco_uNEES.mtscs`，斜坡时间为 0.1 秒。
 

@@ -21,6 +21,7 @@ OpenFresco文档
    expSetup/index
    expSignalFilter/index
    expSite/index
+   expTangentStiff/index
    expControlPoint/index
    expRecorder/index
    Server/index
