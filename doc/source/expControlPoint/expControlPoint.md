@@ -27,7 +27,7 @@ expControlPoint $tag <-node $nodeTag> dof resp <-fact $f> <-lim $l $u> <-relTria
 ## 示例
 ```tcl
 # Define geometry for model
-# _____________
+ 
 set mass3 0.04
 set mass4 0.02
 # node $tag $xCrd $yCrd $mass
@@ -36,11 +36,11 @@ node 2 100.0 0.00
 node 3 0.0 54.00 -mass $mass3 $mass3
 node 4 100.0 54.00 -mass $mass4 $mass4
 # Define experimental control points
-# _____________
+ 
 expControlPoint 1 1 ux disp -fact 0.003 -lim -0.01 0.01
 expControlPoint 2 1 ux disp -fact 0.003 ux force -fact [expr 18.0/7.0]
 # Define experimental control
-# _____________
+ 
 expControl LabVIEW 1 "130.126.242.175" 44000 -trialCP 1 -outCP 2 
 ```
 
