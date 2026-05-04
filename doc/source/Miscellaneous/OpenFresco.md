@@ -37,23 +37,23 @@ removeExp recorders
 
 
 ## OpenFresco专有命令汇总
-expControlPoint
-expSignalFilter
-expControl
-expSetup
-expSite
-setSizeExpSite
-expTangentStiff
-expElement
-expRecorder
-recordExp
-startLabServer
-startLabServerInteractive
-setupLabServer
-stepLabServer
-stopLabServer
-startSimAppSiteServer
-startSimAppElemServer
-wipeExp
-removeExp
-version
+* expControlPoint
+* expSignalFilter
+* expControl
+* expSetup
+* expSite
+* setSizeExpSite
+* expTangentStiff
+* expElement
+* expRecorder
+* recordExp
+* startLabServer
+* startLabServerInteractive
+* setupLabServer
+* stepLabServer
+* stopLabServer
+* startSimAppSiteServer
+* startSimAppElemServer
+* wipeExp
+* removeExp
+* version
