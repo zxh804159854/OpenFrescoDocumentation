@@ -41,14 +41,14 @@ expElement generic 1 -node 1 3 -dof 1 2 -dof 1 2 -site 2 -initStif 130 150 110 1
 ```
 
 初始刚度矩阵：
-$$
+$
 \mathbf{K}_{i} = \left[ \begin{array}{cccc}
 130 &150 &110 &100\\   
 150 &220 &180 &100 \\  
 110 &180 &150 &125\\   
 100 &100 &125 &200 \\
 \end{array} \right]
-$$
+$
 
 ![通用实验单元](fig/generic.jpg)
 

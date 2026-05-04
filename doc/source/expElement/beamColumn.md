@@ -62,7 +62,8 @@ geomTransf Corotational 2
 expElement beamColumn 2 2 9 1 -site 1 -initStif 1213 0 0 0 11.2 -302.4 0 -302.4 10886.4
 ```
 
-节点2和9连接上述二维梁-柱实验单元。使用线性坐标变换。该单元定义为远程实验站点，IP地址为"127.0.0.1"，端口号为8090。该单元的初始刚度矩阵为$\mathbf{K}_i$：
+节点2和9连接上述二维梁-柱实验单元。使用线性坐标变换。该单元定义为远程实验站点，IP地址为"127.0.0.1"，端口号为8090。该单元的初始刚度矩阵为$\mathbf{K}_i$
+
 $$
 \mathbf{K}_{i} = \left[ \begin{array}{ccc} 
 1213 & 0 & 0 \\ 
@@ -99,6 +100,7 @@ $$
 
 ## 初始刚度矩阵Kij
 1、2D（对应ux，uy，rz）与有限元教材一致
+
 $$
 K_{init} = \begin{bmatrix}
 \dfrac{EA}{L} & 0 & 0 \\[15pt]
@@ -109,6 +111,7 @@ K_{init} = \begin{bmatrix}
 $$
 
 2、 3D（对应ux，uy，rz，uz，ry，rx） 与有限元教材（ux，uy，uz，rx，ry，rz）不一致
+
 $$
 \mathbf{K}_{init} = \begin{bmatrix}
 \dfrac{EA}{L} & 0 & 0 & 0 & 0 & 0 \\[15pt]

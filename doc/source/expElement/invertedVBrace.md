@@ -46,14 +46,13 @@ expSite LocalSite 1 1
 expElement invertedVBrace 1 1 2 3 -site 1 -initStif 250 0 0 0 434 0 0 0 
 ```
 
-节点1、2和3连接上述倒V型支撑实验单元。注意图5中节点的顺序。该单元使用本地实验站点定义。该单元的初始刚度为$\mathbf{K}_i$：
-$$
+节点1、2和3连接上述倒V型支撑实验单元。注意图5中节点的顺序。该单元使用本地实验站点定义。该单元的初始刚度为$
 \mathbf{K}_{i} = \left[ \begin{array}{ccc} 
 250 & 0 & 0 \\ 
 0 & 434 & 0 \\ 
 0 & 0 & 0 
 \end{array} \right] \quad (\text{若忽略转动自由度})
-$$
+$
 
 ![倒V型支撑实验单元](fig/invertedVBrace.jpg)
 
