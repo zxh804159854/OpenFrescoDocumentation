@@ -26,3 +26,6 @@ expSignalFilter ErrorSimUndershoot 1 0.167
 ```
 
 此示例使用误差 0.167。
+
+可以查看下面有完整案例OpenFresco/EXAMPLES/OneBayFrame/TestSignalFilter
+/OneBayFrame_Local.tcl

@@ -1,6 +1,7 @@
 # Setup 记录器
 此命令用于构造实验装置记录器对象。它用于记录实验装置中的数据，例如试、输出、目标（控制）和测量（daq）响应量。
 
+## 命令
 ```tcl
 expRecorder Setup <-file $fileName> <-csv $fileName> <-xml $fileName> <-binary $fileName> <-database $tableName> <-time> <-dt> <-setup $setupTag $setupTag> <-setupRange $startTag $endTag> <-setup all> respType
 ```

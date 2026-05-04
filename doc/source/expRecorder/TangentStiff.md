@@ -1,4 +1,4 @@
-# Site 记录器
+# TangentStiff 记录器
 此命令用于构造实验TangentStiff记录器对象。新增，暂无解释。
 
 ## 命令

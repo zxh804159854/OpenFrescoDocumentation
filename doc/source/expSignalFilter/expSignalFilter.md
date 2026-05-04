@@ -6,5 +6,6 @@
 * ErrorSimRandomGauss 实验信号滤波器 
 * ErrorSimUndershoot 实验信号滤波器
 * ErrorSimTimeDelay
-* KrylovForceConverter
-* TangForceConverter
+* 下面两个是用于force控制使用
+  * KrylovForceConverter
+  * TangForceConverter

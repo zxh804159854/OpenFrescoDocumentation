@@ -35,3 +35,4 @@ OpenFresco文档
    :caption: 附录:
 
    Appendix1/index
+   Appendix2/index

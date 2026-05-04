@@ -23,5 +23,8 @@ expSignalFilter ErrorSimRandomGauss 1 0.0 0.015
 
 此示例使用平均值 0.0 和标准差 0.015。
 
+可以查看下面有完整案例OpenFresco/EXAMPLES/OneBayFrame/TestSignalFilter
+/OneBayFrame_Local.tcl
+
 ## 参考
 Press, William H., et al., "Numerical Recipes in C++: The Art of Scientific Computing", 2nd ed., Cambridge University Press, 2002.
