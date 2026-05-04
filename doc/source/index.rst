@@ -10,7 +10,7 @@ OpenFresco文档
 
 文档内容采用 **AI 辅助翻译 + 人工校对与排版** 的方式完成，原始文档版权归 OpenFresco 原作者及其团队所有。
 
-项目地址：[github](https://github.com/zxh804159854/OpenFrescoDocumentation)
+项目地址：`github <https://github.com/zxh804159854/OpenFrescoDocumentation>`_
 
 .. toctree::
    :maxdepth: 2

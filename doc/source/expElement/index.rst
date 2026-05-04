@@ -15,4 +15,8 @@ expElement 命令
    twoNodeLink
    bearing
 
+.. toctree::
+   :maxdepth: 2
+   :caption: 附录:
 
+   BC
