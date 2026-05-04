@@ -38,12 +38,8 @@ expSetup InvertedVBraceJntOff 1 -control 1 60 72 72 24 60 60 24 12 12 -posed1 le
 
 上述 InvertedVBraceJntOff 实验装置命令使用先前定义的 SimUniaxialMaterials 实验控制对象。作动器 1、2 和 3 的长度分别为 60、72 和 72。刚性加载梁的总长度为 120（$L_2 = 60$ 和 $L_3 = 60$）。偏移量 $L_1$、$L4$、$L5$ 和 $L_6$ 的长度分别为 24、24、12 和 12。作动器 1 位于梁的左侧。局部 1 轴从刚性加载梁旋转 0 度（逆时针）。
 
-<figure>
-  <img src="images/InvertedVBraceJntOff1.jpg" alt="InvertedVBraceJntOff实验装置" width="400">
-  <figcaption>图 20：InvertedVBraceJntOff 实验装置</figcaption>
-</figure>
+![](images/InvertedVBraceJntOff1.jpg)
+图 20：InvertedVBraceJntOff 实验装置
 
-<figure>
-  <img src="images/InvertedVBraceJntOff2.jpg" alt="InvertedVBraceJntOff实验装置中的变换" width="400">
-  <figcaption>图 21：InvertedVBraceJntOff 实验装置中的变换</figcaption>
-</figure>
+![](images/InvertedVBraceJntOff2.jpg)
+图 21：InvertedVBraceJntOff 实验装置中的变换

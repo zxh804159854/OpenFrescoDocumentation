@@ -30,12 +30,9 @@ expSetup TwoActuators 1 -control 1 72 72 60 -philLocX 90
 
 上述 TwoActuators 实验装置命令使用先前定义的 SimUniaxialMaterials 实验控制对象。作动器 1 和 2 的长度分别为 72 和 72。刚性加载梁的总长度为 60。作动器位于梁的左侧。局部 1 轴从作动器 1 旋转 90 度（逆时针）。
 
-<figure>
-  <img src="images/TwoActuators1.jpg" alt="TwoActuators实验装置" width="400">
-  <figcaption>图 29：TwoActuators 实验装置</figcaption>
-</figure>
+![](images/TwoActuators1.jpg)
+**图 29：TwoActuators 实验装置**
 
-<figure>
-  <img src="images/TwoActuators2.jpg" alt="TwoActuators实验装置中的变换" width="400">
-  <figcaption>图 30：TwoActuators 实验装置中的变换</figcaption>
-</figure>
+![](images/TwoActuators2.jpg)
+**图 30：TwoActuators 实验装置中的变换**
+

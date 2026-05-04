@@ -33,8 +33,8 @@ expSetup FourActuators $tag <-control $ctrlTag> $L1 $L2 $L3 $L4 $a1 $a2 $a3 $a4 
 ```tcl
 # Define experimental control
  
-expControl xPCtarget 1 1 "192.168.2.20" 22222 HybridControllerD3D3_1Act  
-"D:/PredictorCorrector/RTActualTestModels/cmAPI-xPCTarget-STS"  
+expControl xPCtarget 1 1 "192.168.2.20" 22222 HybridControllerD3D3_1Act "D:/PredictorCorrector/RTActualTestModels/cmAPI-xPCTarget-STS"
+
 # Define experimental setup  
  
 expSetup FourActuators 1 -control 1 60 60 60 60 72 72 72 48 24 24 36 36 12 12 60 
@@ -42,13 +42,11 @@ expSetup FourActuators 1 -control 1 60 60 60 60 72 72 72 48 24 24 36 36 12 12 60
 
 上述 FourActuators 实验装置命令使用先前定义的 xPCtarget 实验控制对象。作动器 1、2、3 和 4 的长度均为 60。刚性连杆 1、2、3 和 4 的长度均为 72。作动器之间刚性连杆的长度为 48。下部作动器与销连接之间以及下部作动器与下部梁翼缘之间的刚性连杆高度均为 24。北侧和南侧杆从顶部销到下部梁翼缘的刚性连杆长度均为 36。北侧和南侧杆的销到销长度均为 12。分布梁的高度为 60。
 
-<figure>
-  <img src="images/FourActuators1.jpg" alt="FourActuators实验装置中的位移变换" width="400">
-  <figcaption>图 16：FourActuators 实验装置中的位移变换</figcaption>
-</figure>
+![](images/FourActuators1.jpg)
+图 16：FourActuators 实验装置中的位移变换
 
-<figure>
-  <img src="images/FourActuators2.jpg" alt="FourActuators实验装置中的力变换" width="400">
-  <figcaption>图 17：FourActuators 实验装置中的力变换</figcaption>
-</figure>
+
+![FourActuators实验装置中的力变换](images/FourActuators2.jpg)
+图 17：FourActuators 实验装置中的力变换
+
 

@@ -33,12 +33,10 @@ expSetup InvertedVBrace 1 -control 1 60 72 72 60 60 -posAct1 left
 
 上述 InvertedVBrace 实验装置命令使用先前定义的 SimUniaxialMaterials 实验控制对象。作动器 1、2 和 3 的长度分别为 60、72 和 72。刚性加载梁的总长度为 120（$L_1 = 60$ 和 $L_2 = 60$）。作动器 1 位于梁的左侧。局部 1 轴从刚性加载梁旋转 0 度（逆时针）。
 
-<figure>
-  <img src="images/InvertedVBrace1.jpg" alt="InvertedVBrace实验装置" width="400">
-  <figcaption>图 18：InvertedVBrace 实验装置</figcaption>
-</figure>
 
-<figure>
-  <img src="images/InvertedVBrace2.jpg" alt="InvertedVBrace实验装置中的变换" width="400">
-  <figcaption>图 19：InvertedVBrace 实验装置中的变换</figcaption>
-</figure>
+![](images/InvertedVBrace1.jpg)
+图 18：InvertedVBrace 实验装置
+
+![](images/InvertedVBrace2.jpg)
+图 19：InvertedVBrace 实验装置中的变换
+

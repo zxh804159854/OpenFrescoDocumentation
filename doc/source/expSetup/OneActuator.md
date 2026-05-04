@@ -26,12 +26,9 @@ expSetup OneActuator 1 -control 1 2 -sizeTrialOut 3 3 -trialDispFact 0.5 -outDis
 
 上述 OneActuator 实验装置使用先前定义的 SCRAMNet 实验控制对象。施加量位于图 14 所示的 2 方向。试向量和输出向量的大小均设置为 3。试位移乘以 0.5。输出位移和力乘以 2.0。
 
-<figure>
-  <img src="images/OneActuator1.jpg" alt="OneActuator实验装置" width="400">
-  <figcaption>图 23：OneActuator 实验装置</figcaption>
-</figure>
 
-<figure>
-  <img src="images/OneActuator2.jpg" alt="OneActuator实验装置中的变换" width="400">
-  <figcaption>图 24：OneActuator 实验装置中的变换</figcaption>
-</figure>
+![](images/OneActuator1.jpg)
+**图 23：OneActuator 实验装置**
+
+![](images/OneActuator2.jpg)
+**图 24：OneActuator 实验装置中的变换**

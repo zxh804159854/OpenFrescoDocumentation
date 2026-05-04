@@ -48,12 +48,10 @@ expControl LabVIEW 1 "130.126.242.175" 44000 -trialCP 1 -outCP 2
 
 以下是代表相同物理系统的两个控制点设置。在设置 1 中，单个控制点有两个方向（自由度），每个方向将映射到平移或旋转控制通道。控制系统必须正确转换控制通道以匹配物理测试装置（使用 NoTransformation 实验装置）。设置 2 从适当的 expSetup 对象接收正确转换的响应量，因此每个具有单个方向（自由度）的控制点直接映射到简单的控制通道。
 
-<figure>
-  <img src="images/cp1.jpg" alt="两种根本不同的控制点设置" width="400">
-  <figcaption>图 31：两种根本不同的控制点设置（由 MTS 提供）</figcaption>
-</figure>
 
-<figure>
-  <img src="images/cp2.jpg" alt="具有两个控制点的示例" width="400">
-  <figcaption>图 32：具有两个控制点的示例</figcaption>
-</figure>
+![](images/cp1.jpg)
+**图 31：两种根本不同的控制点设置（由 MTS 提供）**
+
+
+![](images/cp2.jpg)
+**图 32：具有两个控制点的示例**

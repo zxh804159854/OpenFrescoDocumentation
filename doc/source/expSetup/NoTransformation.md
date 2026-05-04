@@ -17,9 +17,10 @@ expSetup NoTransformation $tag <-control $ctrlTag> -dir $dirs ... -sizeTrialOut 
 ## 示例
 
 **二维示例：**
-<figure>
-  <img src="images/NoTransformation2d.jpg" alt="NoTransformation实验装置二维示例" width="400">
-</figure>
+
+![](images/NoTransformation2d.jpg)
+**NoTransformation实验装置二维示例**
+
 
 ```tcl
 # Define experimental control  
@@ -40,9 +41,9 @@ expSetup NoTransformation 3 -control 2 -dir 2 1 3 -sizeTrialOut 3 3 -trialDispFa
 提供了三个示例来说明如何定义 -dir 输入。所有示例均使用先前定义的 SimUniaxialMaterials 实验控制对象。在示例实验装置 1 中，控制系统自由度 1 指向与单元自由度 1 相同的方向。在示例实验装置 2 中，控制系统自由度 1 指向单元自由度 2 的负方向。因此，试位移、输出位移和输出力均乘以 -1。在示例 3 中，控制系统自由度 1、2 和 3 分别指向单元自由度 2、1 和 3 的方向。自由度 1 的响应量乘以 -1，因为它指向单元自由度 2 的负方向。
 
 **三维示例：**
-<figure>
-  <img src="images/NoTransformation3d.jpg" alt="NoTransformation实验装置三维示例" width="400">
-</figure>
+
+![NoTransformation实验装置三维示例](images/NoTransformation3d.jpg)
+**NoTransformation实验装置三维示例**
 
 ```tcl
 # Define experimental control
@@ -60,11 +61,8 @@ expSetup NoTransformation 2 -control 2 -dir 2 4 1 5 3 6 -sizeTrialOut 6 6
 
 三维示例的 -dir 输入与二维示例的工作原理相同。有关更多信息，请参阅二维示例。
 
-<figure>
-  <img src="images/NoTransformation1.jpg" alt="NoTransformation实验装置图1" width="400">
-</figure>
+![](images/NoTransformation1.jpg)
+**NoTransformation实验装置图1**
 
-<figure>
-  <img src="images/NoTransformation2.jpg" alt="NoTransformation实验装置图2" width="400">
-  <figcaption>图 22：NoTransformation 实验装置</figcaption>
-</figure>
+![](images/NoTransformation2.jpg)
+**NoTransformation实验装置图2**
