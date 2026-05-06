@@ -5,6 +5,8 @@
 ![在有限元软件中定义的通用客户端单元（左）和实验单元（右）](fig/expElement2.jpg)
 图:在有限元软件中定义的通用客户端单元（左）和实验单元（右）
 
+实验单元与分析单元一样，具有质量、阻尼和刚度矩阵，并且在发生变形时会产生反力。由于实验测得的结构响应难以准确计算该单元的切线刚度矩阵（tangent stiffness matrix），实验单元无法通过回传切线刚度矩阵参与计算，只能基于给定的初始刚度矩阵（initial stiffness matrix）进行运算。([1] 郑弘, 于允文. OpenFresco开放式实验架构在多自由度混合实验中的应用. 中国台湾: 国家地震工程研究中心（台湾）; 2025.) 最新版本的可以使用切线刚度矩阵。
+
 - beamColumn (2D or 3D) Experimental Element
 - generic (1D, 2D, or 3D) Experimental Element
 - invertedVBrace (2D) Experimental Element
