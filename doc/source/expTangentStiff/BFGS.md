@@ -1,5 +1,6 @@
 # BFGS 
-待补充
+
+使用 BFGS 方法来估计切线刚度矩阵。
 
 ## 命令
 
@@ -7,7 +8,18 @@
 expTangentStiff BFGS tag <-eps value>
 ```
 
+与 Carrion 和 Spencer 类似，Igarashi 等人 [11] 使用 Broyden-Fletcher-Goldfarb-Shanno（BFGS）方法开发了算法 3.2，以在五层全尺寸建筑的混合仿真过程中更新切线刚度矩阵。他们利用刚度矩阵来缩放作动器运动。该算法使用已知的 $\Delta \bar { \mathbf { u } } _ { n }$ 和 $\Delta \bar { \mathbf { f } } _ { n }$ 对。方程 3.14 可以从方程 3.11 推导出来。
+
+$$
+\Delta \bar {\mathbf {f}} _ {n} = \mathbf {K} _ {n} ^ {A c t} \Delta \bar {\mathbf {u}} _ {n} \tag {3.14}
+$$
+
+BFGS 是 Broyden 方法的一个变种。BFGS 方法假设刚度矩阵是对称正定的，这是一个有效的假设。该算法遵循最小更新方法。具有较小 Forbenius 范数的增量刚度 $\Delta \mathbf { K } _ { n } ^ { A c t }$ 更新刚度矩阵。算法 3.2 中的 ε 参数取决于测量设备的精度。设置该参数是为了防止测量设备的噪声错误地触发更新。
+
+![](images/BFGS.jpg)  
+
 ## 示例
+
 
 这个示例来自于OpenFresco/EXAMPLES/TrussModel
 /Truss_Local.tcl
@@ -88,3 +100,5 @@ expElement truss 3 3 4 -site 1 -initStif $kInit -tangStif 1
 ## 参考
 
 [1]Kim, H.K., (2011). Development and implementation of advanced control methods for hybrid simulation. Ph.D. Dissertation, University of California, Berkeley, California.
+
+[11]A. Igarashi, F. Seible, and G. Hegemier. Development of the pseudodynamic technique for  testing a full scale 5-story shear wall structure. In Development and Future Dimensions of Structural Testing Techniques, 1993.

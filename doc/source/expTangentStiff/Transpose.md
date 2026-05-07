@@ -1,10 +1,17 @@
 # Transpose
-待补充
+
+使用 Transpose 方法估计切线刚度矩阵。
+
 ## 命令
 
 ```tcl
 expTangentStiff Transpose tag numCols
 ```
+
+下面内容来自于附录2的3.3.1 兼容性方法的实现:
+
+该算法将初始切线矩阵用于卸载/再加载切线矩阵。当增量试验位移小于用户定义的阈值时，它也不更新刚度矩阵。Hung 和 El-Tawi 建议将阈值设置为位移分辨率的两到三倍。这种方法从此处起被称为转置Transpose方法。[10]
+
 
 ## 示例
 
@@ -87,3 +94,5 @@ expElement truss 3 3 4 -site 1 -initStif $kInit -tangStif 1
 ## 参考
 
 [1]Kim, H.K., (2011). Development and implementation of advanced control methods for hybrid simulation. Ph.D. Dissertation, University of California, Berkeley, California.
+
+[10]C. Hung and S. El-Tawi. A method for estimating specimen tangent stiffness for hybrid  simulation. Earthquake Engineering Structural Dynamics, 38(1):115–134, 2008.
