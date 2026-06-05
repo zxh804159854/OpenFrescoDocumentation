@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.3. generic 实验单元 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="3.4. invertedVBrace 倒V型支撑（二维）实验单元" href="invertedVBrace.html" />
+    <link rel="prev" title="3.2. beamColumn 实验单元" href="beamColumn.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. expElement 命令</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="expElement.html">3.1. expElement 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beamColumn.html">3.2. beamColumn 实验单元</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. generic 实验单元</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.3.1. 命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.3.2. 示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recorder">3.3.3. 记录Recorder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openfresco">3.3.4. openfresco自带案例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.3.5. 完整示例(2025)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.3.6. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="invertedVBrace.html">3.4. invertedVBrace 倒V型支撑（二维）实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="truss.html">3.5. truss 桁架实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="corotTruss.html">3.6. corotTruss 共转坐标桁架实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twoNodeLink.html">3.7. twoNodeLink 两点连接实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bearing.html">3.8. bearing 支承实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BC.html">3.9. 梁柱单元坐标体系及变换关系</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix2/index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">3. </span>expElement 命令</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.3. </span>generic 实验单元</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expElement/generic.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="generic">
+<h1><span class="section-number">3.3. </span>generic 实验单元<a class="headerlink" href="#generic" title="链接到此标题。"></a></h1>
+<section id="id1">
+<h2><span class="section-number">3.3.1. </span>命令<a class="headerlink" href="#id1" title="链接到此标题。"></a></h2>
+<p>构建通用实验单元，支持任意节点数与自由度。这个单元不进行任何坐标变换。</p>
+<p><strong>site模式</strong></p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">expElement</span><span class="w"> </span>generic<span class="w"> </span>eleTag<span class="w"> </span><span class="o">-</span>node<span class="w"> </span>Ndi<span class="w"> </span><span class="o">-</span>dof<span class="w"> </span>dofNdi<span class="w"> </span><span class="o">-</span>dof<span class="w"> </span>dofNdj<span class="w"> </span>...<span class="w"> </span><span class="o">-</span>site<span class="w"> </span>siteTag<span class="w"> </span><span class="o">-</span>initStif<span class="w"> </span>Kij<span class="w"> </span><span class="o">&lt;-</span>iMod<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>noRayleigh<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>mass<span class="w"> </span>Mij<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>checkTime<span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><strong>server模式</strong></p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">expElement</span><span class="w"> </span>generic<span class="w"> </span>eleTag<span class="w"> </span><span class="o">-</span>node<span class="w"> </span>Ndi<span class="w"> </span><span class="o">-</span>dof<span class="w"> </span>dofNdi<span class="w"> </span><span class="o">-</span>dof<span class="w"> </span>dofNdj<span class="w"> </span>...<span class="w"> </span><span class="o">-</span>server<span class="w"> </span>ipPort<span class="w"> </span><span class="o">&lt;</span>ipAddr<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>ssl<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>udp<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>dataSize<span class="w"> </span>size<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>initStif<span class="w"> </span>Kij<span class="w"> </span><span class="o">&lt;-</span>iMod<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>noRayleigh<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>mass<span class="w"> </span>Mij<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>checkTime<span class="o">&gt;</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>参数</p></th>
+<th class="head text-left"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>$eleTag</p></td>
+<td class="text-left"><p>唯一单元标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$Ndi</p></td>
+<td class="text-left"><p>端节点标签</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(dofNdi,\)</span>dofNdj</p></td>
+<td class="text-left"><p>节点自由度</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$siteTag</p></td>
+<td class="text-left"><p>站点标签</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>$Kij</p></td>
+<td class="text-left"><p>初始刚度矩阵（按行）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>-iMod</p></td>
+<td class="text-left"><p>Nakashima修正（可选）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>-noRayleigh</p></td>
+<td class="text-left"><p>关闭瑞雷阻尼（可选）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$Mij</p></td>
+<td class="text-left"><p>质量矩阵（可选）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>其余</p></td>
+<td class="text-left"><p>同beamColumn</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2><span class="section-number">3.3.2. </span>示例<a class="headerlink" href="#id2" title="链接到此标题。"></a></h2>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># 定义模型几何</span>
+<span class="k">set</span><span class="w"> </span>mass3<span class="w"> </span><span class="mf">0.04</span>
+<span class="k">set</span><span class="w"> </span>mass4<span class="w"> </span><span class="mf">0.02</span>
+<span class="c"># node $tag $xCrd $yCrd $mass</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="mf">0.00</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">100.0</span><span class="w"> </span><span class="mf">0.00</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="mf">54.00</span><span class="w"> </span><span class="o">-</span>mass<span class="w"> </span><span class="nv">$mass3</span><span class="w"> </span><span class="nv">$mass3</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mf">100.0</span><span class="w"> </span><span class="mf">54.00</span><span class="w"> </span><span class="o">-</span>mass<span class="w"> </span><span class="nv">$mass4</span><span class="w"> </span><span class="nv">$mass4</span>
+<span class="c"># 定义实验站点</span>
+<span class="nv">expSite</span><span class="w"> </span>LocalSite<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span>
+<span class="err">#</span><span class="w"> </span>定义实验单元
+<span class="nv">expElement</span><span class="w"> </span>generic<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>node<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">-</span>dof<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span>dof<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span>site<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span>initStif<span class="w"> </span><span class="mi">130</span><span class="w"> </span><span class="mi">150</span><span class="w"> </span><span class="mi">110</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">150</span><span class="w"> </span><span class="mi">220</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">110</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="mi">150</span><span class="w"> </span><span class="mi">125</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">125</span><span class="w"> </span><span class="mi">200</span>
+</pre></div>
+</div>
+<p>初始刚度矩阵：
+<span class="math notranslate nohighlight">\(
+\mathbf{K}_{i} = \left[ \begin{array}{cccc}
+130 &amp;150 &amp;110 &amp;100\\   
+150 &amp;220 &amp;180 &amp;100 \\  
+110 &amp;180 &amp;150 &amp;125\\   
+100 &amp;100 &amp;125 &amp;200 \\
+\end{array} \right]
+\)</span></p>
+<p><img alt="通用实验单元" src="../_images/generic.jpg" /></p>
+</section>
+<section id="recorder">
+<h2><span class="section-number">3.3.3. </span>记录Recorder<a class="headerlink" href="#recorder" title="链接到此标题。"></a></h2>
+<ul class="simple">
+<li><p>全局力：force, forces, globalForce, globalForces</p></li>
+<li><p>局部力：localForce, localForces</p></li>
+<li><p>基本力：basicForce, basicForces, daqForce, daqForces</p></li>
+<li><p>控制位移/速度/加速度</p></li>
+<li><p>数据采集位移/速度/加速度</p></li>
+</ul>
+</section>
+<section id="openfresco">
+<h2><span class="section-number">3.3.4. </span>openfresco自带案例<a class="headerlink" href="#openfresco" title="链接到此标题。"></a></h2>
+<p>案例位置 OpenFresco/EXAMPLES/OneByOneBayFrame/OpenSees/GenericExpElem
+/OneByOneBayFrame_Client.tcl</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># expElement  generic    eleTag    -node Ndi ...    -dof dofNdi ...   -site siteTag    -initStif Kij    &lt;-iMod&gt;    &lt;-noRayleigh&gt;    &lt;-mass Mij&gt; </span>
+<span class="nv">expElement</span><span class="w">  </span>generic<span class="w">       </span><span class="mi">1</span><span class="w">  </span><span class="o">-</span>node<span class="w"> </span><span class="mi">5</span><span class="w">  </span><span class="o">-</span>dof<span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="o">-</span>server<span class="w"> </span><span class="mi">8090</span><span class="w">  </span><span class="o">-</span>initStif<span class="w"> </span><span class="o">+</span><span class="mf">1.500000</span>E-02<span class="w"> </span><span class="o">+</span><span class="mf">0.000000</span>E<span class="o">+</span><span class="mo">00</span><span class="w"> </span><span class="o">+</span><span class="mf">0.000000</span>E<span class="o">+</span><span class="mo">00</span><span class="w"> </span><span class="o">+</span><span class="mf">1.500000</span>E-02<span class="w"> </span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.3.5. </span>完整示例(2025)<a class="headerlink" href="#id3" title="链接到此标题。"></a></h2>
+<blockquote>
+<div><p>这里仅用了一个节点作为generic的单元，可以查看台湾2023的案例是两个节点作为generic单元。</p>
+</div></blockquote>
+<p><img alt="结构示例" src="../_images/generic_ex.jpg" /></p>
+<p><strong>4.2 OpenFresco 物理子结构环境之建立</strong></p>
+<p>图3.6为本文七层楼 RC结构之OpenFresco复合实验架构图，图中作为中介软件之 OpenFresco 透过四个阶段建立数值子结构与物理子结构间沟通之环境，分别为：实验元素(Experimental Element)、实验场域(ExperimentalSite)、实验组立(Experimental Setup)及实验控制系统(Experimental Control)。</p>
+<p>另外亦须设定实验控制点(control point)以便设定输出指令及回授反应之讯号，而于脚本中之设定顺序为逆向设定，亦即依序设定实验控制点、实验控制系统、实验组立、实验场域及实验元素。</p>
+<p><strong>(1) 实验控制点(expControlPoint)</strong></p>
+<p>指令：expControlPoint <span class="math notranslate nohighlight">\(cpTag \)</span>rspType</p>
+<p>此指令设定实验控制点之指令及回授讯号，共两个控制点，于<span class="math notranslate nohighlight">\(cpTag 中设定实验控制点之编号，并于\)</span>rspType 中设定物理量及其编号，位移讯号表示为 disp，速度讯号表示为 vel，加速度讯号表示为 accel，力讯号表示为force，时间讯号表示为 time。而本章实验为位移控制，输出大柱及小柱之位移命力，并回授真实频道及虚拟频道之位移及力讯号，验控制点(编号 1)及回授实验控制点(编号 2)设定如下</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># Define experimental control(s)  </span>
+<span class="c"># ExpControlPoint &quot;cmd&quot;: cpTag &lt;-node nodeTag&gt; dof rspType &lt;-fact f&lt;-lim 1 u&lt;-isRel&gt; </span>
+<span class="nv">expControlPoint</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>disp<span class="w"> </span><span class="mi">2</span><span class="w"> </span>disp<span class="w"> </span>
+<span class="err">#</span><span class="w"> </span>ExpControlPoint<span class="w"> </span><span class="s2">&quot;fdk&quot;</span><span class="o">:</span><span class="w"> </span>cpTag<span class="w"> </span>rspType
+<span class="nv">expControlPoint</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>disp<span class="w"> </span><span class="mi">2</span><span class="w"> </span>disp<span class="w"> </span><span class="mi">1</span><span class="w"> </span>force<span class="w"> </span><span class="mi">2</span><span class="w"> </span>force<span class="w"> </span>
+</pre></div>
+</div>
+<p><strong>(2) 实验控制系统(expControl)</strong></p>
+<p>指令：expControl MTSCsi <span class="math notranslate nohighlight">\(tag \)</span>cfgFileName <span class="math notranslate nohighlight">\(rampTime -trialcp \)</span>trialcp - outcp $outcp</p>
+<p>根据第 2 章所述，OpenFresco 可连接数种不同之实验控制系统，而本文实验架构为使用 MTS CSIC 作为其控制系统，此指令即进行相关设定。其中，于$tag 中设定实验控制系统之编号，$cfgFileName 则是根据 MTS CSIC之设定档存放路径进行设定，其中需注意由电脑档案总管所复制之路径以「\」作为资料夹之区分符号，而于此指令之设定须将其改为 「/」 方可正确执行。于$rampTime 中设定ramptime 参数，该参数决定致动器作动之速率，依照试体或模型种类之差异有适合之 ramptime 参数， $trialcp 及 $outcp 则是设定前一步骤设定完成之实验控制点及回授实验控制点编号。本章之设定如下</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">expControl</span><span class="w"> </span>MTSCsi<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s2">&quot;C:/Users/Administrator/Desktop/seven/six/sevenstoryone.mtscs&quot;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>trialCP<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>outCP<span class="w"> </span><span class="mi">2</span><span class="w"> </span>
+</pre></div>
+</div>
+<p><strong>(3) 实验组立(expSetup)</strong></p>
+<p>指令：expSetup NoTransformation $setupTag &lt;-control $ctrlTag&gt; -dir $dirs -sizeTrialOut $trialSize $outSize -outForceFact $ outForceFacts</p>
+<p>配合本文复合实验所使用之泛用型实验元素(generic ExpElement)，<strong>实验组立采用不进行坐标转换之 NoTransformation 实验组立</strong>，于$setupTag 设定实验组立之编号，$ctrlTag 则是设定前一步骤建立之实验控制系统编号，而$dirs 设定欲输出指令及读入回授讯号之实验元素自由度，本文控制二维一楼 C6 小柱之水平方向及旋转向自由度，亦即 Generic 实验元素的 2 号及 4号自由度，$trialSize及$outSize设定输出及读入之矩阵大小。本小节之设定如下</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># Define experimental setup(s)  </span>
+<span class="c"># ExpSetup &quot;ExpSetup01&quot;: setupTag &lt;-control ctrlTag&gt; -dir dirs -sizeTrialOut to &lt;factors&gt;  </span>
+<span class="nv">expSetup</span><span class="w"> </span>NoTransformation<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>control<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>dir<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span>sizeTrialOut<span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">-</span>outForceFact<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>(4) 实验场域(expSite)</strong></p>
+<p>指令：expSite LocalSite <span class="math notranslate nohighlight">\(siteTag \)</span>setupTag</p>
+<p>本文复合实验之数值分析软件与实验场为于在同一处，为同一区域连线，因此使用 LocalSite 指令，于<span class="math notranslate nohighlight">\(siteTag 设定实验场域之编号，并于\)</span>setupTag中设定前一步骤设定之实验组立编号。本章之设定如下</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># Define experimental site(s) </span>
+<span class="c"># ExpSite &quot;ExpSite01&quot;: siteTag setupTag</span>
+<span class="nv">expSite</span><span class="w"> </span>LocalSite<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>
+</pre></div>
+</div>
+<p><strong>(5) 实验元素(expElement)</strong></p>
+<p>指 令 ： expElement generic <span class="math notranslate nohighlight">\(tag –node \)</span>Ndi… – dof <span class="math notranslate nohighlight">\(dofNdi… –dof\)</span>dofNdj…–site <span class="math notranslate nohighlight">\(siteTag –initStif \)</span>Kij …</p>
+<p>本文使用 OpenFresco 实验元素之泛用型实验元素(generic ExpElement)进行复合实验，该实验元素即代表物理子结构部分，于本章即代表一楼之C6小柱。于<span class="math notranslate nohighlight">\(tag 中设定实验元素之编号， \)</span>$ 123<span class="math notranslate nohighlight">\( 中设定物理子结构柱之柱顶节点编号，本文之物理子结构柱顶节点为节点 21，\)</span>dofNdi 则设定该节点以Generic元素建立之自由度方向，各节点皆须设定欲建立之自由度方向，而<span class="math notranslate nohighlight">\(siteTag则是设定前一步骤设定之实验场域编号，最后于\)</span>Kij中设定Generic元素之初始劲度矩阵，三维单柱初始劲度矩阵公式如下</p>
+<blockquote>
+<div><p>台湾原本公式有误,多了负号，但是后面算的initStif是对的</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf {K} _ {\mathrm {i}} = \left[ \begin{array}{c c c c c c} \frac {12 \mathrm {E I} _ {z}}{\mathrm {L} ^ {3}} &amp; 0 &amp; 0 &amp; 0 &amp; - \frac {6 \mathrm {E I} _ {z}}{\mathrm {L} ^ {2}} &amp; 0 \\
+ 0 &amp; \frac {12 \mathrm {E I} _ {y}}{\mathrm {L} ^ {3}} &amp; 0 &amp; \frac {6 \mathrm {E I} _ {y}}{\mathrm {L} ^ {2}} &amp; 0 &amp; 0 \\0 &amp; 0 &amp; \frac {\mathrm {E A}}{\mathrm {L}} &amp; 0 &amp; 0 &amp; 0 \\0 &amp;  \frac {6 \mathrm {E I} _ {y}}{\mathrm {L} ^ {2}} &amp; 0 &amp; \frac {4 \mathrm {E I} _ {y}}{\mathrm {L}} &amp; 0 &amp; 0 \\- \frac {6 \mathrm {E I} _ {z}}{\mathrm {L} ^ {2}} &amp; 0 &amp; 0 &amp; 0 &amp; \frac {4 \mathrm {E I} _ {\mathrm {z}}}{\mathrm {L}} &amp; 0 \\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac {\mathrm {G J}}{\mathrm {L}} \end{array} \right] 
+% \tag {4.1}
+\text{(4.1)}
+\end{split}\]</div>
+<p>图 4.6 为本实验之 Generic 元素示意图，于三维模型中将 C6 小柱以Generic 建立包含 1 个节点及 6 个自由度之实验元素。由于 Generic 实验元素之控制及回授自由度已建立在全域坐标系中，OpenFresco EEGeneric class将不再进行坐标转换，图4.7为 Generic 元素力回授示意图，红色及灰色表示物理及数值子结构自由度。</p>
+<p><img alt="" src="../_images/8694c65f97b62cbed81f816fc4f78de06a5eb78b4d0346c8fb958ff65d7f84ce.jpg" /><br />
+图 4.4 Generic 元素示意图</p>
+<p><img alt="" src="../_images/c4a20b7aa06d039577e3a751ebeb7e7651c5fb89c4ea71c72f05741acb56deb6.jpg" /><br />
+(红色及灰色表示物理及数值子结构自由度)
+图 4.5 Generic 元素力回授示意图</p>
+<p>(4.1)式表示三维单柱物理子结构之 Generic 初始进度矩阵。依照上述内容，</p>
+<p>本小节之实验元素设定如下</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># Define experimental element</span>
+
+<span class="c"># expElement generic $eleTag -node $Ndi -dof $dofNdi -dof $dofNdj ... -server $ipPort &lt;$ipAddr&gt; &lt;-ssl&gt; &lt;-dataSize $size&gt;</span>
+
+<span class="nv">expElement</span><span class="w"> </span>generic<span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">-</span>node<span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="o">-</span>dof<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">-</span>site<span class="w"> </span><span class="mi">1</span><span class="err">\</span>
+
+<span class="nv">-initStif</span><span class="err">\</span>
+
+<span class="nv">968650.1083</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="mf">1452975.162</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">\</span>
+
+<span class="nv">0</span><span class="w"> </span><span class="mf">968650.1083</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">1452975.162</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">\</span>
+
+<span class="nv">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">645766738.9</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">\</span>
+
+<span class="nv">0</span><span class="w"> </span><span class="mf">1452975.162</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2905950.325</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">\</span>
+
+<span class="nv">-1452975.162</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">2905950.325</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">\</span>
+
+<span class="nv">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">3410455.59</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.3.6. </span>参考<a class="headerlink" href="#id4" title="链接到此标题。"></a></h2>
+<p>[1] 郑弘, 于允文. OpenFresco开放式实验架构在多自由度混合实验中的应用. 中国台湾: 国家地震工程研究中心（台湾）; 2025.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="beamColumn.html" class="btn btn-neutral float-left" title="3.2. beamColumn 实验单元" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="invertedVBrace.html" class="btn btn-neutral float-right" title="3.4. invertedVBrace 倒V型支撑（二维）实验单元" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

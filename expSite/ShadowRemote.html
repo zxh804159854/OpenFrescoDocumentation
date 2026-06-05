@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.4. Shadow（或 Remote）实验站点 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="6.5. setSizeExpSite" href="setSizeExpSite.html" />
+    <link rel="prev" title="6.3. Local 实验站点" href="Local.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. expSite 命令</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="expSite.html">6.1. expSite 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Actor.html">6.2. Actor 实验站点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Local.html">6.3. Local 实验站点</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.4. Shadow（或 Remote）实验站点</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.4.1. 命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.4.2. 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="setSizeExpSite.html">6.5. setSizeExpSite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix2/index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">6. </span>expSite 命令</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.4. </span>Shadow（或 Remote）实验站点</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expSite/ShadowRemote.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="shadow-remote">
+<h1><span class="section-number">6.4. </span>Shadow（或 Remote）实验站点<a class="headerlink" href="#shadow-remote" title="链接到此标题。"></a></h1>
+<p>此命令用于构造 ShadowSite（或 RemoteSite）实验站点对象。Shadow（或远程）实验站点与 Actor 实验站点通信，并在客户端程序上运行。</p>
+<section id="id1">
+<h2><span class="section-number">6.4.1. </span>命令<a class="headerlink" href="#id1" title="链接到此标题。"></a></h2>
+<p>对于 Shadow 站点：</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">expSite</span><span class="w"> </span>ShadowSite<span class="w"> </span><span class="nv">$tag</span><span class="w"> </span><span class="o">&lt;-</span>setup<span class="w"> </span><span class="nv">$setupTag</span><span class="o">&gt;</span><span class="w"> </span>ipAddr<span class="w"> </span><span class="nv">$ipPort</span><span class="w"> </span><span class="o">&lt;-</span>dataSize<span class="w"> </span><span class="nv">$size</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>对于 Remote 站点（此选项已过时，将在未来版本中删除，已经删除）：</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">expSite</span><span class="w"> </span>RemoteSite<span class="w"> </span><span class="nv">$tag</span><span class="w"> </span><span class="o">&lt;-</span>setup<span class="w"> </span><span class="nv">$setupTag</span><span class="o">&gt;</span><span class="w"> </span>ipAddr<span class="w"> </span><span class="nv">$ipPort</span><span class="w"> </span><span class="o">&lt;-</span>dataSize<span class="w"> </span><span class="nv">$size</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>参数</p></th>
+<th class="head text-left"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>$tag</p></td>
+<td class="text-left"><p>唯一实验站点标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$setupTag</p></td>
+<td class="text-left"><p>先前定义的装置对象的标签（可选，如果装置在客户端则需要提供）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>ipAddr</p></td>
+<td class="text-left"><p>相应 ActorSite 的 IP 地址</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$ipPort</p></td>
+<td class="text-left"><p>相应 ActorSite 的 IP 端口号</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>-ssl</p></td>
+<td class="text-left"><p>使用 OpenSSL 进行安全事务（可选）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$size</p></td>
+<td class="text-left"><p>发送的数据大小（可选）</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2><span class="section-number">6.4.2. </span>示例<a class="headerlink" href="#id2" title="链接到此标题。"></a></h2>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c">#Define experimental site   </span>
+<span class="nv">expSite</span><span class="w"> </span>ShadowSite<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s2">&quot;169.229.203.152&quot;</span><span class="w"> </span><span class="mi">8090</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>此示例使用 IP 地址 169.229.203.152 和端口号 8090。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="Local.html" class="btn btn-neutral float-left" title="6.3. Local 实验站点" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="setSizeExpSite.html" class="btn btn-neutral float-right" title="6.5. setSizeExpSite" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

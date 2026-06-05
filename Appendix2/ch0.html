@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>混合仿真的先进控制方法的开发与实现 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 1 章 引言" href="ch1.html" />
+    <link rel="prev" title="Appendix2: Development and implementation of advanced control methods for hybrid simulation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">混合仿真的先进控制方法的开发与实现</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">版权所有</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">摘要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">目录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">表格列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">图形列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">算法列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">符号和缩略词列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">致谢</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html">第 1 章 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html">第 2 章 位移控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html">第 3 章 力控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4.html">第 4 章 换控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch5.html">第 5 章 混合控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html">第 6 章 结论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html#id9">参考文献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html">附录A 用于FC、SC和MC混合仿真的OpenFresco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#b-nees">附录B µ-NEES实验设置的调谐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#c-fc">附录C FC混合仿真实验结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#d-sc">附录D SC混合仿真实验结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#e-mc">附录E MC混合仿真实验结果</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+      <li class="breadcrumb-item active">混合仿真的先进控制方法的开发与实现</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Appendix2/ch0.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>混合仿真的先进控制方法的开发与实现<a class="headerlink" href="#id1" title="链接到此标题。"></a></h1>
+<p>作者：Hong Ki Kim</p>
+<p>提交的学位论文部分满足</p>
+<p>哲学博士</p>
+<p>学位要求</p>
+<p>专业：工程——土木与环境工程</p>
+<p>在</p>
+<p>研究生部</p>
+<p>加州大学伯克利分校</p>
+<p>论文指导委员会主席：Bozidar Stojadinoviˇc 教授
+委员：Stephen A. Mahin 教授
+委员：Jon Wilkening 教授</p>
+<p>2011 年秋季</p>
+<section id="id2">
+<h2>版权所有<a class="headerlink" href="#id2" title="链接到此标题。"></a></h2>
+<p>致所有用户的信息</p>
+<p>本复制品的质量取决于所提交副本的质量。</p>
+<p>在不太可能的情况下，作者没有发送完整的手稿并且存在缺页，这些页面将被注明。此外，如果有材料必须被移除，将会注明。</p>
+<p><img alt="" src="../_images/06d6449ea14090fec073d0189deb20f2f6ac40e62b3e0e30148e6b3c2c8c0560.jpg" /></p>
+<p>UMI 3616138</p>
+<p>由 ProQuest LLC 于 2014 年出版。论文版权归作者所有。</p>
+<p>微缩版 <span class="math notranslate nohighlight">\(\circledcirc\)</span> ProQuest LLC。保留所有权利。本作品受 17 号美国法典的保护，禁止未经授权的复制。</p>
+<p><img alt="" src="../_images/446443231466192ffe6a0122867f9e59a02412d0e852d0c395572ecf7a48574e.jpg" /></p>
+<p>ProQuest LLC.
+789 East Eisenhower Parkway
+P.O. Box 1346
+Ann Arbor, MI 48106 - 1346</p>
+<p>混合仿真的先进控制方法的开发与实现</p>
+<p>版权所有 2011</p>
+<p>Hong Ki Kim</p>
+</section>
+<section id="id3">
+<h2>摘要<a class="headerlink" href="#id3" title="链接到此标题。"></a></h2>
+<p>混合仿真的先进控制方法的开发与实现</p>
+<p>作者：Hong Ki Kim</p>
+<p>哲学博士：工程——土木与环境工程</p>
+<p>加州大学伯克利分校</p>
+<p>指导教授：Bozidar Stojadinoviˇc</p>
+<p>混合仿真是一种有效的结构测试方法，它结合了计算分析和实验测试技术的优点。创新结构由最先进的组件和组合件组成，其作为系统的功能需要通过实验进行测试。通常，这些组件和组合件会将控制器和其他测试设备推向极限。在位移控制模式下使用控制器进行混合仿真并不总是足够的。</p>
+<p>为了克服这些限制并提供稳健的混合仿真方法，本文探索了混合仿真中的力控制、开关控制和混合控制方法。力控制混合仿真是一种控制系统处于力控制模式的混合仿真。开关控制混合仿真是控制系统在位移控制和力控制模式之间切换的另一种混合仿真。开关控制混合仿真适用于仅有一个控制自由度的设置。混合控制混合仿真是开关控制混合仿真的扩展，其中多个控制自由度独立地在控制模式之间切换。</p>
+<p>本文开发、测试并验证了力控制、开关控制和混合控制混合仿真方法。讨论了开发这些方法的动机。提出并解释了新方法。开发了新的 OpenFresco 类和 Simulink/Stateflow 模型来实现这些方法。然后，使用 nees&#64;berkeley 结构工程实验室的 <span class="math notranslate nohighlight">\(\mu\)</span>-NEES 实验装置，采用两种不同的配置，测试了这三种替代控制方法。第一种配置是包含一个相对较硬试件的单控制自由度设置。第二种配置在第一种配置基础上扩展为两个控制自由度。研究了各种时间积分方案与这些方法的性能。这些测试验证并确认了三种替代控制方法以及新的 OpenFresco 类和 Simulink/Stateflow 模型。</p>
+<p>通过首先将每种控制方法的测试结果与数值结果进行比较，然后与位移控制结果进行比较，最后相互比较，来评估其性能。对于第二种 <span class="math notranslate nohighlight">\(\mu\)</span>-NEES 配置，力控制方法通常比位移控制方法提供更好的结果。对于单自由度配置，开关控制混合仿真方法提供了比其力控制对应方法更好的结果，但并不优于位移控制结果。由于两个作动器控制模式之间的相互作用，混合控制混合仿真方法并未提供比力控制方法更好的结果。</p>
+<p>本论文最后提出了未来研究的方向。需要使用非常刚性的实验装置和深入的误差分析对这些方法进行进一步验证。需要探索新的切换参数。建议继续开发混合控制方法。应测试使用高阶多项式的 Simulink/Stateflow 模型。应为平衡力控制方法实现显式和预测-校正时间积分方案。</p>
+<p>更重要的是，为了认识我主基督耶稣的无比价值，我将万事都视为损失。</p>
+<p>——使徒保罗（罗马书 3:8(a) 新美国标准圣经）</p>
+</section>
+<section id="id4">
+<h2>目录<a class="headerlink" href="#id4" title="链接到此标题。"></a></h2>
+<p>目录 ii</p>
+<p>表格列表 vi</p>
+<p>图形列表 viii</p>
+<p>算法列表 xviii</p>
+<p>符号和缩略词列表 xix</p>
+<p>1 引言 1</p>
+<p>1.1 混合仿真的组成部分 . . . . . . . . . . . . . . . . . . . 2<br />
+1.1.1 计算驱动程序 . . . . . . . . . . . . . . . . . . . . 2<br />
+1.1.2 物理传递系统 . . . . . . . . . . . . . . . . . . . . 2<br />
+1.1.3 中间件 . . . . . . . . . . . . . . . . . . . . . . . . 3<br />
+1.2 动机 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3<br />
+1.3 组织和范围 . . . . . . . . . . . . . . . . . . . . . . . . . 4</p>
+<p>2 位移控制混合仿真 5</p>
+<p>2.1 引言 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5<br />
+2.2 计算驱动程序 . . . . . . . . . . . . . . . . . . . . . . . . 5<br />
+2.3 物理传递系统 . . . . . . . . . . . . . . . . . . . . . . . . 6<br />
+2.4 OpenFresco 中间件混合仿真框架 . . . . . . . . . . . . . . . 8</p>
+<p>2.4.1 双节点连接实验单元 . . . . . . . . . . . . . . . . . . 9<br />
+2.4.2 本地实验站点 . . . . . . . . . . . . . . . . . . . . . 10<br />
+2.4.3 单作动器实验装置 . . . . . . . . . . . . . . . . . . 1 0<br />
+2.4.4 xPC-Target 实验控制 . . . . . . . . . . . . . . . . 1 1</p>
+<p>2.5 DC 混合仿真的顺序过程 . . . . . . . . . . . . . . . . . . . 12<br />
+2.6 DC 混合仿真的优点与局限性 . . . . . . . . . . . . . . . . 18</p>
+<p>3 力控制混合仿真 19</p>
+<p>3.1 引言 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19</p>
+<p>3.1.1 问题定义 . . . . . . . . . . . . . . . . . . . . . . . 19<br />
+3.1.2 动机 . . . . . . . . . . . . . . . . . . . . . . . . . 20<br />
+3.1.3 先前研究 . . . . . . . . . . . . . . . . . . . . . . . 23</p>
+<p>3.2 获取试验力的方法 . . . . . . . . . . . . . . . . . . . . . . 25</p>
+<p>3.2.1 兼容性方法 . . . . . . . . . . . . . . . . . . . . . . 2 6</p>
+<p>3.2.1.1 基于切线的兼容性方法 . . . . . . . . . . . . 2 6<br />
+3.2.1.2 基于Krylov子空间的兼容性方法 . . . . . . . . . . . . . . . 30</p>
+<p>3.2.2 平衡方法 . . . . . . . . . . . . . . . . . . . . . . . 31<br />
+3.2.3 获取试验力的方法总结 . . . . . . . . . . . . . . . . 34</p>
+<p>3.3 实现 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34</p>
+<p>3.3.1 兼容性方法的实现 . . . . . . . . . . . . . . . . . . 35<br />
+3.3.2 平衡方法的实现 . . . . . . . . . . . . . . . . . . . 3 9<br />
+3.3.3 Simulink/Stateflow 模型 . . . . . . . . . . . . . . . 4 1<br />
+3.3.4 OpenFresco 力实验控制 . . . . . . . . . . . . . . . 43</p>
+<p>3.4 实验结果与验证 . . . . . . . . . . . . . . . . . . . . . . . 4 4</p>
+<p>3.4.1 1-DOF <span class="math notranslate nohighlight">\(\mu \cdot\)</span> -NEES 实验装置与结果 . . . . . . . . . . . 4 4</p>
+<p>3.4.1.1 混合模型与 OpenFresco 配置 . . . . . . . . . . . 47<br />
+3.4.1.2 线性 FC 混合仿真 . . . . . . . . . . . . . . . 4 7<br />
+3.4.1.3 非线性 FC 混合仿真 . . . . . . . . . . . . . . . . 5 1</p>
+<p>3.4.2 2-DOF <span class="math notranslate nohighlight">\(\mu \cdot\)</span> -NEES 实验装置与结果 . . . . . . . . . . . 5 6</p>
+<p>3.4.2.1 混合模型与 OpenFresco 配置 . . . . . . . . . . . 59<br />
+3.4.2.2 线性 FC 混合仿真 . . . . . . . . . . . . . . . 6 0<br />
+3.4.2.3 非线性 FC 混合仿真 . . . . . . . . . . . . . 6 6</p>
+<p>3.4.3 实验结果与验证总结 . . . . . . . . . . . . . . . . . 7 4</p>
+<p>4 开关控制混合仿真 75</p>
+<p>4.1 引言 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75</p>
+<p>4.1.1 问题定义 . . . . . . . . . . . . . . . . . . . . . . . 75<br />
+4.1.2 动机 . . . . . . . . . . . . . . . . . . . . . . . . . 76<br />
+4.1.3 先前研究 . . . . . . . . . . . . . . . . . . . . . . . 7 7</p>
+<p>4.2 SC 混合仿真的方法 . . . . . . . . . . . . . . . . . . . . . 77</p>
+<p>4.2.1 基于试验力的切换策略 . . . . . . . . . . . . . . . . 78<br />
+4.2.2 基于割线刚度的切换策略 . . . . . . . . . . . . . . . 80</p>
+<p>4.3 实现 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 81</p>
+<p>4.3.1 用于开关的兼容性方法 . . . . . . . . . . . . . . . . 8 1<br />
+4.3.2 用于开关的平衡方法 . . . . . . . . . . . . . . . . . 82<br />
+4.3.3 Simulink/Stateflow 模型 . . . . . . . . . . . . . . . 83</p>
+<p>4.4 实验结果与验证 . . . . . . . . . . . . . . . . . . . . . . . 88</p>
+<p>5 混合控制混合仿真 94</p>
+<p>5.1 引言 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 94</p>
+<p>5.1.1 问题定义 . . . . . . . . . . . . . . . . . . . . . . . 94<br />
+5.1.2 动机 . . . . . . . . . . . . . . . . . . . . . . . . . 95<br />
+5.1.3 先前研究 . . . . . . . . . . . . . . . . . . . . . . . 9 5</p>
+<p>5.2 MC 混合仿真的方法 . . . . . . . . . . . . . . . . . . . . . 95</p>
+<p>5.3 实现 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 96</p>
+<p>5.3.1 OpenFresco MC 实验控制 . . . . . . . . . . . . . . . 96</p>
+<p>5.3.2 Simulink/Stateflow 模型 . . . . . . . . . . . . . . . 97</p>
+<p>5.4 实验结果与验证 . . . . . . . . . . . . . . . . . . . . . . . 102</p>
+<p>5.4.1 基于试验力切换的 MC 混合仿真 . . . . . . . . . . . 102<br />
+5.4.2 基于割线刚度切换的 MC 混合仿真 . . . . . . . . . . . . . 106<br />
+5.4.3 实验结果总结 . . . . . . . . . . . . . . . . . . . . 113</p>
+<p>6 结论 114</p>
+<p>6.1 力控制 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 114<br />
+6.2 开关控制 . . . . . . . . . . . . . . . . . . . . . . . . . . . 115<br />
+6.3 混合控制 . . . . . . . . . . . . . . . . . . . . . . . . . . . 115<br />
+6.4 未来工作方向 . . . . . . . . . . . . . . . . . . . . . . . . 116</p>
+<p>6.4.1 进一步验证 . . . . . . . . . . . . . . . . . . . . . . 116<br />
+6.4.2 使用功率进行切换 . . . . . . . . . . . . . . . . . . 116<br />
+6.4.3 进一步研究 MC 混合仿真 . . . . . . . . . . . . . . . 117<br />
+6.4.4 Simulink/Stateflow 模型 . . . . . . . . . . . . . . . 118<br />
+6.4.5 使用其他时间积分方案的 EFC 方法 . . . . . . . . . . 119<br />
+6.4.6 总结 . . . . . . . . . . . . . . . . . . . . . . . . . 119</p>
+<p>参考文献 120</p>
+<p>附录 A 用于 FC、SC 和 MC 混合仿真的 OpenFresco 123</p>
+<p>A.1 OpenFresco 软件架构 . . . . . . . . . . . . . . . . . . . . 123<br />
+A.1.1 OpenFresco UML 类图 . . . . . . . . . . . . . . . . 124<br />
+A.2 OpenFresco 类 . . . . . . . . . . . . . . . . . . . . . . . 127</p>
+<p>A.2.0.1 实验单元 . . . . . . . . . . . . . . . . . . . . . 127<br />
+A.2.0.2 实验站点 . . . . . . . . . . . . . . . . . . . . 127<br />
+A.2.0.3 实验装置 . . . . . . . . . . . . . . . . . . . . 127<br />
+A.2.0.4 实验控制 . . . . . . . . . . . . . . . . . . . . 128</p>
+<p>A.3 用于力控制混合仿真的 OpenFresco 代码 . . . . . . . . . . 128</p>
+<p>附录 B <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置的调谐 132</p>
+<p>B.1 MTS-STS 通道 3 的调谐：底部作动器 . . . . . . . . . . . 132<br />
+B.2 MTS-STS 通道 4 的调谐：顶部作动器 . . . . . . . . . . . 136</p>
+<p>附录 C FC 混合仿真实验结果 138</p>
+<p>C.1 1-DOF 设置：线性混合仿真 . . . . . . . . . . . . . . . . 138<br />
+C.2 1-DOF 设置：非线性混合仿真 . . . . . . . . . . . . . . . 147<br />
+C.3 2-DOF 设置：线性混合仿真 . . . . . . . . . . . . . . . . 152<br />
+C.4 2-DOF 设置：非线性混合仿真 . . . . . . . . . . . . . . . . 170</p>
+<p>附录 D SC 混合仿真实验结果 189</p>
+<p>附录 E MC 混合仿真实验结果 206</p>
+<p>E.1 点切换混合仿真 . . . . . . . . . . . . . . . . . . . . . . 206</p>
+<p>E.1.1 NME 时间积分方案 . . . . . . . . . . . . . . . . . 206<br />
+E.1.2 α 时间积分方案 . . . . . . . . . . . . . . . . . . . 215<br />
+E.1.3 NMF 时间积分方案 . . . . . . . . . . . . . . . . . 224<br />
+E.1.4 NMR 时间积分方案 . . . . . . . . . . . . . . . . . 233</p>
+<p>E.2 割线切换混合仿真 . . . . . . . . . . . . . . . . . . . . . . 240</p>
+<p>E.2.1 NME 时间积分方案 . . . . . . . . . . . . . . . . . . 240<br />
+E.2.2 α 时间积分方案 . . . . . . . . . . . . . . . . . . . 249<br />
+E.2.3 NMF 时间积分方案 . . . . . . . . . . . . . . . . . 258<br />
+E.2.4 NMR 时间积分方案 . . . . . . . . . . . . . . . . . 267</p>
+</section>
+<section id="id5">
+<h2>表格列表<a class="headerlink" href="#id5" title="链接到此标题。"></a></h2>
+<p>2.1 单跨框架示例的 OpenFresco 配置 . . . . . . . . . . . . . 9<br />
+3.1 柔性和刚性单跨框架模型的属性 . . . . . . . . . . . . . . 20<br />
+3.2 时间积分方案及其参数 . . . . . . . . . . . . . . . . . . . 47<br />
+3.3 1-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 装置的单跨框架模型属性 . . . . . . . . . . 47<br />
+3.4 单跨框架 OpenSees 模型线性数值模拟结果的绝对误差 . . . . . . . . . 50<br />
+3.5 1-DOF 线性混合仿真在 FEA 层面的实验绝对位移误差 . . . . . . . . . 50<br />
+3.6 1-DOF 线性混合仿真在 FEA 层面的实验绝对力误差 . . . . . . . . . . 51<br />
+3.7 1-DOF 线性仿真在控制系统层面的绝对误差 . . . . . . . . . . . . . 5 1<br />
+3.8 单跨框架 OpenSees 模型非线性数值模拟结果的绝对误差 . . . . . . . . . . 52<br />
+3.9 1-DOF 非线性混合仿真在 FEA 层面的绝对位移误差 . . . . . . . . . 55<br />
+3.10 1-DOF 非线性混合仿真在 FEA 层面的绝对力误差 . . . . . . . . . . 55<br />
+3.11 1-DOF 非线性仿真在控制系统层面的绝对误差 . . . . . . . . . . . 5 6<br />
+3.12 2-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 装置的 2-DOF 混合模型属性 . . . . . . . . . . 59<br />
+3.13 2-DOF 设置的 OpenFresco 配置 . . . . . . . . . . . . . . . 5 9<br />
+3.14 2-DOF OpenSees 模型线性数值模拟结果的绝对误差 . . . . . . . . . . 63<br />
+3.15 2-DOF 线性混合仿真中节点 1 在 FEA 层面的绝对位移误差 . . . . . . . . . 63<br />
+3.16 2-DOF 线性混合仿真中节点 2 在 FEA 层面的绝对位移误差 . . . . . . . . . 64<br />
+3.17 2-DOF 线性混合仿真中节点 1 在 FEA 层面的绝对力误差 . . . . . . . . . 64<br />
+3.18 2-DOF 线性混合仿真中节点 2 在 FEA 层面的绝对力误差 . . . . . . . . . 64<br />
+3.19 2-DOF 线性仿真中底部作动器在控制系统层面的绝对误差 . . . . . . . . . 65<br />
+3.20 2-DOF 线性仿真中顶部作动器在控制系统层面的绝对误差 . . . . . . . . . 65<br />
+3.21 2-DOF OpenSees 模型非线性数值模拟结果的绝对误差 . . . . . . . . . 69<br />
+3.22 2-DOF 非线性混合仿真中节点 1 在 FEA 层面的绝对位移误差 . . . . . . . . . 69<br />
+3.23 2-DOF 非线性混合仿真中节点 2 在 FEA 层面的绝对位移误差 . . . . . . . . . 70<br />
+3.24 2-DOF 非线性混合仿真中节点 1 在 FEA 层面的绝对力误差 . . . . . . . . . 70<br />
+3.25 2-DOF 非线性混合仿真中节点 2 在 FEA 层面的绝对力误差 . . . . . . . . . 70<br />
+3.26 2-DOF 非线性混合仿真中底部作动器在控制系统层面的绝对误差 . . . . . . . . . 71</p>
+<p>3.27 2-DOF 非线性混合仿真中底部作动器在控制系统层面的绝对误差 . . . . . . . . . 71<br />
+4.1 1-DOF 非线性 SC 混合仿真在 FEA 层面的绝对位移误差 . . . . . . . . . 89<br />
+4.2 1-DOF 非线性 SC 混合仿真在 FEA 层面的绝对力误差 . . . . . . . . . . 90<br />
+4.3 1-DOF 非线性 SC 混合仿真在控制系统层面的绝对误差 . . . . . . . . . . 93<br />
+5.1 2-DOF PMC 非线性混合仿真中节点 1 在 FEA 层面的绝对位移误差 . . . . . . . . . 103<br />
+5.2 2-DOF 非线性 PMC 混合仿真中节点 2 在 FEA 层面的绝对位移误差 . . . . . . . . . 103<br />
+5.3 2-DOF 非线性 PMC 混合仿真中节点 1 在 FEA 层面的绝对力误差 . . . . . . . . . 103<br />
+5.4 2-DOF 非线性 PMC 混合仿真中节点 2 在 FEA 层面的绝对力误差 . . . . . . . . . 104<br />
+5.5 2-DOF 非线性 PMC 混合仿真中底部作动器在控制系统层面的绝对误差 . . . . . . . . . 104<br />
+5.6 2-DOF 非线性 PMC 混合仿真中顶部作动器在控制系统层面的绝对误差 . . . . . . . . . 105<br />
+5.7 2-DOF SMC 非线性混合仿真中节点 1 在 FEA 层面的绝对位移误差 . . . . . . . . . 106<br />
+5.8 2-DOF 非线性 SMC 混合仿真中节点 2 在 FEA 层面的绝对位移误差 . . . . . . . . . 107<br />
+5.9 2-DOF 非线性 SMC 混合仿真中节点 1 在 FEA 层面的绝对力误差 . . . . . . . . . 107<br />
+5.10 2-DOF 非线性 SMC 混合仿真中节点 2 在 FEA 层面的绝对力误差 . . . . . . . . . 107<br />
+5.11 2-DOF 非线性 SMC 混合仿真中底部作动器在控制系统层面的绝对误差 . . . . . . . . . 108<br />
+5.12 2-DOF 非线性 SMC 混合仿真中顶部作动器在控制系统层面的绝对误差 . . . . . . . . . 108<br />
+B.1 1-DOF 非线性仿真在控制系统层面的绝对误差 . . . . . . . . . . . 135<br />
+B.2 1-DOF 非线性仿真在控制系统层面的绝对误差 . . . . . . . . . . . 136</p>
+</section>
+<section id="id6">
+<h2>图形列表<a class="headerlink" href="#id6" title="链接到此标题。"></a></h2>
+<p>2.1 DC 混合仿真的单跨框架模型 . . . . . . . . . . . . . . . . . 6<br />
+2.2 DC 混合仿真中的控制回路 . . . . . . . . . . . . . . . . . 7<br />
+2.3 nees&#64;berkeley 的 <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置 . . . . . . . . . . . . . 8<br />
+2.4 OpenFresco 抽象类 . . . . . . . . . . . . . . . . . . . . . 9<br />
+2.5 OpenFresco 双节点连接实验单元 . . . . . . . . . . . . . . . 10<br />
+2.6 OpenFresco 单作动器实验装置 . . . . . . . . . . . . . . . . 11<br />
+2.7 OpenFresco 单作动器实验装置变换 . . . . . . . . . . . . . . 11<br />
+2.8 设置试验响应的 OpenFresco UML 序列图 . . . . . . . . . . 13<br />
+2.9 获取抵抗力的 OpenFresco UML 序列图 . . . . . . . . . . . 1 4<br />
+2.10 显示 αOS 近似的力-变形曲线 . . . . . . . . . . . . . . . 1 7<br />
+3.1 El Centro 地震动 . . . . . . . . . . . . . . . . . . . . . . 21<br />
+3.2 模型 1 和 2 的单元 1 试验位移-时间历程图 . . . . . . . . . . . . 21<br />
+3.3 模型 1 和 2 的单元 1 测量力-时间历程图 . . . . . . . . . . . . 21<br />
+3.4 兼容性方法的实现 . . . . . . . . . . . . . . . . . . . . . . 35<br />
+3.5 ExperimentalSignalFilter 类的接口 . . . . . . . . . . . . . . 3 6<br />
+3.6 扩展的 OpenFresco UML 类图 . . . . . . . . . . . . . . . . 37<br />
+3.7 ExperimentalTangentStiff 类的接口 . . . . . . . . . . . . . . . . 38<br />
+3.8 FC 混合仿真的 SimuLink 模型 . . . . . . . . . . . . . . . . 41<br />
+3.9 xPC Target 混合控制器 (F1F1) . . . . . . . . . . . . . . . 4 2<br />
+3.10 FC 混合仿真的 StateFlow 预测-校正模型 . . . . . . . . . . . . 43<br />
+3.11 1-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置示意图 . . . . . . . . . . . . . . . 45<br />
+3.12 1-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置 . . . . . . . . . . . . . . . . . . 46<br />
+3.13 1-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置 U 形夹和试片配置 . . . . . . . . . . . . . . . 46<br />
+3.14 使用 NMI、NME、αOS、NMF 和 NMR 对单跨框架 OpenSees 模型进行线性数值模拟的位移-时间历程结果 . . . . . . . . . . . . . . . 4 8<br />
+3.15 使用 NMI、NME、αOS、NMF 和 NMR 对单跨框架 OpenSees 模型进行线性数值模拟的力-时间历程结果 . . . . . . . . . . . . . . . 49<br />
+3.16 用于数值仿真的 1-DOF <span class="math notranslate nohighlight">\(\mu \cdot\)</span> -NEES 装置的 OpenSees 模型 . . . . . . . . . 52<br />
+3.17 使用 NMI、NMF 和 NMR 对单跨框架 OpenSees 模型进行非线性数值模拟的位移-时间历程结果 . . . . . . . . . . . . . . . . . 53<br />
+3.18 使用 NMI、NMF 和 NMR 对单跨框架 OpenSees 模型进行非线性数值模拟的力-时间历程结果 . . . . . . . . . . . . . . . . . 54</p>
+<p>3.19 使用 NMF 进行非线性混合仿真期间 1-DOF 装置的切线刚度估计 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 56<br />
+3.20 2-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置示意图 . . . . . . . . . . . . . . . 5 7<br />
+3.21 2-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置和 2-DOF 混合模型 . . . . . . . . . 5 8<br />
+3.22 2-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置顶部 U 形夹和试片配置 . . . . . . . . . . . . . . 58<br />
+3.23 用于数值仿真的 2-DOF OpenSees 数值模型 . . . . . . . . . . . 6 0<br />
+3.24 使用 NMI、NME、αOS、NMF 和 NMI 对 2-DOF OpenSees 模型进行线性数值模拟的位移-时间历程结果 . . . . . . . . . . . . . . . 61<br />
+3.25 使用 NMI、NME、αOS、NMF 和 NMI 对 2-DOF OpenSees 模型进行线性数值模拟的力-时间历程结果 . . . . . . . . . . . . . . . 6 2<br />
+3.26 使用 NMI、NME、αOS、NMF 和 NMI 对 2-DOF OpenSees 模型进行非线性数值模拟的位移-时间历程结果 . . . . . . . . . . . . . . . 67<br />
+3.27 使用 NMI、NME、αOS、NMF 和 NMI 对 2-DOF OpenSees 模型进行非线性数值模拟的力-时间历程结果 . . . . . . . . . . . . . . . 68<br />
+3.28 使用 CFC:BFGS 进行非线性 2-DOF 混合仿真的切线刚度值 . . . . . . . . . . . . . . . . . 72<br />
+3.29 使用 CFC:Intrinsic 进行非线性 2-DOF 混合仿真的切线刚度值 . . . . . . . . . . . . . . . . . 73<br />
+4.1 高阻尼橡胶支座的滞回曲线 . . . . . . . . . . . . . . . . . 76<br />
+4.2 SC 混合仿真组件及其过程 . . . . . . . . . . . . . . . . . . 81<br />
+4.3 SC 的 SimuLink 模型 . . . . . . . . . . . . . . . . . . . . 84<br />
+4.4 xPC Target 混合控制器 (S1S1) . . . . . . . . . . . . . . . 8 5<br />
+4.5 SC 混合仿真的 StateFlow 预测-校正模型 . . . . . . . . . . . 87<br />
+4.6 使用 NME 的 PSC 中控制模式和试验力与时间的关系图 . . . . . . . . . . . . . . . . 90<br />
+4.7 使用 NME 的 SSC 中控制模式和割线刚度值与时间的关系图 . . . . . . . . . . . . . . . . 91<br />
+4.8 使用 NMR 的 EPSC 中控制模式和试验力与时间的关系图 . . . . . . . . . . . . . . . . 91<br />
+4.9 使用 NMR 的 ESSC 中控制模式和割线刚度值与时间的关系图 . . . . . . . . . . . . . . . . 91<br />
+5.1 MC 混合仿真组件及其过程 . . . . . . . . . . . . . . . . . . 97<br />
+5.2 MC 混合仿真的 SimuLink 模型 . . . . . . . . . . . . . . . . 9 8<br />
+5.3 xPC Target 混合控制器 (M1M1) . . . . . . . . . . . . . . . 9 9<br />
+5.4 MC 混合仿真的 StateFlow 预测-校正模型 . . . . . . . . . . . 101<br />
+5.5 使用 NME 的 PMC:Broyden 中底部作动器的控制模式和试验力与时间的关系图 . . . . . . . . . . . . . . . . . . . . . . . . . . . 105<br />
+5.6 使用 αOS 的 PMC:BFGS 中底部作动器的控制模式和试验力与时间的关系图 . . . . . . . . . . . . . . . . . . . . . . . . . . . 106<br />
+5.7 使用 NME 的 PMC:Broyden 中底部作动器的控制模式和试验力与时间的关系图 . . . . . . . . . . . . . . . . . . . . . . . . . . . 110<br />
+5.8 使用 αOS 的 PMC:BFGS 中底部作动器的控制模式和试验力与时间的关系图 . . . . . . . . . . . . . . . . . . . . . . . . . . . 111<br />
+5.9 使用 αOS 的 PMC:BFGS 中底部作动器的控制模式和试验力与时间的关系图 . . . . . . . . . . . . . . . . . . . . . . . . . . . 112<br />
+6.1 使用 NME 的功率和试验力与时间的关系图 . . . . . . . . . . 117<br />
+6.2 提出的 MC 混合仿真方法 . . . . . . . . . . . . . . . . . . 118</p>
+<p>A.1 OpenFresco 多层架构 . . . . . . . . . . . . . . . . . . . . 124<br />
+A.2 DC 混合仿真的 OpenFresco 类图 . . . . . . . . . . . . . . . 125<br />
+A.3 FC、SC 和 MC 混合仿真的 OpenFresco 类图 . . . . . . . . . 126<br />
+A.4 ESFTangForceConverter 类定义 . . . . . . . . . . . . . . . 129<br />
+A.5 ESFKylovForceConverter 类定义 . . . . . . . . . . . . . . . 130<br />
+A.6 ECxPCtargetForce 类定义 . . . . . . . . . . . . . . . . . . 131<br />
+B.1 1-DOF <span class="math notranslate nohighlight">\(\mu { \cdot }\)</span> -NEES 实验装置的位移控制调谐 . . . . . . . . . . . 132<br />
+B.2 1-DOF <span class="math notranslate nohighlight">\(\mu { \cdot }\)</span> -NEES 实验装置位移误差的绝对值 . . . . . . . . . . . 133<br />
+B.3 位移控制下 1-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置的跟踪和迟滞图 . . . . . . . . . . . . . . . 133<br />
+B.4 1-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置的力控制调谐 . . . . . . . . . . . . 134<br />
+B.5 1-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置力误差的绝对值 . . . . . . . . . . . 134<br />
+B.6 力控制下 1-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置的跟踪和迟滞图 . . . . . . . . . . . . . . 135<br />
+B.7 2-DOF <span class="math notranslate nohighlight">\(\mu { \cdot }\)</span> -NEES 实验装置的位移控制调谐 . . . . . . . . . . . 136<br />
+B.8 1-DOF <span class="math notranslate nohighlight">\(\mu { \cdot }\)</span> -NEES 实验装置位移误差的绝对值 . . . . . . . . . . . 137<br />
+B.9 位移控制下 1-DOF <span class="math notranslate nohighlight">\(\mu\)</span> -NEES 实验装置的跟踪和迟滞图 . . . . . . . . . . . . . . 137<br />
+C.1 使用 NME 和 1-DOF 装置进行线性 FC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 139<br />
+C.2 使用 NME 和 1-DOF 装置进行线性 DC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . . . . 140<br />
+C.3 使用 NME 和 1-DOF 装置进行线性 CFC 混合仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . . . . 140<br />
+C.4 使用 αOS 和 1-DOF 装置进行线性 FC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 141<br />
+C.5 使用 αOS 和 1-DOF 装置进行线性 DC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 142<br />
+C.6 使用 αOS 和 1-DOF 装置进行线性 CFC 混合仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 142<br />
+C.7 使用 NMF 和 1-DOF 装置进行线性 FC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 143<br />
+C.8 使用 NMF 和 1-DOF 装置进行线性 DC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 144<br />
+C.9 使用 NMF 和 1-DOF 装置进行线性 CFC 混合仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 144<br />
+C.10 使用 NMR 和 1-DOF 装置进行线性 FC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 145<br />
+C.11 使用 NMR 和 1-DOF 装置进行线性 DC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 146<br />
+C.12 使用 NMR 和 1-DOF 装置进行线性 CFC 混合仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 146</p>
+<p>C.13 使用 NMR 和 1-DOF 装置进行线性 EFC 混合仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 147<br />
+C.14 使用 NMF 和 1-DOF 装置进行非线性 FC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 148<br />
+C.15 使用 NMF 和 1-DOF 装置进行非线性 DC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 149<br />
+C.16 使用 NMF 和 1-DOF 装置进行非线性 CFC 混合仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 149<br />
+C.17 使用 NMR 和 1-DOF 装置进行非线性 FC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 150<br />
+C.18 使用 NMR 和 1-DOF 装置进行非线性 DC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 151<br />
+C.19 使用 NMR 和 1-DOF 装置进行非线性 EFC 混合仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 151<br />
+C.20 使用 NME 和 2-DOF 装置进行线性 FC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 153<br />
+C.21 使用 NME 和 2-DOF 装置进行线性 FC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 154<br />
+C.22 使用 NME 和 2-DOF 装置进行线性 DC 仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 155<br />
+C.23 使用 NME 和 2-DOF 装置进行线性 FC 仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 156<br />
+C.24 使用 αOS 和 2-DOF 装置进行线性 FC 混合仿真的位移-时间历程图 . . . . . . . . . . . . . . . . . . 157<br />
+C.25 使用 αOS 和 2-DOF 装置进行线性 FC 混合仿真的力-时间历程图 . . . . . . . . . . . . . . . . . . 158<br />
+C.26 使用 αOS 和 2-DOF 装置进行线性 DC 仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 159<br />
+C.27 使用 αOS 和 2-DOF 装置进行线性 FC 仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 160<br />
+C.28 使用 NMF 和 2-DOF 装置进行线性 FC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 161<br />
+C.29 使用 NMF 和 2-DOF 装置进行线性 FC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 162<br />
+C.30 使用 NMF 和 2-DOF 装置进行线性 DC 仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 163<br />
+C.31 使用 NMF 和 2-DOF 装置进行线性 FC 仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 164<br />
+C.32 使用 NMR 和 2-DOF 装置进行线性 FC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 165<br />
+C.33 使用 NMR 和 2-DOF 装置进行线性 FC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 166<br />
+C.34 使用 NMR 和 2-DOF 装置进行线性 DC 仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 167</p>
+<p>C.35 使用 NMR 和 2-DOF 装置进行线性 FC 仿真（CFC）的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 168<br />
+C.36 使用 NMR 和 2-DOF 装置进行线性 FC 仿真（EFC）的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 169<br />
+C.37 使用 NME 和 2-DOF 装置进行非线性 FC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 171<br />
+C.38 使用 NME 和 2-DOF 装置进行非线性 FC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 172<br />
+C.39 使用 NME 和 2-DOF 装置进行非线性 DC 仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 173<br />
+C.40 使用 NME 和 2-DOF 装置进行非线性 FC 仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 174<br />
+C.41 使用 αOS 和 2-DOF 装置进行非线性 FC 混合仿真的位移-时间历程图 . . . . . . . . . . . . . . . . . . 175<br />
+C.42 使用 αOS 和 2-DOF 装置进行非线性 FC 混合仿真的力-时间历程图 . . . . . . . . . . . . . . . . . . 176<br />
+C.43 使用 αOS 和 2-DOF 装置进行非线性 DC 仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 177<br />
+C.44 使用 αOS 和 2-DOF 装置进行非线性 FC 仿真（CFC:BFGS）的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 178<br />
+C.45 使用 αOS 和 2-DOF 装置进行非线性 FC 仿真（CFC:Intrinsic）的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 179<br />
+C.46 使用 NMF 和 2-DOF 装置进行非线性 FC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 180<br />
+C.47 使用 NMF 和 2-DOF 装置进行非线性 FC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 181<br />
+C.48 使用 NMF 和 2-DOF 装置进行非线性 DC 仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 182<br />
+C.49 使用 NMF 和 2-DOF 装置进行非线性 FC 仿真的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 183<br />
+C.50 使用 NMR 和 2-DOF 装置进行非线性 FC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 184<br />
+C.51 使用 NMR 和 2-DOF 装置进行非线性 FC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 185<br />
+C.52 使用 NMR 和 2-DOF 装置进行非线性 DC 仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 186<br />
+C.53 使用 NMR 和 2-DOF 装置进行非线性 FC 仿真（CFC:BFGS）的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 187<br />
+C.54 使用 NMR 和 2-DOF 装置进行非线性 FC 仿真（CFC:Intrinsic）的 STS 控制器指令和测量力图 . . . . . . . . . . . . . . 188<br />
+D.1 使用 NME 和 1-DOF 装置进行非线性 SC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 190</p>
+<p>D.2 使用 NME 和 1-DOF 装置进行非线性 DC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 191<br />
+D.3 使用 NME 和 1-DOF 装置进行非线性 PSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 192<br />
+D.4 使用 NME 和 1-DOF 装置进行非线性 SSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 193<br />
+D.5 使用 αOS 和 1-DOF 装置进行非线性 SC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 194<br />
+D.6 使用 αOS 和 1-DOF 装置进行非线性 DC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 195<br />
+D.7 使用 αOS 和 1-DOF 装置进行非线性 PSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 196<br />
+D.8 使用 αOS 和 1-DOF 装置进行非线性 SSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 197<br />
+D.9 使用 NMF 和 1-DOF 装置进行非线性 SC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 198<br />
+D.10 使用 NMF 和 1-DOF 装置进行非线性 PSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 199<br />
+D.11 使用 NMF 和 1-DOF 装置进行非线性 SSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 200<br />
+D.12 使用 NMR 和 1-DOF 装置进行非线性 SC 混合仿真的位移和力-时间历程图 . . . . . . . . . . . . . . . . . . 201<br />
+D.13 使用 NMR 和 1-DOF 装置进行非线性 PSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 202<br />
+D.14 使用 NMR 和 1-DOF 装置进行非线性 SSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 203<br />
+D.15 使用 NMR 和 1-DOF 装置进行非线性 EPSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 204<br />
+D.16 使用 NMR 和 1-DOF 装置进行非线性 ESSC 混合仿真的 STS 控制器指令和测量位移图 . . . . . . . . . . . . . . 205<br />
+E.1 使用 NME 和 2-DOF 装置进行非线性 PMC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 207<br />
+E.2 使用 NME 和 2-DOF 装置进行非线性 PMC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 208<br />
+E.3 使用 NME 和 2-DOF 装置进行非线性 PMC:Broyden 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 209<br />
+E.4 使用 NME 和 2-DOF 装置进行非线性 PMC:Broyden 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 210<br />
+E.5 使用 NME 和 2-DOF 装置进行非线性 PMC:BFGS 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 211</p>
+<p>E.6 使用 NME 和 2-DOF 装置进行非线性 PMC:BFGS 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 212<br />
+E.7 使用 NME 和 2-DOF 装置进行非线性 PMC:Intrinsic 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 213<br />
+E.8 使用 NME 和 2-DOF 装置进行非线性 PMC:Intrinsic 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 214<br />
+E.9 使用 αOS 和 2-DOF 装置进行非线性 PMC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 216<br />
+E.10 使用 αOS 和 2-DOF 装置进行非线性 PMC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 217<br />
+E.11 使用 αOS 和 2-DOF 装置进行非线性 PMC:Broyden 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 218<br />
+E.12 使用 αOS 和 2-DOF 装置进行非线性 PMC:Broyden 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 219<br />
+E.13 使用 αOS 和 2-DOF 装置进行非线性 PMC:BFGS 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 220<br />
+E.14 使用 αOS 和 2-DOF 装置进行非线性 PMC:BFGS 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 221<br />
+E.15 使用 αOS 和 2-DOF 装置进行非线性 PMC:Intrinsic 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 222<br />
+E.16 使用 αOS 和 2-DOF 装置进行非线性 PMC:Intrinsic 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 223<br />
+E.17 使用 NMF 和 2-DOF 装置进行非线性 PMC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 225<br />
+E.18 使用 NMF 和 2-DOF 装置进行非线性 PMC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 226<br />
+E.19 使用 NMF 和 2-DOF 装置进行非线性 PMC:Broyden 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 227<br />
+E.20 使用 NMF 和 2-DOF 装置进行非线性 PMC:Broyden 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 228<br />
+E.21 使用 NMF 和 2-DOF 装置进行非线性 PMC:BFGS 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 229<br />
+E.22 使用 NMF 和 2-DOF 装置进行非线性 PMC:BFGS 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 230<br />
+E.23 使用 NMF 和 2-DOF 装置进行非线性 PMC:Intrinsic 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 231<br />
+E.24 使用 NMF 和 2-DOF 装置进行非线性 PMC:Intrinsic 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 232</p>
+<p>E.25 使用 NMR 和 2-DOF 装置进行非线性 PMC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 234<br />
+E.26 使用 NMR 和 2-DOF 装置进行非线性 PMC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 235<br />
+E.27 使用 NMR 和 2-DOF 装置进行非线性 PMC:BFGS 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 236<br />
+E.28 使用 NMR 和 2-DOF 装置进行非线性 PMC:BFGS 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 237<br />
+E.29 使用 NMR 和 2-DOF 装置进行非线性 PMC:Intrinsic 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 238<br />
+E.30 使用 NMR 和 2-DOF 装置进行非线性 PMC:Intrinsic 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 239<br />
+E.31 使用 NME 和 2-DOF 装置进行非线性 SMC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 241<br />
+E.32 使用 NME 和 2-DOF 装置进行非线性 SMC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 242<br />
+E.33 使用 NME 和 2-DOF 装置进行非线性 SMC:Broyden 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 243<br />
+E.34 使用 NME 和 2-DOF 装置进行非线性 SMC:Broyden 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 244<br />
+E.35 使用 NME 和 2-DOF 装置进行非线性 SMC:BFGS 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 245<br />
+E.36 使用 NME 和 2-DOF 装置进行非线性 SMC:BFGS 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 246<br />
+E.37 使用 NME 和 2-DOF 装置进行非线性 SMC:Intrinsic 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 247<br />
+E.38 使用 NME 和 2-DOF 装置进行非线性 SMC:Intrinsic 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 248<br />
+E.39 使用 αOS 和 2-DOF 装置进行非线性 SMC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 250<br />
+E.40 使用 αOS 和 2-DOF 装置进行非线性 SMC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 251<br />
+E.41 使用 αOS 和 2-DOF 装置进行非线性 SMC:Broyden 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 252<br />
+E.42 使用 αOS 和 2-DOF 装置进行非线性 SMC:Broyden 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 253<br />
+E.43 使用 αOS 和 2-DOF 装置进行非线性 SMC:BFGS 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 254</p>
+<p>E.44 使用 αOS 和 2-DOF 装置进行非线性 SMC:BFGS 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 255<br />
+E.45 使用 αOS 和 2-DOF 装置进行非线性 SMC:Intrinsic 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 256<br />
+E.46 使用 αOS 和 2-DOF 装置进行非线性 SMC:Intrinsic 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 257<br />
+E.47 使用 NMF 和 2-DOF 装置进行非线性 SMC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 259<br />
+E.48 使用 NMF 和 2-DOF 装置进行非线性 SMC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 260<br />
+E.49 使用 NMF 和 2-DOF 装置进行非线性 SMC:Broyden 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 261<br />
+E.50 使用 NMF 和 2-DOF 装置进行非线性 SMC:Broyden 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 262<br />
+E.51 使用 NMF 和 2-DOF 装置进行非线性 SMC:BFGS 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 263<br />
+E.52 使用 NMF 和 2-DOF 装置进行非线性 SMC:BFGS 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 264<br />
+E.53 使用 NMF 和 2-DOF 装置进行非线性 SMC:Intrinsic 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 265<br />
+E.54 使用 NMF 和 2-DOF 装置进行非线性 SMC:Intrinsic 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 266<br />
+E.55 使用 NMR 和 2-DOF 装置进行非线性 SMC 混合仿真的节点位移-时间历程图 . . . . . . . . . . . . . . . . . . 268<br />
+E.56 使用 NMR 和 2-DOF 装置进行非线性 SMC 混合仿真的节点力-时间历程图 . . . . . . . . . . . . . . . . . . 269<br />
+E.57 使用 NMR 和 2-DOF 装置进行非线性 SMC:Broyden 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 270<br />
+E.58 使用 NMR 和 2-DOF 装置进行非线性 SMC:Broyden 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 271<br />
+E.59 使用 NMR 和 2-DOF 装置进行非线性 SMC:BFGS 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 272<br />
+E.60 使用 NMR 和 2-DOF 装置进行非线性 SMC:BFGS 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 273<br />
+E.61 使用 NMR 和 2-DOF 装置进行非线性 SMC:Intrinsic 混合仿真的 STS 控制器底部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 274</p>
+<p>E.62 使用 NMR 和 2-DOF 装置进行非线性 SMC:Intrinsic 混合仿真的 STS 控制器顶部作动器指令和测量位移及力图 . . . . . . . . . . . . . . . 275</p>
+</section>
+<section id="id7">
+<h2>算法列表<a class="headerlink" href="#id7" title="链接到此标题。"></a></h2>
+<p>3.1 隐式 FC 算法 . . . . . . . . . . . . . . . . . . . . . . . . 25<br />
+3.2 BFGS 方法 . . . . . . . . . . . . . . . . . . . . . . . . . . 28<br />
+4.1 Elkhoraibi 和 Mosalam [7] 在时间步 n 的模式切换算法 . . . . . . . . . . . . . . . . 77<br />
+4.2 时间步 n 处软化试件的力限制切换策略 . . . . . . . . . . . . . . . 7 9<br />
+4.3 时间步 n 处软化试件的力限制切换策略 . . . . . . . . . . . . . . 79<br />
+4.4 时间步 n 处的割线限制切换策略 . . . . . . . . . . . . . . . 80</p>
+</section>
+<section id="id8">
+<h2>符号和缩略词列表<a class="headerlink" href="#id8" title="链接到此标题。"></a></h2>
+<p>本论文使用以下符号和缩略词：</p>
+<p>FEA <span class="math notranslate nohighlight">\(=\)</span> 有限元分析</p>
+<p>DOF <span class="math notranslate nohighlight">\(=\)</span> 自由度</p>
+<p>DOFs <span class="math notranslate nohighlight">\(=\)</span> 多个自由度</p>
+<p>DAQ <span class="math notranslate nohighlight">\(=\)</span> 数据采集系统</p>
+<p>PID 控制器 <span class="math notranslate nohighlight">\(=\)</span> 比例积分微分控制器</p>
+<p>LVDT <span class="math notranslate nohighlight">\(=\)</span> 线性可变差动变压器</p>
+<p>LC <span class="math notranslate nohighlight">\(=\)</span> 载荷传感器</p>
+<p>NEES <span class="math notranslate nohighlight">\(=\)</span> George E. Brown, Jr. 地震工程模拟网络</p>
+<p>nees <span class="math notranslate nohighlight">\(&#64;\)</span> berkeley <span class="math notranslate nohighlight">\(=\)</span> 加州大学伯克利分校 NEES 结构工程实验室</p>
+<p>MTS-STS <span class="math notranslate nohighlight">\(=\)</span> MTS-结构测试软件</p>
+<p>OpenFresco <span class="math notranslate nohighlight">\(=\)</span> 实验装置与控制的开源框架</p>
+<p>OpenSEES <span class="math notranslate nohighlight">\(=\)</span> 地震工程模拟开源系统</p>
+<p>API <span class="math notranslate nohighlight">\(=\)</span> 应用程序接口</p>
+<p>SCRAMNet <span class="math notranslate nohighlight">\(=\)</span> 共享公共随机存取存储器网络</p>
+<p>UML <span class="math notranslate nohighlight">\(=\)</span> 统一建模语言</p>
+<p>M = 质量矩阵</p>
+<p>C = 粘性阻尼矩阵</p>
+<p>K = 刚度矩阵</p>
+<p><span class="math notranslate nohighlight">\(\mathbf { K } _ { t }\)</span> = 切线刚度矩阵</p>
+<p><span class="math notranslate nohighlight">\(\mathbf { K } _ { 0 }\)</span> = 初始刚度矩阵</p>
+<p><span class="math notranslate nohighlight">\(k\)</span> = 刚度</p>
+<p><span class="math notranslate nohighlight">\(k _ { t }\)</span> = 切线刚度</p>
+<p><span class="math notranslate nohighlight">\(k _ { 0 }\)</span> = 初始刚度</p>
+<p>HHT <span class="math notranslate nohighlight">\(=\)</span> Hiber-Hughes-Talyor</p>
+<p><span class="math notranslate nohighlight">\(u _ { i }\)</span> = 时间步 i 处的节点位移</p>
+<p><span class="math notranslate nohighlight">\(\mathbf { u } _ { i }\)</span> = 时间步 i 处的节点位移向量</p>
+<p><span class="math notranslate nohighlight">\(\dot { u } _ { i }\)</span> = 时间步 i 处的节点速度</p>
+<p><span class="math notranslate nohighlight">\(\dot { \mathbf { u } } _ { i }\)</span> = 时间步 i 处的节点速度向量</p>
+<p><span class="math notranslate nohighlight">\(\ddot { u } _ { i }\)</span> = 时间步 i 处的节点加速度</p>
+<p><span class="math notranslate nohighlight">\(\ddot { \mathbf { u } } _ { i }\)</span> = 时间步 i 处的节点加速度向量</p>
+<p><span class="math notranslate nohighlight">\(\ddot { u } _ { g }\)</span> = 记录的地面加速度</p>
+<p><span class="math notranslate nohighlight">\(\mathbf { f } _ { i }\)</span> = 时间步 i 处的节点荷载向量</p>
+<p><span class="math notranslate nohighlight">\(r ( u _ { i } )\)</span> 或 r = 作为 <span class="math notranslate nohighlight">\(u _ { i }\)</span> 函数的节点抵抗力</p>
+<p><span class="math notranslate nohighlight">\(\mathbf { r } ( \mathbf { u } _ { i } )\)</span> 或 r = 作为 <span class="math notranslate nohighlight">\(\mathbf { u } _ { i }\)</span> 函数的节点抵抗力向量</p>
+<p><span class="math notranslate nohighlight">\(\hat { r } ( \hat { u } _ { i } )\)</span> 或 <span class="math notranslate nohighlight">\(\hat { r }\)</span> = 作为 <span class="math notranslate nohighlight">\(\hat { u } _ { i }\)</span> 函数的单元抵抗力</p>
+<p><span class="math notranslate nohighlight">\(\hat { \mathbf { r } } ( \hat { \mathbf { u } } _ { i } )\)</span> 或 <span class="math notranslate nohighlight">\(\hat{\mathbf{r}}\)</span> = 作为 <span class="math notranslate nohighlight">\(\hat { \mathbf { u } } _ { i }\)</span> 函数的单元抵抗力向量</p>
+<p><span class="math notranslate nohighlight">\(\tilde { u } _ { i }\)</span> = 时间步 i 处的节点预测位移</p>
+<p><span class="math notranslate nohighlight">\(\tilde { \mathbf { u } } _ { i }\)</span> = 时间步 i 处的节点预测位移向量</p>
+<p><span class="math notranslate nohighlight">\(\begin{array} { r l } { \tilde { \dot { u } } _ { i } } &amp; { { } = } \end{array}\)</span> <span class="math notranslate nohighlight">\(\tilde { \dot { u } } _ { i }\)</span> 时间步 i 处的节点预测速度</p>
+<p><span class="math notranslate nohighlight">\(\tilde { \dot { \mathbf { u } } } _ { i }\)</span> = 时间步 i 处的节点预测速度向量</p>
+<p><span class="math notranslate nohighlight">\(\hat { u } _ { i }\)</span> = 时间步 i 处实验单元坐标系中的试验位移</p>
+<p><span class="math notranslate nohighlight">\(\hat{\mathbf{u}} _ { i }\)</span> = 时间步 i 处实验单元坐标系中的试验位移向量</p>
+<p><span class="math notranslate nohighlight">\(\hat{f}_i\)</span> = 时间步 i 处实验单元坐标系中的试验力</p>
+<p><span class="math notranslate nohighlight">\(\hat{\mathbf{f}}_i\)</span> = 时间步 i 处实验单元坐标系中的试验力向量</p>
+<p><span class="math notranslate nohighlight">\(\breve { u } _ { i }\)</span> = 时间步 i 处作动器坐标系中的试验位移</p>
+<p><span class="math notranslate nohighlight">\(\breve { \mathbf { u } } _ { i }\)</span> = 时间步 i 处作动器坐标系中的试验位移向量</p>
+<p><span class="math notranslate nohighlight">\(\begin{array} { r l } { \breve { f } _ { i } } &amp; { { } = } \end{array}\)</span> 时间步 i 处作动器坐标系中的试验力</p>
+<p><span class="math notranslate nohighlight">\(\breve{\mathbf{f}}_i\)</span> = 时间步 i 处作动器坐标系中的试验力向量</p>
+<p><span class="math notranslate nohighlight">\({ { \bar { u } } _ { i } }\)</span> = 时间步 i 处作动器坐标系中的测量位移</p>
+<p><span class="math notranslate nohighlight">\(\bar { \mathbf { u } } _ { i }\)</span> = 时间步 i 处作动器坐标系中的测量位移向量</p>
+<p><span class="math notranslate nohighlight">\(\bar { \dot { u } } _ { i }\)</span> = 时间步 i 处作动器坐标系中的测量位移</p>
+<p><span class="math notranslate nohighlight">\(\bar{\dot{\mathbf{u}}}_i\)</span> = 时间步 i 处作动器坐标系中的测量位移向量</p>
+<p><span class="math notranslate nohighlight">\(\bar { i } _ { i }\)</span> = 时间步 i 处作动器坐标系中的测量位移</p>
+<p><span class="math notranslate nohighlight">\(\bar{\ddot{\mathbf{u}}}_i\)</span> = 时间步 i 处作动器坐标系中的测量位移向量</p>
+<p><span class="math notranslate nohighlight">\(\bar{f}_i\)</span> = 时间步 i 处作动器坐标系中的测量抵抗力</p>
+<p><span class="math notranslate nohighlight">\(\bar{\mathbf{f}}_i\)</span> = 时间步 i 处作动器坐标系中的测量抵抗力向量</p>
+<p><span class="math notranslate nohighlight">\(\check{u}_i\)</span> = 时间步 i 处实验单元坐标系中的测量位移</p>
+<p><span class="math notranslate nohighlight">\(\check{\mathbf{u}}_i\)</span> = 时间步 i 处实验单元坐标系中的测量位移向量</p>
+<p><span class="math notranslate nohighlight">\(\begin{array} { r l } { \check { f } _ { i } } &amp; { { } = } \end{array}\)</span> 时间步 i 处实验单元坐标系中的测量抵抗力</p>
+<p><span class="math notranslate nohighlight">\(\check{\mathbf{f}}_i\)</span> = 时间步 i 处实验单元坐标系中的测量抵抗力向量</p>
+<p><span class="math notranslate nohighlight">\(r ( \tilde { u } _ { i } )\)</span> = 时间步 i 处的节点测量抵抗力</p>
+<p><span class="math notranslate nohighlight">\(\mathbf { r } ( \widetilde { \mathbf { u } } _ { i } )\)</span> = 时间步 i 处的节点测量抵抗力向量</p>
+<p>EFT <span class="math notranslate nohighlight">\(=\)</span> 有效力测试</p>
+<p>ODE <span class="math notranslate nohighlight">\(=\)</span> 常微分方程</p>
+<p>DC <span class="math notranslate nohighlight">\(=\)</span> 位移控制</p>
+<p>CFC <span class="math notranslate nohighlight">\(=\)</span> 兼容性力控制</p>
+<p>EFC <span class="math notranslate nohighlight">\(=\)</span> 平衡力控制</p>
+<p>NME <span class="math notranslate nohighlight">\(=\)</span> Newmark 显式时间积分方案</p>
+<p>NMR <span class="math notranslate nohighlight">\(=\)</span> Newmark 减缩增量时间积分方案</p>
+<p>NMF <span class="math notranslate nohighlight">\(=\)</span> Newmark 固定迭代时间积分方案</p>
+<p>αOS <span class="math notranslate nohighlight">\(=\)</span> α 算子分裂时间积分方案</p>
+</section>
+<section id="id9">
+<h2>致谢<a class="headerlink" href="#id9" title="链接到此标题。"></a></h2>
+<p>首先也是最重要的，我感谢我的主耶稣基督，通过他一切成为可能。我真是个有福的人。</p>
+<p>我感谢我的妻子 Tami Kim。她从始至终支持我这项事业。在我低谷时鼓励我，在我高光时与我同乐。没有她的支持和祈祷，我无法完成学业。我的孩子 Evie 和 Caleb 也用他们无数的微笑、拥抱和亲吻鼓励了我。</p>
+<p>我向我的导师 Bozidar Stojadinoviˇc 教授表达最深切的感谢。他给予我进行研究的灵感和支持。他在为学生提供指导和自由之间拥有罕见的平衡。能与最优秀的人一起工作是我的荣幸。</p>
+<p>Stephen A. Mahin 教授和 Gregory L. Fenves 院长在我研究生学习早期就建议我进入混合仿真这一领域。他们都是一流的学者。我感谢他们的指导和远见。我要感谢 Jon Wilkening、Khalid M. Mosalam 教授以及 Horst D. Simon 博士参与我的资格考试委员会。他们为我提供了宝贵的指导。其中，特别感谢 Stephen A. Mahin 教授和 Jon Wilkening 教授同意担任我的论文指导委员会委员。</p>
+<p>没有我的研究生同学和朋友们的帮助和陪伴，我无法完成博士学业。我深感 Andreas Schellenberg 博士的恩惠，他对结构工程的热情具有感染力。他在每一个环节都帮助我，并向我伸出友谊之手。Tony Yang 教授以他的学术勤奋和热情激励了我。John-Michael Wong 博士和 Matthew Dryden 博士是我在基督里的好兄弟。我感谢他们在整个学习过程中对我的祈祷和建议。</p>
+<p>特别感谢 nees&#64;berkeley 实验室的工作人员。没有他们的支持，我无法完成我的实验。Selim Gunay 博士无数次重新安排他的日程来帮助我完成实验。他也是我的好朋友。最后但同样重要的是，Shakhzod Takhirov 博士和 Donald Patterson 在我需要实验室设备帮助时总是在那里。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="Appendix2: Development and implementation of advanced control methods for hybrid simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="ch1.html" class="btn btn-neutral float-right" title="第 1 章 引言" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8.1. expControlPoint 命令 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="9. expRecorder 命令" href="../expRecorder/index.html" />
+    <link rel="prev" title="8. expControlPoint 命令" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. expControlPoint 命令</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.1. expControlPoint 命令</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">8.1.1. 命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">8.1.2. 示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix2/index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">8. </span>expControlPoint 命令</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">8.1. </span>expControlPoint 命令</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expControlPoint/expControlPoint.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="expcontrolpoint">
+<h1><span class="section-number">8.1. </span>expControlPoint 命令<a class="headerlink" href="#expcontrolpoint" title="链接到此标题。"></a></h1>
+<p>此命令用于构造 expControlPoint 对象。当使用控制点进行测试时，使用 expControlPoint 命令。例如，使用 LabVIEW 实验控制命令时需要控制点。由于 MTS MiniMost 由 LabVIEW 控制，无法设置安全限制，因此使用 expControlPoint 命令来设置此类限制。</p>
+<section id="id1">
+<h2><span class="section-number">8.1.1. </span>命令<a class="headerlink" href="#id1" title="链接到此标题。"></a></h2>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">expControlPoint</span><span class="w"> </span><span class="nv">$tag</span><span class="w"> </span><span class="o">&lt;-</span>node<span class="w"> </span><span class="nv">$nodeTag</span><span class="o">&gt;</span><span class="w"> </span>dof<span class="w"> </span>resp<span class="w"> </span><span class="o">&lt;-</span>fact<span class="w"> </span><span class="nv">$f</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>lim<span class="w"> </span><span class="nv">$l</span><span class="w"> </span><span class="nv">$u</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>relTrial<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>relOut<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>relCtrl<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>relDaq<span class="o">&gt;</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>参数</p></th>
+<th class="head text-left"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>$tag</p></td>
+<td class="text-left"><p>唯一控制点标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$nodeTag</p></td>
+<td class="text-left"><p>唯一节点标签</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>dof</p></td>
+<td class="text-left"><p>响应量的方向。2d：&quot;1&quot; = X 轴方向、&quot;2&quot; = Y 轴方向，&quot;3&quot; = Z 轴方向的旋转。3d：&quot;1&quot; = X 轴方向、&quot;2&quot; = Y 轴方向、&quot;3&quot; = Z 轴方向、&quot;4&quot; = X 轴方向的旋转、&quot;5&quot; = Y 轴方向的旋转、&quot;6&quot; = Z 轴方向的旋转 (旧版命令使用的是dir:&quot;ux&quot;，&quot;uy&quot;，&quot;uz&quot;，&quot;rx&quot;，&quot;ry&quot;，&quot;rz&quot;，现在已经废弃)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>resp</p></td>
+<td class="text-left"><p>响应量；输入参数为：disp = 位移、vel = 速度、accel = 加速度、force = 力、time = 时间</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>$f</p></td>
+<td class="text-left"><p>应用于响应量的因子（可选）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$l</p></td>
+<td class="text-left"><p>下限（可选）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>$u</p></td>
+<td class="text-left"><p>上限（可选）</p></td>
+</tr>
+</tbody>
+</table>
+<p>&lt;注意:dof和resp必须输入字符串，尤其在python版本中，使用&quot;1&quot; 和&quot;disp&quot;。</p>
+<p>控制点表示用于向控制器发送命令信号或从数据采集系统获取反馈信号的一个或多个方向（自由度）的逻辑容器。控制点表示输出控制通道或输入数据采集通道的逻辑分组。要定义测试配置的控制和数据采集轴，使用 expControlPoint 对象的方向（dir）属性。每个方向（自由度）与控制通道和响应量相关联。控制点集和控制点内的方向集定义了使用控制点的 expControl 对象的控制轴及其预期顺序。</p>
+<p>类似地，控制点集和控制点内的方向集定义了从 expControl 对象接收的反馈轴及其预期顺序。此外，expControlPoint 命令允许为每个响应量定义缩放因子以及下限和上限。可选的缩放因子可用于在不同单位之间转换和/或考虑相似定律。最后，如果控制系统中无法设置安全限制，则可以调用可选的限制。</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">8.1.2. </span>示例<a class="headerlink" href="#id2" title="链接到此标题。"></a></h2>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># Define geometry for model</span>
+<span class="w"> </span>
+<span class="k">set</span><span class="w"> </span>mass3<span class="w"> </span><span class="mf">0.04</span>
+<span class="k">set</span><span class="w"> </span>mass4<span class="w"> </span><span class="mf">0.02</span>
+<span class="c"># node $tag $xCrd $yCrd $mass</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="mf">0.00</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">100.0</span><span class="w"> </span><span class="mf">0.00</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="mf">54.00</span><span class="w"> </span><span class="o">-</span>mass<span class="w"> </span><span class="nv">$mass3</span><span class="w"> </span><span class="nv">$mass3</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mf">100.0</span><span class="w"> </span><span class="mf">54.00</span><span class="w"> </span><span class="o">-</span>mass<span class="w"> </span><span class="nv">$mass4</span><span class="w"> </span><span class="nv">$mass4</span>
+<span class="c"># Define experimental control points</span>
+<span class="w"> </span>
+<span class="nv">expControlPoint</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>ux<span class="w"> </span>disp<span class="w"> </span><span class="o">-</span>fact<span class="w"> </span><span class="mf">0.003</span><span class="w"> </span><span class="o">-</span>lim<span class="w"> </span><span class="o">-</span><span class="mf">0.01</span><span class="w"> </span><span class="mf">0.01</span>
+<span class="nv">expControlPoint</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>ux<span class="w"> </span>disp<span class="w"> </span><span class="o">-</span>fact<span class="w"> </span><span class="mf">0.003</span><span class="w"> </span>ux<span class="w"> </span>force<span class="w"> </span><span class="o">-</span>fact<span class="w"> </span><span class="k">[expr</span><span class="w"> </span><span class="mf">18.0</span><span class="o">/</span><span class="mf">7.0</span><span class="k">]</span>
+<span class="c"># Define experimental control</span>
+<span class="w"> </span>
+<span class="nv">expControl</span><span class="w"> </span>LabVIEW<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s2">&quot;130.126.242.175&quot;</span><span class="w"> </span><span class="mi">44000</span><span class="w"> </span><span class="o">-</span>trialCP<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>outCP<span class="w"> </span><span class="mi">2</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>此示例使用节点 1 作为实验控制点。第一个控制点将 x 方向的位移乘以 0.003，并将下限设置为 -0.01，上限设置为 0.01。第二个控制点将 x 方向的位移乘以 0.002，将 x 方向的力乘以 [expr 18.0/7.0] = 2.57。第一个控制点用于 LabVIEW 试命令（位移），第二个用于 LabVIEW 输出反馈（测量位移和力）。</p>
+<p>以下是代表相同物理系统的两个控制点设置。在设置 1 中，单个控制点有两个方向（自由度），每个方向将映射到平移或旋转控制通道。控制系统必须正确转换控制通道以匹配物理测试装置（使用 NoTransformation 实验装置）。设置 2 从适当的 expSetup 对象接收正确转换的响应量，因此每个具有单个方向（自由度）的控制点直接映射到简单的控制通道。</p>
+<p><img alt="" src="../_images/cp1.jpg" />
+<strong>图 31：两种根本不同的控制点设置（由 MTS 提供）</strong></p>
+<p><img alt="" src="../_images/cp2.jpg" />
+<strong>图 32：具有两个控制点的示例</strong></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="8. expControlPoint 命令" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../expRecorder/index.html" class="btn btn-neutral float-right" title="9. expRecorder 命令" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

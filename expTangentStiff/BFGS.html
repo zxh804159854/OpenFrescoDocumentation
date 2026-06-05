@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.2. BFGS &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="7.3. Broyden" href="Broyden.html" />
+    <link rel="prev" title="7.1. expTangentStiff 简介" href="expTangentStiff.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. expTangentStiff 命令</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="expTangentStiff.html">7.1. expTangentStiff 简介</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.2. BFGS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.2.1. 命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.2.2. 示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.2.3. 参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Broyden.html">7.3. Broyden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Transpose.html">7.4. Transpose</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix2/index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">7. </span>expTangentStiff 命令</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7.2. </span>BFGS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expTangentStiff/BFGS.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="bfgs">
+<h1><span class="section-number">7.2. </span>BFGS<a class="headerlink" href="#bfgs" title="链接到此标题。"></a></h1>
+<p>使用 BFGS 方法来估计切线刚度矩阵。</p>
+<section id="id1">
+<h2><span class="section-number">7.2.1. </span>命令<a class="headerlink" href="#id1" title="链接到此标题。"></a></h2>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">expTangentStiff</span><span class="w"> </span>BFGS<span class="w"> </span>tag<span class="w"> </span><span class="o">&lt;-</span>eps<span class="w"> </span>value<span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>与 Carrion 和 Spencer 类似，Igarashi 等人 [11] 使用 Broyden-Fletcher-Goldfarb-Shanno（BFGS）方法开发了算法 3.2，以在五层全尺寸建筑的混合仿真过程中更新切线刚度矩阵。他们利用刚度矩阵来缩放作动器运动。该算法使用已知的 <span class="math notranslate nohighlight">\(\Delta \bar { \mathbf { u } } _ { n }\)</span> 和 <span class="math notranslate nohighlight">\(\Delta \bar { \mathbf { f } } _ { n }\)</span> 对。方程 3.14 可以从方程 3.11 推导出来。</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta \bar {\mathbf {f}} _ {n} = \mathbf {K} _ {n} ^ {A c t} \Delta \bar {\mathbf {u}} _ {n} \tag {3.14}
+\]</div>
+<p>BFGS 是 Broyden 方法的一个变种。BFGS 方法假设刚度矩阵是对称正定的，这是一个有效的假设。该算法遵循最小更新方法。具有较小 Forbenius 范数的增量刚度 <span class="math notranslate nohighlight">\(\Delta \mathbf { K } _ { n } ^ { A c t }\)</span> 更新刚度矩阵。算法 3.2 中的 ε 参数取决于测量设备的精度。设置该参数是为了防止测量设备的噪声错误地触发更新。</p>
+<p><img alt="" src="../_images/BFGS.jpg" /></p>
+</section>
+<section id="id2">
+<h2><span class="section-number">7.2.2. </span>示例<a class="headerlink" href="#id2" title="链接到此标题。"></a></h2>
+<p>这个示例来自于OpenFresco/EXAMPLES/TrussModel
+/Truss_Local.tcl</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># create ModelBuilder (with two-dimensions and 2 DOF/node)</span>
+<span class="nv">model</span><span class="w"> </span>BasicBuilder<span class="w"> </span><span class="o">-</span>ndm<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span>ndf<span class="w"> </span><span class="mi">2</span>
+
+<span class="c"># Load OpenFresco package</span>
+<span class="c"># -----------------------</span>
+<span class="c"># (make sure all dlls are in the same folder as openSees.exe)</span>
+<span class="nv">loadPackage</span><span class="w"> </span>OpenFresco
+
+<span class="c"># Define geometry for model</span>
+<span class="c"># -------------------------</span>
+<span class="c"># node $tag $xCrd $yCrd $mass</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">144.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mf">168.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="nv">node</span><span class="w"> </span><span class="mi">4</span><span class="w">  </span><span class="mf">72.0</span><span class="w"> </span><span class="mf">96.0</span>
+
+<span class="c"># set the boundary conditions</span>
+<span class="c"># fix $tag $DX $DY</span>
+<span class="nv">fix</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>
+fix<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span>
+<span class="nv">fix</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="c"># Define materials</span>
+<span class="c"># ----------------</span>
+<span class="k">set</span><span class="w"> </span>E<span class="w"> </span><span class="mf">3000.0</span>
+<span class="k">set</span><span class="w"> </span>A3<span class="w"> </span><span class="mf">5.0</span>
+<span class="k">set</span><span class="w"> </span>L3<span class="w"> </span><span class="k">[expr</span><span class="w"> </span>sqrt<span class="k">(</span><span class="nv">pow</span><span class="k">(</span><span class="nv">168.0-72.0</span>,2.0<span class="k">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>pow<span class="k">(</span><span class="nv">96.0</span>,2.0<span class="k">))]</span>
+<span class="k">set</span><span class="w"> </span>kInit<span class="w"> </span><span class="k">[expr</span><span class="w"> </span><span class="nv">$E</span><span class="o">*</span><span class="nv">$A3</span><span class="o">/</span><span class="nv">$L3</span><span class="k">]</span>
+<span class="c"># uniaxialMaterial Elastic $matTag $E</span>
+<span class="nv">uniaxialMaterial</span><span class="w"> </span>Elastic<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nv">$E</span>
+<span class="c">#uniaxialMaterial Elastic 2 $kInit</span>
+<span class="nv">uniaxialMaterial</span><span class="w"> </span>Steel01<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">50.0</span><span class="w"> </span><span class="nv">$kInit</span><span class="w"> </span><span class="mf">0.1</span>
+
+<span class="c"># Define experimental control</span>
+<span class="c"># ---------------------------</span>
+<span class="c"># expControl SimUniaxialMaterials $tag $matTags</span>
+<span class="nv">expControl</span><span class="w"> </span>SimUniaxialMaterials<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="c"># Define experimental setup</span>
+<span class="c"># -------------------------</span>
+<span class="c"># expSetup OneActuator $tag &lt;-control $ctrlTag&gt; $dir -sizeTrialOut $t $o &lt;-trialDispFact $f&gt; ...</span>
+<span class="nv">expSetup</span><span class="w"> </span>OneActuator<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>control<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>sizeTrialOut<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="c"># Define experimental site</span>
+<span class="c"># ------------------------</span>
+<span class="c"># expSite LocalSite $tag $setupTag</span>
+<span class="nv">expSite</span><span class="w"> </span>LocalSite<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="c"># Define experimental tangent stiffness</span>
+<span class="c"># -------------------------------------</span>
+<span class="c"># expTangentStiff Broyden $tag</span>
+<span class="nv">expTangentStiff</span><span class="w"> </span>Broyden<span class="w"> </span><span class="mi">1</span>
+<span class="c"># expTangentStiff BFGS $tag &lt;-eps $value&gt;</span>
+<span class="c">#expTangentStiff BFGS 1</span>
+<span class="c"># expTangentStiff Transpose $tag $numCols</span>
+<span class="c">#expTangentStiff Transpose 1 1</span>
+
+<span class="c"># Define numerical elements</span>
+<span class="c"># -------------------------</span>
+<span class="c"># element truss $eleTag $iNode $jNode $A $matTag</span>
+<span class="nv">element</span><span class="w"> </span>truss<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mf">10.0</span><span class="w"> </span><span class="mi">1</span>
+<span class="nv">element</span><span class="w"> </span>truss<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w">  </span><span class="mf">5.0</span><span class="w"> </span><span class="mi">1</span>
+<span class="c">#element corotTruss 1 1 4 10.0 1</span>
+<span class="c">#element corotTruss 2 2 4  5.0 1</span>
+
+<span class="c"># Define experimental element</span>
+<span class="c"># ---------------------------</span>
+<span class="c"># expElement truss $eleTag $iNode $jNode -site $siteTag -initStif $Kij &lt;-tangStif tangStifTag&gt; &lt;-iMod&gt; &lt;-rho $rho&gt; </span>
+<span class="nv">expElement</span><span class="w"> </span>truss<span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">-</span>site<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>initStif<span class="w"> </span><span class="nv">$kInit</span><span class="w"> </span><span class="o">-</span>tangStif<span class="w"> </span><span class="mi">1</span>
+<span class="c">#expElement corotTruss 3 3 4 -site 1 -initStif $kInit -tangStif 1</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.2.3. </span>参考<a class="headerlink" href="#id3" title="链接到此标题。"></a></h2>
+<p>[1]Kim, H.K., (2011). Development and implementation of advanced control methods for hybrid simulation. Ph.D. Dissertation, University of California, Berkeley, California.</p>
+<p>[11]A. Igarashi, F. Seible, and G. Hegemier. Development of the pseudodynamic technique for  testing a full scale 5-story shear wall structure. In Development and Future Dimensions of Structural Testing Techniques, 1993.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="expTangentStiff.html" class="btn btn-neutral float-left" title="7.1. expTangentStiff 简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Broyden.html" class="btn btn-neutral float-right" title="7.3. Broyden" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

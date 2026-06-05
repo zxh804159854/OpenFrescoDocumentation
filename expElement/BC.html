@@ -1,0 +1,900 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.9. 梁柱单元坐标体系及变换关系 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="4. expSetup 命令" href="../expSetup/index.html" />
+    <link rel="prev" title="3.8. bearing 支承实验单元" href="bearing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. expElement 命令</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="expElement.html">3.1. expElement 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beamColumn.html">3.2. beamColumn 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic.html">3.3. generic 实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="invertedVBrace.html">3.4. invertedVBrace 倒V型支撑（二维）实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="truss.html">3.5. truss 桁架实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="corotTruss.html">3.6. corotTruss 共转坐标桁架实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twoNodeLink.html">3.7. twoNodeLink 两点连接实验单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bearing.html">3.8. bearing 支承实验单元</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.9. 梁柱单元坐标体系及变换关系</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d">3.9.1. 2D 梁柱单元坐标体系及变换关系</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">3.9.1.1. 问题描述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3.9.1.2. 符号定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">3.9.1.3. 位移变换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3.9.1.4. 力变换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">3.9.1.5. 刚度转换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">3.9.1.6. 物理含义总结</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">3.9.2. 3D 梁柱单元坐标体系及变换关系</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">3.9.2.1. 问题描述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">3.9.2.2. 符号定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">3.9.2.3. 位移变换</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix2/index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">3. </span>expElement 命令</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.9. </span>梁柱单元坐标体系及变换关系</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expElement/BC.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">3.9. </span>梁柱单元坐标体系及变换关系<a class="headerlink" href="#id1" title="链接到此标题。"></a></h1>
+<section id="d">
+<h2><span class="section-number">3.9.1. </span>2D 梁柱单元坐标体系及变换关系<a class="headerlink" href="#d" title="链接到此标题。"></a></h2>
+<section id="id2">
+<h3><span class="section-number">3.9.1.1. </span>问题描述<a class="headerlink" href="#id2" title="链接到此标题。"></a></h3>
+<p>在二维梁柱单元中，通常涉及四类坐标或自由度体系：</p>
+<ol class="arabic simple">
+<li><p>Global system，全局坐标系；</p></li>
+<li><p>Local system，单元局部坐标系；</p></li>
+<li><p>Basic system A，结构理论 basic 坐标系（即 OpenSees 里面的basic坐标系 ）；</p></li>
+<li><p>Basic system B，实验控制 basic 坐标系（OpenFresco 独有）。</p></li>
+</ol>
+<p>其中，Global system 用于结构整体平衡方程，Local system 用于描述构件轴向和横向方向，Basic system A 用于 OpenSees 中梁柱单元的理论基本自由度（即 OpenSees 里面的basic坐标系），Basic system B 用于 OpenFresco 实验单元的控制与量测自由度(在这里就是悬臂柱单元)。</p>
+<p>本文整理 2D 梁柱单元中 Global、Local、Basic system A 和 Basic system B 之间的位移、力和刚度变换关系。</p>
+<ul class="simple">
+<li><p>在程序中，Global、Local、Basic system A之间的转换由 geomTransf Linear、PDelta和Corotational完成。</p></li>
+<li><p>Basic system A 和 Basic system B 之间的转换由 expElement beamColumn （即源码OpenFresco/SRC/experimentalElement
+/EEBeamColumn2d.cpp ）完成，这里的转换只说明了linear转换，非线性转换参考源代码。</p></li>
+</ul>
+<p><img alt="BC2d" src="../_images/beamColumn.jpg" /></p>
+</section>
+<section id="id3">
+<h3><span class="section-number">3.9.1.2. </span>符号定义<a class="headerlink" href="#id3" title="链接到此标题。"></a></h3>
+<section id="id4">
+<h4><span class="section-number">3.9.1.2.1. </span>位移向量<a class="headerlink" href="#id4" title="链接到此标题。"></a></h4>
+<p>全局位移向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_g=
+[x_1,y_1,rz_1,x_2,y_2,rz_2]^T
+\]</div>
+<p>局部位移向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_l=
+[x_1^l,y_1^l,rz_1^l,x_2^l,y_2^l,rz_2^l]^T
+\]</div>
+<p>Basic system A 位移向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_{A}=[eps,theta_1,theta_2]^T=
+[\epsilon,\theta_1,\theta_2]^T
+\]</div>
+<div class="math notranslate nohighlight">
+\[\epsilon=\text{轴向伸长},
+\theta_{1}=\text{i端基本转角},\theta_{2}=\text{j端基本转角}\]</div>
+<p>Basic system B 位移向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_{B}=
+[d_{b1},d_{b2},d_{b3}]^T
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b1}=\text{轴向位移},d_{b2}=\text{横向位移},d_{b3}=\text{相对转角}
+\]</div>
+</section>
+<section id="id5">
+<h4><span class="section-number">3.9.1.2.2. </span>力向量<a class="headerlink" href="#id5" title="链接到此标题。"></a></h4>
+<p>全局力向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf P=
+[P_{x1},P_{y1},M_{z1},P_{x2},P_{y2},M_{z2}]^T
+\]</div>
+<p>局部力向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf Q=
+[N_1,V_1,M_1,N_2,V_2,M_2]^T
+\]</div>
+<p>Basic system A 力向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{A}=
+[N_{a},M_{a1},M_{a2}]^T
+\]</div>
+<p>Basic system B 力向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{B}=
+[q_{b1},q_{b2},q_{b3}]^T
+\]</div>
+</section>
+<section id="id6">
+<h4><span class="section-number">3.9.1.2.3. </span>局部坐标系与方向余弦<a class="headerlink" href="#id6" title="链接到此标题。"></a></h4>
+<p>对于二维梁柱单元，局部 <span class="math notranslate nohighlight">\(x\)</span> 轴沿构件节点 <span class="math notranslate nohighlight">\(i \rightarrow j\)</span> 方向。设节点 <span class="math notranslate nohighlight">\(i\)</span> 和节点 <span class="math notranslate nohighlight">\(j\)</span> 的全局坐标分别为 <span class="math notranslate nohighlight">\((x_i,y_i)\)</span> 和 <span class="math notranslate nohighlight">\((x_j,y_j)\)</span>，则单元长度为</p>
+<div class="math notranslate nohighlight">
+\[
+L=\sqrt{(x_j-x_i)^2+(y_j-y_i)^2}
+\]</div>
+<p>局部 <span class="math notranslate nohighlight">\(x\)</span> 轴相对于全局坐标系的方向余弦为</p>
+<div class="math notranslate nohighlight">
+\[
+c=\cos\theta=\frac{x_j-x_i}{L}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+s=\sin\theta=\frac{y_j-y_i}{L}
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(c\)</span> 和 <span class="math notranslate nohighlight">\(s\)</span> 分别为局部 <span class="math notranslate nohighlight">\(x\)</span> 轴在全局 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span> 方向上的投影。</p>
+<!-- ![BC2d](geomTransf_BC2d.png) -->
+</section>
+</section>
+<section id="id7">
+<h3><span class="section-number">3.9.1.3. </span>位移变换<a class="headerlink" href="#id7" title="链接到此标题。"></a></h3>
+<section id="global-local">
+<h4><span class="section-number">3.9.1.3.1. </span>Global 到 Local 的位移变换<a class="headerlink" href="#global-local" title="链接到此标题。"></a></h4>
+<p>Global 到 Local 的位移变换为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_l=\mathbf T_{lg}\mathbf U_g
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\mathbf T_{lg}\)</span> 为 Global 到 Local 的坐标变换矩阵：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf T_{lg}=
+\begin{bmatrix}
+c&amp;s&amp;0&amp;0&amp;0&amp;0\\
+-s&amp;c&amp;0&amp;0&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;c&amp;s&amp;0\\
+0&amp;0&amp;0&amp;-s&amp;c&amp;0\\
+0&amp;0&amp;0&amp;0&amp;0&amp;1
+\end{bmatrix}
+\end{split}\]</div>
+<p>因此有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x_1^l &amp;= c x_1+s y_1 \\
+y_1^l &amp;= -s x_1+c y_1 \\
+rz_1^l &amp;= rz_1 \\
+x_2^l &amp;= c x_2+s y_2 \\
+y_2^l &amp;= -s x_2+c y_2 \\
+rz_2^l &amp;= rz_2
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="local-system-basic-system-a">
+<h4><span class="section-number">3.9.1.3.2. </span>Local system 到 Basic system A 的转换<a class="headerlink" href="#local-system-basic-system-a" title="链接到此标题。"></a></h4>
+<p>矩阵形式为：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{U}_{A}=\mathbf{T}_{Al}\mathbf{U}_l
+\]</div>
+<p>其中：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{T}_{lA}=
+\begin{bmatrix}
+-1&amp;0&amp;0&amp;1&amp;0&amp;0\\
+0&amp;1/L&amp;1&amp;0&amp;-1/L&amp;0\\
+0&amp;1/L&amp;0&amp;0&amp;-1/L&amp;1
+\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\epsilon=x_2^l-x_1^l
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\theta_1=rx_1^l-\frac{x_2^l-x_1^l}{L}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\theta_2=rx_2^l-\frac{x_2^l-x_1^l}{L}
+\]</div>
+</section>
+<section id="global-basic-system-a">
+<h4><span class="section-number">3.9.1.3.3. </span>Global 到 Basic system A 的位移变换<a class="headerlink" href="#global-basic-system-a" title="链接到此标题。"></a></h4>
+<p>将局部位移代入全局位移，可得</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_{A}=\mathbf T_Ag\mathbf U_g
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf T_Ag=
+\begin{bmatrix}
+-c&amp;-s&amp;0&amp;c&amp;s&amp;0\\
+-\frac{s}{L}&amp;\frac{c}{L}&amp;1&amp;\frac{s}{L}&amp;-\frac{c}{L}&amp;0\\
+-\frac{s}{L}&amp;\frac{c}{L}&amp;0&amp;\frac{s}{L}&amp;-\frac{c}{L}&amp;1
+\end{bmatrix}
+\end{split}\]</div>
+<p>即</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\epsilon
+&amp;=-c x_1-s y_1+c x_2+s y_2 \\
+\theta_1
+&amp;=-\frac{s}{L}x_1+\frac{c}{L}y_1+rz_1
++\frac{s}{L}x_2-\frac{c}{L}y_2 \\
+\theta_2
+&amp;=-\frac{s}{L}x_1+\frac{c}{L}y_1
++\frac{s}{L}x_2-\frac{c}{L}y_2+rz_2
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="basic-system-a-basic-system-b">
+<h4><span class="section-number">3.9.1.3.4. </span>Basic system A 到 Basic system B 的位移变换<a class="headerlink" href="#basic-system-a-basic-system-b" title="链接到此标题。"></a></h4>
+<p>Basic system B 是实验控制 basic 坐标系（这里就是悬臂柱）。对于 Linear 或 PDelta 几何变换，其与 Basic system A 的关系为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_{B}=\mathbf T_{BA}\mathbf U_{A}
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf T_{BA}=
+\begin{bmatrix}
+1&amp;0&amp;0\\
+0&amp;-L&amp;0\\
+0&amp;-1&amp;1
+\end{bmatrix}
+\end{split}\]</div>
+<p>展开为</p>
+<div class="math notranslate nohighlight">
+\[
+d_{b1}=\epsilon
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b2}=-L \theta_1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b3}=-\theta_1+\theta_2
+\]</div>
+<p>因此，Global 到 Basic system B 的总位移变换为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_{B}=\mathbf T_{BA}\mathbf T_{Ag}\mathbf U_g
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h3><span class="section-number">3.9.1.4. </span>力变换<a class="headerlink" href="#id8" title="链接到此标题。"></a></h3>
+<section id="basic-system-b-basic-system-a">
+<h4><span class="section-number">3.9.1.4.1. </span>Basic system B 到 Basic system A 的力变换<a class="headerlink" href="#basic-system-b-basic-system-a" title="链接到此标题。"></a></h4>
+<p>根据虚功一致性，有</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{A}^T\mathbf U_{A}
+=
+\mathbf q_{B}^T\mathbf U_{B}
+\]</div>
+<p>又因为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_{B}=\mathbf T_{BA}\mathbf U_{A}
+\]</div>
+<p>所以</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{A}^T\mathbf U_{A}
+=
+\mathbf q_{B}^T\mathbf T_{BA}\mathbf U_{A}
+=
+(\mathbf T_{BA}^T\mathbf q_{B})^T\mathbf U_{A}
+\]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{A}=\mathbf T_{BA}^T\mathbf q_{B}
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf T_{BA}^T=
+\begin{bmatrix}
+1&amp;0&amp;0\\
+0&amp;-L&amp;-1\\
+0&amp;0&amp;1
+\end{bmatrix}
+\end{split}\]</div>
+<p>即</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+N_{a} &amp;= q_{b1} \\
+M_{a1} &amp;= -Lq_{b2}-q_{b3} \\
+M_{a3} &amp;= q_{b3}
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="basic-system-a-local">
+<h4><span class="section-number">3.9.1.4.2. </span>Basic system A 到 Local 的力变换<a class="headerlink" href="#basic-system-a-local" title="链接到此标题。"></a></h4>
+<p>Basic system A 的力向量可写为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{A}=
+[N_a,M_{a1},M_{a2}]^T
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(N_a\)</span> 为轴力，<span class="math notranslate nohighlight">\(M_{a1}\)</span> 和 <span class="math notranslate nohighlight">\(M_{a2}\)</span> 分别为两端弯矩。</p>
+<p>由梁端力平衡，局部剪力为</p>
+<div class="math notranslate nohighlight">
+\[
+V=\frac{M_{a1}+M_{a2}}{L}
+\]</div>
+<p>因此，局部力向量为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+N_1 &amp;= -N_a \\
+V_1 &amp;= V=\frac{M_{a1}+M_{a2}}{L} \\
+M_1 &amp;= M_{a1} \\
+N_2 &amp;= N_a \\
+V_2 &amp;= -V=-\frac{M_{a1}+M_{a2}}{L} \\
+M_2 &amp;= M_{a2}
+\end{aligned}
+\end{split}\]</div>
+<p>即矩阵形式：
+$<span class="math notranslate nohighlight">\(
+Q=T_{Al}^T q_{A}
+\)</span>$</p>
+</section>
+<section id="local-global">
+<h4><span class="section-number">3.9.1.4.3. </span>Local 到 Global 的力变换<a class="headerlink" href="#local-global" title="链接到此标题。"></a></h4>
+<p>Local 到 Global 的力变换为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf F=\mathbf T_{lg}^T\mathbf Q
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf F=
+[P_{x1},P_{y1},M_{z1},P_{x2},P_{y2},M_{z2}]^T
+\]</div>
+<p>展开为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+P_{x1} &amp;= cN_1-sV_1 \\
+P_{y1} &amp;= sN_1+cV_1 \\
+M_{z1} &amp;= M_1 \\
+P_{x2} &amp;= cN_2-sV_2 \\
+P_{y2} &amp;= sN_2+cV_2 \\
+M_{z2} &amp;= M_2
+\end{aligned}
+\end{split}\]</div>
+<p>因此，力的完整传递链条为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{B}
+\rightarrow
+\mathbf q_{A}
+\rightarrow
+\mathbf Q
+\rightarrow
+\mathbf F
+\]</div>
+<p>可写为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf F=\mathbf T_{lg}^T\mathbf Q=\mathbf T_{lg}^T\mathbf T_{Ag}^T\mathbf q_{B})
+\]</div>
+</section>
+</section>
+<section id="id9">
+<h3><span class="section-number">3.9.1.5. </span>刚度转换<a class="headerlink" href="#id9" title="链接到此标题。"></a></h3>
+<section id="id10">
+<h4><span class="section-number">3.9.1.5.1. </span>Basic system B 到 Basic system A 的刚度转换<a class="headerlink" href="#id10" title="链接到此标题。"></a></h4>
+<p><span class="math notranslate nohighlight">\({K}_B\)</span>就是该单元输入的初始矩阵。
+若：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{q}_B=\mathbf{K}_B\mathbf{U}_B
+\]</div>
+<p>则：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{K}_A=\mathbf{T}_{BA}^T\mathbf{K}_B\mathbf{T}_{BA}
+\]</div>
+<p>代码中对应展开为：</p>
+<div class="math notranslate nohighlight">
+\[
+K_{A11}=K_{B11}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+K_{A22}=L^2K_{B22}+L(K_{B23}+K_{B32})+K_{B33}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+K_{A23}=-LK_{B23}-K_{B33}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+K_{A32}=-LK_{B32}-K_{B33}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+K_{A33}=K_{B33}
+\]</div>
+<p>其余耦合项在该实现中未展开，主要保留轴向项和弯曲控制项。</p>
+</section>
+</section>
+<section id="id11">
+<h3><span class="section-number">3.9.1.6. </span>物理含义总结<a class="headerlink" href="#id11" title="链接到此标题。"></a></h3>
+<p>Global system 用于整体结构方程组的组装和平衡；Local system 用于描述构件沿自身轴线方向和横向方向的力学行为；Basic system A 是梁柱单元理论分析中的最小自由度体系，主要描述轴向变形和两端弯曲转角；Basic system B 是实验单元中用于控制和量测的自由度体系。</p>
+<p>其中，<span class="math notranslate nohighlight">\(\mathbf T_{lg}\)</span> 描述 Global 与 Local 之间的坐标旋转关系，<span class="math notranslate nohighlight">\(\mathbf T_{Al}\)</span> 描述 Local  与 Basic system A 之间的几何关系，<span class="math notranslate nohighlight">\(\mathbf T_{Ag}\)</span> 描述 Global  与 Basic system A 之间的几何关系，这部分转换在geomTransf Linear、PDelta和Corotational中完成。</p>
+<p><span class="math notranslate nohighlight">\(\mathbf T_{BA}\)</span> 描述 Basic system A 与 Basic system B 之间的实验接口映射关系。</p>
+<p>最终，2D 梁柱实验单元的核心变换关系可概括为</p>
+<ul class="simple">
+<li><p>位移变换链条</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_g
+\rightarrow
+\mathbf U_l
+\rightarrow
+\mathbf U_{A}
+\rightarrow
+\mathbf U_{B}
+\]</div>
+<p>​		核心表达式为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_{B}=\mathbf T_{BA}\mathbf T_{Ag}\mathbf U_g
+\]</div>
+<ul class="simple">
+<li><p>力变换链条</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{bB}
+\rightarrow
+\mathbf q_{bA}
+\rightarrow
+\mathbf Q
+\rightarrow
+\mathbf F
+\]</div>
+<p>​		核心表达式为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf F=\mathbf T_{lg}^T\mathbf Q=\mathbf T_{lg}^T\mathbf T_{Ag}^T\mathbf q_{B})
+\]</div>
+</section>
+</section>
+<section id="id12">
+<h2><span class="section-number">3.9.2. </span>3D 梁柱单元坐标体系及变换关系<a class="headerlink" href="#id12" title="链接到此标题。"></a></h2>
+<section id="id13">
+<h3><span class="section-number">3.9.2.1. </span>问题描述<a class="headerlink" href="#id13" title="链接到此标题。"></a></h3>
+<p>在三维梁柱单元中，涉及四类坐标或自由度体系：</p>
+<ol class="arabic simple">
+<li><p>Global system，全局坐标系；</p></li>
+<li><p>Local system，单元局部坐标系；</p></li>
+<li><p>Basic system A，OpenSees 结构理论 basic 坐标系；</p></li>
+<li><p>Basic system B，OpenFresco 实验控制 basic 坐标系。</p></li>
+</ol>
+<p>其中，Global、Local 和 Basic system A 之间的转换由 <code class="docutils literal notranslate"><span class="pre">LinearCrdTransf3d</span></code> 完成；Basic system A 与 Basic system B 之间的实验接口转换由 <code class="docutils literal notranslate"><span class="pre">EEBeamColumn3d</span></code> 完成。</p>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h3><span class="section-number">3.9.2.2. </span>符号定义<a class="headerlink" href="#id14" title="链接到此标题。"></a></h3>
+<section id="id15">
+<h4><span class="section-number">3.9.2.2.1. </span>位移向量<a class="headerlink" href="#id15" title="链接到此标题。"></a></h4>
+<p>全局位移向量：三维梁柱单元每个节点有 6 个自由度：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_g =
+[x_1,y_1,z_1,rx_1,ry_1,rz_1,
+x_2,y_2,z_2,rx_2,ry_2,rz_2]^T
+\]</div>
+<p>局部坐标系下位移向量为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_l =
+[x_1^l,y_1^l,z_1^l,rx_1^l,ry_1^l,rz_1^l,
+x_2^l,y_2^l,z_2^l,rx_2^l,ry_2^l,rz_2^l]^T
+\]</div>
+<p>Basic system A 位移向量：根据 <code class="docutils literal notranslate"><span class="pre">LinearCrdTransf3d::getBasicTrialDisp()</span></code>，OpenSees 3D basic deformation 为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_A =
+[\epsilon,\theta_{z1},\theta_{z2},\theta_{y1},\theta_{y2},\phi_x]^T
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[
+\epsilon=\text{轴向伸长}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\theta_{z1},\theta_{z2}=\text{绕局部 }z\text{ 轴弯曲对应的两端 basic 转角}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\theta_{y1},\theta_{y2}=\text{绕局部 }y\text{ 轴弯曲对应的两端 basic 转角}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\phi_x=\text{绕局部 }x\text{ 轴的相对扭转角}
+\]</div>
+<p>Basic system B 位移向量：OpenFresco 3D 实验 basic 坐标系为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_B =
+[d_{b1},d_{b2},d_{b3},d_{b4},d_{b5},d_{b6}]^T
+\]</div>
+<p>其中可理解为</p>
+<div class="math notranslate nohighlight">
+\[
+d_{b1}=\text{轴向位移}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b2}=\text{局部 }y\text{ 向端部控制位移}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b3}=\text{局部 }z\text{ 向弯曲相对转角}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b4}=\text{局部 }z\text{ 向端部控制位移}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b5}=\text{局部 }y\text{ 向弯曲相对转角}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b6}=\text{绕局部 }x\text{ 轴扭转角}
+\]</div>
+</section>
+<section id="id16">
+<h4><span class="section-number">3.9.2.2.2. </span>力向量<a class="headerlink" href="#id16" title="链接到此标题。"></a></h4>
+<p>全局力向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf P=
+[P_{x1},P_{y1},P_{z1},M_{x1},M_{y1},M_{z1},P_{x2},P_{y2},P_{z2},M_{x2},M_{y2},M_{z2}]^T
+\]</div>
+<p>局部力向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf Q=
+[N_1,V_{y1},V_{z1},T_1,M_{y1},M_{y1},N_2,V_{y2},V_{z2},T_2,M_{y2},M_{y2},]^T
+\]</div>
+<p>Basic system A 力向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{A}=
+[N_{a},M_{az1},M_{az2},M_{ay1},M_{ay2},T_{a}]^T
+\]</div>
+<p>Basic system B 力向量定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf q_{B}=
+[q_{b1},q_{b2},q_{b3},q_{b4},q_{b5},q_{b6}]^T
+\]</div>
+</section>
+<section id="id17">
+<h4><span class="section-number">3.9.2.2.3. </span>局部坐标系定义<a class="headerlink" href="#id17" title="链接到此标题。"></a></h4>
+<p>对于3维梁柱单元，局部 <span class="math notranslate nohighlight">\(x\)</span> 轴沿构件节点 <span class="math notranslate nohighlight">\(i \rightarrow j\)</span> 方向。设节点 <span class="math notranslate nohighlight">\(i\)</span> 和节点 <span class="math notranslate nohighlight">\(j\)</span> 的全局坐标分别为 <span class="math notranslate nohighlight">\((x_i,y_i,z_i)\)</span> 和 <span class="math notranslate nohighlight">\((x_j,y_j,z_j)\)</span></p>
+<p>单元长度为</p>
+<div class="math notranslate nohighlight">
+\[
+L=\|\mathbf X_j-\mathbf X_i\|
+\]</div>
+<p>局部 <span class="math notranslate nohighlight">\(x\)</span> 轴为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf e_x =
+\frac{\mathbf X_j-\mathbf X_i}{L}
+\]</div>
+<p>在 <code class="docutils literal notranslate"><span class="pre">LinearCrdTransf3d</span></code> 中，用户输入的 <code class="docutils literal notranslate"><span class="pre">vecInLocXZPlane</span></code> 用于确定局部 <span class="math notranslate nohighlight">\(xz\)</span> 平面。设该向量为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf v
+\]</div>
+<p>则局部 <span class="math notranslate nohighlight">\(y\)</span> 轴由</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf e_y =
+\frac{\mathbf v \times \mathbf e_x}
+{\|\mathbf v \times \mathbf e_x\|}
+\]</div>
+<p>局部 <span class="math notranslate nohighlight">\(z\)</span> 轴由</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf e_z =
+\mathbf e_x \times \mathbf e_y
+\]</div>
+<p>因此方向余弦矩阵为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf R =
+\begin{bmatrix}
+\mathbf e_x^T\\
+\mathbf e_y^T\\
+\mathbf e_z^T
+\end{bmatrix}
+=
+\begin{bmatrix}
+R_{00}&amp;R_{01}&amp;R_{02}\\
+R_{10}&amp;R_{11}&amp;R_{12}\\
+R_{20}&amp;R_{21}&amp;R_{22}
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h3><span class="section-number">3.9.2.3. </span>位移变换<a class="headerlink" href="#id18" title="链接到此标题。"></a></h3>
+<section id="global-system-local-system">
+<h4><span class="section-number">3.9.2.3.1. </span>Global system 到 Local system<a class="headerlink" href="#global-system-local-system" title="链接到此标题。"></a></h4>
+<p>三维局部位移由全局位移旋转得到：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_l=\mathbf T_{lg}\mathbf U_g
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf T_{lg}=
+\begin{bmatrix}
+\mathbf R&amp;0&amp;0&amp;0\\
+0&amp;\mathbf R&amp;0&amp;0\\
+0&amp;0&amp;\mathbf R&amp;0\\
+0&amp;0&amp;0&amp;\mathbf R
+\end{bmatrix}
+\end{split}\]</div>
+<p>即</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf u_1^l &amp;= \mathbf R \mathbf u_1^g\\
+\boldsymbol\theta_1^l &amp;= \mathbf R \boldsymbol\theta_1^g\\
+\mathbf u_2^l &amp;= \mathbf R \mathbf u_2^g\\
+\boldsymbol\theta_2^l &amp;= \mathbf R \boldsymbol\theta_2^g
+\end{aligned}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h4><span class="section-number">3.9.2.3.2. </span>Local system 到 Basic system A<a class="headerlink" href="#id19" title="链接到此标题。"></a></h4>
+<p>根据 <code class="docutils literal notranslate"><span class="pre">LinearCrdTransf3d::getBasicTrialDisp()</span></code>，3D basic deformation 为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_A=\mathbf T_{Al}\mathbf U_l
+\]</div>
+<p>展开为</p>
+<div class="math notranslate nohighlight">
+\[
+\epsilon=x_2^l-x_1^l
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\theta_{z1}=rz_1^l+\frac{y_1^l-y_2^l}{L}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\theta_{z2}=rz_2^l+\frac{y_1^l-y_2^l}{L}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\theta_{y1}=ry_1^l+\frac{z_2^l-z_1^l}{L}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\theta_{y2}=ry_2^l+\frac{z_2^l-z_1^l}{L}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\phi_x=rx_2^l-rx_1^l
+\]</div>
+<p>矩阵形式为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf T_{Al}=
+\begin{bmatrix}
+-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\
+0&amp;1/L&amp;0&amp;0&amp;0&amp;1&amp;0&amp;-1/L&amp;0&amp;0&amp;0&amp;0\\
+0&amp;1/L&amp;0&amp;0&amp;0&amp;0&amp;0&amp;-1/L&amp;0&amp;0&amp;0&amp;1\\
+0&amp;0&amp;-1/L&amp;0&amp;1&amp;0&amp;0&amp;0&amp;1/L&amp;0&amp;0&amp;0\\
+0&amp;0&amp;-1/L&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1/L&amp;0&amp;1&amp;0\\
+0&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h4><span class="section-number">3.9.2.3.3. </span>Basic system A 到 Basic system B<a class="headerlink" href="#id20" title="链接到此标题。"></a></h4>
+<p>对于 <code class="docutils literal notranslate"><span class="pre">EEBeamColumn3d</span></code> 中的 Linear 或 PDelta 情况，Basic system A 到 Basic system B 的位移变换为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_B=\mathbf T_{BA}\mathbf U_A
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf T_{BA}=
+\begin{bmatrix}
+1&amp;0&amp;0&amp;0&amp;0&amp;0\\
+0&amp;-L&amp;0&amp;0&amp;0&amp;0\\
+0&amp;-1&amp;1&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;L&amp;0&amp;0\\
+0&amp;0&amp;0&amp;-1&amp;1&amp;0\\
+0&amp;0&amp;0&amp;0&amp;0&amp;1
+\end{bmatrix}
+\end{split}\]</div>
+<p>展开为</p>
+<div class="math notranslate nohighlight">
+\[
+d_{b1}=\epsilon
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b2}=-L\theta_{z1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b3}=-\theta_{z1}+\theta_{z2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b4}=L\theta_{y1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b5}=-\theta_{y1}+\theta_{y2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d_{b6}=\phi_x
+\]</div>
+<p>因此，Global 到 Basic system B 的完整位移变换为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf U_B
+=
+\mathbf T_{BA}\mathbf T_{Al}\mathbf T_{lg}\mathbf U_g
+\]</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="bearing.html" class="btn btn-neutral float-left" title="3.8. bearing 支承实验单元" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../expSetup/index.html" class="btn btn-neutral float-right" title="4. expSetup 命令" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

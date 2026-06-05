@@ -1,0 +1,1171 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第 5 章 混合控制混合仿真 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 6 章 结论" href="ch6.html" />
+    <link rel="prev" title="第 4 章 换控制混合仿真" href="ch4.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ch0.html">混合仿真的先进控制方法的开发与实现</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html">第 1 章 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html">第 2 章 位移控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html">第 3 章 力控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4.html">第 4 章 换控制混合仿真</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">第 5 章 混合控制混合仿真</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.1 引言</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">5.1.1 问题定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">5.1.2 动机</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">5.1.3 以往研究</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mc">5.2 MC混合仿真的方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5.3 实现</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#openfresco-mc">5.3.1 OpenFresco MC实验控制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simulink-stateflow">5.3.2 Simulink/Stateflow模型</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.4 实验结果与验证</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">5.4.1 基于试算力切换的MC混合仿真</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">5.4.2 基于割线刚度切换的MC混合仿真</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">5.4.3 实验结果总结</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html">第 6 章 结论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html#id9">参考文献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html">附录A 用于FC、SC和MC混合仿真的OpenFresco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#b-nees">附录B µ-NEES实验设置的调谐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#c-fc">附录C FC混合仿真实验结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#d-sc">附录D SC混合仿真实验结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#e-mc">附录E MC混合仿真实验结果</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+      <li class="breadcrumb-item active">第 5 章 混合控制混合仿真</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Appendix2/ch5.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第 5 章 混合控制混合仿真<a class="headerlink" href="#id1" title="链接到此标题。"></a></h1>
+<p>本章讨论和探索混合控制（MC）混合仿真。明确定义MC混合仿真术语。解释MC混合仿真的挑战。介绍其动机以及以往的研究。然后开发MC混合仿真的方法。描述使用OpenSees、OpenFresco和Simulink/Stateflow模型实现这些方法的过程。本章最后讨论在nees&#64;berkeley实验室使用2自由度<span class="math notranslate nohighlight">\(\mu\)</span>-NEES设置进行MC混合仿真测试的实验结果。</p>
+<section id="id2">
+<h2>5.1 引言<a class="headerlink" href="#id2" title="链接到此标题。"></a></h2>
+<section id="id3">
+<h3>5.1.1 问题定义<a class="headerlink" href="#id3" title="链接到此标题。"></a></h3>
+<p>混合控制混合仿真术语指的是控制系统同时处于多种控制模式下进行的混合仿真。它类似于第4章的切换控制混合仿真，因为混合控制混合仿真是具有多个控制系统自由度的切换控制混合仿真。例如，如果实验设置有两个执行器，并且两者都在DC和FC模式之间独立切换，则这被称为混合控制混合仿真。在任何给定时间，一个执行器可能处于DC模式，另一个执行器可能处于FC模式。在切换控制混合仿真的情况下，只有1个控制系统自由度。该自由度要么处于DC模式，要么处于FC模式。对于此设置，不能混合控制模式。</p>
+<p>混合控制和切换控制这两个术语经常被互换使用。然而，在本章和前一章中对两者进行了严格区分。切换控制混合仿真仅指在控制模式之间切换的1自由度实验设置。混合控制混合仿真指多个控制系统自由度独立切换。也可能存在某些执行器处于DC模式而其他执行器处于FC模式的混合仿真测试，并且这些执行器从不切换控制模式。这也被认为是混合控制混合仿真。</p>
+</section>
+<section id="id4">
+<h3>5.1.2 动机<a class="headerlink" href="#id4" title="链接到此标题。"></a></h3>
+<p>当试件根据加载方向表现出非常不同的行为时，就需要MC混合仿真。这些类型的试件在结构测试中很常见。梁柱是建筑和桥梁中非常常见的结构构件。梁柱在轴向方向上比在垂直于轴向的方向上更刚性。当对隔震支座进行实验测试时，通常垂直方向使用FC加载，水平方向使用DC加载。当这些结构构件使用混合仿真进行测试时，通常在整个测试过程中保持垂直或轴向力恒定，并在水平方向对试件施加位移。</p>
+<p>在整个测试过程中保持垂直力恒定是不现实的。此力应在测试过程中变化。保持垂直力恒定是因为垂直载荷难以计算和控制。垂直力难以计算是因为水平位移取决于垂直力，反之亦然。当垂直力在混合仿真中变化时，该力的计算与水平位移计算解耦。控制力的困难在第3.1.1节中解释。</p>
+</section>
+<section id="id5">
+<h3>5.1.3 以往研究<a class="headerlink" href="#id5" title="链接到此标题。"></a></h3>
+<p>很少有研究人员进行过MC混合仿真。这里综述了两项工作。第一项是Pan等人[18]的工作。前面两章中提到的HDBR相同实验。他们进行了MC混合仿真，垂直自由度在DC和FC之间切换，水平自由度处于DC模式。垂直试算力与水平试算位移解耦，并彼此独立计算。使用初始刚度值计算每个时间步的垂直试算力，而每个时间步的水平试算位移使用DC混合仿真方法计算。然后将两个试算值同时施加到HDBR上。</p>
+<p>第二项是Nakata等人[17]的工作，他们进行了一种MC混合仿真来研究轴向加载梁柱的P-Δ效应。他们在其实验设置中使用了伊利诺伊大学厄巴纳-香槟分校的载荷和边界条件箱。通过相应的目标位移以迭代方式对试件施加目标轴向力。使用Broyden更新[2]从测量的位移和力在每个迭代中更新梁柱的轴向刚度，计算目标位移。这不是真正的MC仿真，因为力自由度不是以FC模式控制，而是以DC模式控制以达到目标力。试算力被转换为试算位移，然后将所有控制器自由度的试算位移施加到试件上。迭代执行此过程，直到测量力等于时间步开始时计算的试算力。</p>
+</section>
+</section>
+<section id="mc">
+<h2>5.2 MC混合仿真的方法<a class="headerlink" href="#mc" title="链接到此标题。"></a></h2>
+<p>MC混合仿真的方法是第3.2.1节中CFC方法和第4.2.1节中切换策略的组合。MC混合仿真使用第3.2.1节中的一种CFC方法将</p>
+<p>试算位移（<span class="math notranslate nohighlight">\(\breve{u}\)</span>）向量转换为试算力（<span class="math notranslate nohighlight">\(\breve{f}\)</span>）向量。然后使用第4.2.1节中的一种切换策略独立确定每个控制自由度的控制模式。每个控制自由度的切换策略由研究人员在测试开始前确定。这意味着可以为每个控制自由度分配不同的策略。因此，在测试过程中可能同时运行多种切换策略。</p>
+<p>EFC方法不用于获取MC混合仿真的试算力。可以同时运行基于位移的时间积分方案和基于力的时间积分方案来计算<span class="math notranslate nohighlight">\(\breve{u}\)</span>和<span class="math notranslate nohighlight">\(\breve{f}\)</span>以及控制模式。但存在关于测量值<span class="math notranslate nohighlight">\(\bar{u}\)</span>和<span class="math notranslate nohighlight">\(\bar{f}\)</span>应如何反馈到NMR时间积分方案的问题。使用2自由度<span class="math notranslate nohighlight">\(\mu\)</span>-NEES实验设置（图3.20）来说明此障碍。在时间积分方案计算<span class="math notranslate nohighlight">\(\breve{u}\)</span>和<span class="math notranslate nohighlight">\(\breve{f}\)</span>之后，切换策略确定顶部执行器处于DC模式，底部执行器处于FC模式。控制系统施加<span class="math notranslate nohighlight">\(\breve{u}_{bottom}\)</span>和<span class="math notranslate nohighlight">\(\breve{f}_{top}\)</span>。然后将相应的测量值<span class="math notranslate nohighlight">\(\bar{u}\)</span>和<span class="math notranslate nohighlight">\(\bar{f}\)</span>反馈到计算驱动器。计算驱动器现在必须决定将什么测量值反馈到时间积分方案。如果它将<span class="math notranslate nohighlight">\(\bar{f}\)</span>向量反馈到基于位移的时间积分方案，则<span class="math notranslate nohighlight">\(\bar{f}_{bottom}\)</span>可能与其计算的底部执行器试算位移不对应。如果以某种方式修改<span class="math notranslate nohighlight">\(\bar{f}_{bottom}\)</span>以使其与<span class="math notranslate nohighlight">\(\breve{u}_{bottom}\)</span>更一致，则将试件的不正确状态传递给基于位移的时间积分方案。对于<span class="math notranslate nohighlight">\(\bar{u}\)</span>和基于力的时间积分方案也存在同样的问题。因此，EFC不作为MC混合仿真的一部分实现。</p>
+</section>
+<section id="id6">
+<h2>5.3 实现<a class="headerlink" href="#id6" title="链接到此标题。"></a></h2>
+<p>MC混合仿真的实现与第4.3.1节中PSC和SSC混合仿真的实现非常相似。MC混合仿真需要两个主要组件。第一个是OpenFresco，特别是实验控制组件。第二个组件是MC混合仿真的Simulink/Stateflow模型。这些组件彼此交互并与计算驱动器交互，使MC混合仿真正常运行。</p>
+<section id="openfresco-mc">
+<h3>5.3.1 OpenFresco MC实验控制<a class="headerlink" href="#openfresco-mc" title="链接到此标题。"></a></h3>
+<p>OpenFresco在MC混合仿真中的作用如图5.1所示。与FC和SC混合仿真一样，Openfresco从计算驱动器接收试算变形<span class="math notranslate nohighlight">\((\widehat{\mathbf{u}}_n)\)</span>。OpenFresco在实验控制类中将<span class="math notranslate nohighlight">\(\hat{\mathbf{u}}_n\)</span>转换为<span class="math notranslate nohighlight">\(\breve{\mathbf{f}}_n\)</span>。用于MC混合仿真的实验控制是xPCtargetMixedCM实验控制。xPCtargetMixedCM是xPCtargetForce和xPCtargetSwitchCM的组合。与xPCtargetForce一样，它将<span class="math notranslate nohighlight">\(\breve{\mathbf{u}}_n\)</span>传递给ExperimentalSignalFilter类。ExperimentalSignalFilter使用ExperimentalTangentStiff类将<span class="math notranslate nohighlight">\(\breve{\mathbf{u}}_n\)</span>转换为<span class="math notranslate nohighlight">\(\breve{\mathbf{f}}_n\)</span>。xPCtargetMixedCM使用指定的切换策略确定每个控制系统自由度的控制模式，并组装控制模式向量。</p>
+<p>如图5.1所示，它向控制系统发送这三个向量。控制系统根据控制模式向量施加位移或力。在控制系统成功施加指令值后，它读取测量位移<span class="math notranslate nohighlight">\((\bar{\mathbf{u}}_n)\)</span>和力</p>
+<p><span class="math notranslate nohighlight">\((\bar{\mathbf{f}}_n)\)</span>并将它们发送回xPXtargetMixedCM。xPXtargetMixedCM将<span class="math notranslate nohighlight">\(\bar{\mathbf{u}}_n\)</span>转换为力。然后组装<span class="math notranslate nohighlight">\(\check{\mathbf{f}}_n\)</span>并执行坐标变换。它被发送回计算驱动器。在组装<span class="math notranslate nohighlight">\(\check{\mathbf{f}}_n\)</span>时，xPXtargetMixedCM放置控制系统自由度在DC模式下的实际测量力，以及控制系统自由度在FC模式下的转换测量力。一旦计算驱动器接收到<span class="math notranslate nohighlight">\(\check{\mathbf{f}}_n\)</span>，它就移动到下一个时间<span class="math notranslate nohighlight">\(n+1\)</span>。此过程重复直到仿真完成。</p>
+<p><img alt="" src="../_images/b96a9deea85482b801a91053bc057a297e41fa97dccb5964489409c0acfe5f23.jpg" /><br />
+图5.1：MC混合仿真组件及其流程。</p>
+</section>
+<section id="simulink-stateflow">
+<h3>5.3.2 Simulink/Stateflow模型<a class="headerlink" href="#simulink-stateflow" title="链接到此标题。"></a></h3>
+<p>本节介绍的Simlink/Stateflow模型用于MC混合仿真，其中顶部执行器处于DC模式，底部执行器在DC和FC模式之间切换。将此Simulink/Stateflow模型扩展为让两个执行器都在DC和FC模式之间切换是直接的。这会增加图5.4中Stateflow模型的复杂性。为此Simulink/Stateflow模型设计的2自由度<span class="math notranslate nohighlight">\(\mu\)</span>-NEES实验设置不需要顶部执行器处于FC模式，因为它相对较软，在DC模式下表现更好。</p>
+<p>图5.2中的Simulink模型与SC混合仿真的Simulink模型（图4.3）几乎相同。唯一的可见区别是它使用xPC Target Hybrid Controller (M1/M1)而不是用于SC混合仿真的混合控制器。图5.2中不明显的另一个区别是Extract和Assemble块从SCRAMNet存储位置提取和组装二维向量，而不是像SC模型中那样仅提取标量值。</p>
+<p>图5.3中的xPC Target Hybrid Controller (M1M1)从xPCtargetMixedCM实验控制接收目标位移（targDsp）、目标力（targFrc）和控制模式（ctrlMode）。这些值与newTarget标志一起传递到Predictor-Corrector Stateflow模型。与FC和SC混合仿真的混合控制器一样，原始测量位移和力在反馈回OpenFresco之前通过移动平均滤波器。</p>
+<p><strong>混合控制器</strong></p>
+<p><img alt="" src="../_images/c7f85ce5c1cb89d6802f8c55a8a488d39647d0551ac1efc8f2349ba452dac7a1.jpg" /><br />
+图5.2：在nees&#64;berkeley实验室使用xPC Target实时工作室与SCRAMNet进行MC混合仿真的SimuLink模型。</p>
+<p><img alt="" src="../_images/2cb91383fb22b6a0120acacc0c964523f732d9ae8783f2a4de80deeee71f0347.jpg" /><br />
+图5.3：这表示为图4.3中的xPC Target Hybrid Controller (M1M1)。它包含Stateflow模型和</p>
+<p>Stateflow模型（图5.4）顶部的三个状态（CorrectDisp、PredictDisp和AutoSlowDownDisp）执行校正和预测位移命令，这些命令被写入SCRAMNet存储器以供MTS-STS控制器使用。这些状态本质上类似于SC Stateflow模型中的三个位移状态。在这些状态中，所有自由度都处于DC模式。</p>
+<p>图5.4底部部分的CorrectForce、PredictForce和AutoSlowDown状态更复杂。它们负责预测和校正顶部执行器的位移和底部执行器的力。当Stateflow模型从任何一个位移状态进入CorrectForce和PredictForce状态时，MTS-STS控制器使用顶部执行器的最后测量位移和底部执行器的最后测量力作为新的零点。这与第4.3.3节中讨论的SC Stateflow模型的控制器行为相同，但更复杂，因为现在涉及两个处于不同控制模式的单独控制自由度。</p>
+<p>xPCtargetMixedCM在内存中保留这些最后测量值，并用此偏移偏移后续指令值。CorrectForce状态将底部执行器的位移设置为0，并将其存储为当Stateflow模型移动到CorrectDisp和PredictDisp状态时要用于校正和预测的值。否则，插值和外推不会按预期工作，因为底部执行器从FC模式切换到DC模式时的位移指令是偏移值。指示何时到达新目标值的flag变量和底部执行器控制模式的cMode[0]决定状态的切换。所有MC混合仿真测试的仿真时间步设置为0.10秒。</p>
+<p><img alt="" src="../_images/bb8e632bd45d706d3ea916ca2e4f8b857e1eb96d45ca93d534572309326a8018.jpg" /><br />
+图5.4：根据控制模式预测和校正位移或力的Flow预测-校正模型。它具有自动减速功能以防止</p>
+</section>
+</section>
+<section id="id7">
+<h2>5.4 实验结果与验证<a class="headerlink" href="#id7" title="链接到此标题。"></a></h2>
+<p>MC混合仿真使用第3章中的2自由度模型（图3.21（右））和2自由度<span class="math notranslate nohighlight">\(\mu\)</span>-NEES实验设置（图3.20）进行。El Centro地面运动的前400个记录点缩放到50%。OpenFresco配置与表3.13中的相同，只是部署了xPCtargetMixedCM而不是xPCtargetForce。2自由度<span class="math notranslate nohighlight">\(\mu\)</span>-NEES设置中的顶部执行器始终处于DC模式，底部执行器使用算法4.2和4.4中的两种切换策略之一在DC模式和FC模式之间切换。因此测试了两种类型的MC混合仿真。</p>
+<p>使用表3.2中参数的NME、αOS、NMF和NMR时间积分方案。对于每种时间积分方案，将MC结果与第3.4.2.3节中的OpenSees数值结果进行比较。如前所述，NME和αOS时间积分方案在2自由度OpenSees模型中数值上不收敛。因此，这两种时间积分方案的实验结果与NMI数值结果进行比较。使用CFC:Krylov和CFC:Transpose方法进行FC的MC方法会导致MTS-STS控制变得不稳定。因此，后续章节中不呈现这些结果。</p>
+<p>如果增量测量位移和力向量的2-范数都不大于0.01，则不更新切线刚度矩阵。此滤波值在测试0.001、0.005和0.02后使用。0.01似乎在不受到控制系统噪声过度影响的情况下频繁更新切线。1-范数和<span class="math notranslate nohighlight">\(\infty\)</span>-范数在测试期间表现不佳。</p>
+<section id="id8">
+<h3>5.4.1 基于试算力切换的MC混合仿真<a class="headerlink" href="#id8" title="链接到此标题。"></a></h3>
+<p>本节中的结果来自仅对底部执行器使用力限制切换策略的MC混合仿真（PMC）。力限制设置为5千磅，<span class="math notranslate nohighlight">\(f_d = 5.5\)</span>千磅和<span class="math notranslate nohighlight">\(f_f = 4.5\)</span>千磅。这些结果与第3章第3.4.2.3节中的DC和CFC混合仿真结果进行比较。表5.1和5.2包含给定时间积分方案的实验结果与其时间历程分析数值对应物之间的位移误差绝对值。从这些表计算的图在附录E的E.1节中。在第3章中，节点位移结果表明，总体上FC方法优于DC方法。FC方法比DC方法更好地捕捉漂移。两者都给出形状非常相似的曲线。PMC位移误差总体上甚至比DC结果更差。尽管位移-时间历程曲线的形状与DC和CFC曲线相似，但它向相反方向漂移。唯一可与DC和CFC结果相比的是PMC:Broyden位移误差。</p>
+<p>表5.3和5.4分别显示了节点1和2的力误差绝对值。对于NME和αOS，PMC给出比DC和CFC方法更好的结果，但对于NMF和NMR则不是。尽管PMC方法不能正确捕捉漂移，但它产生的力与数值结果相对匹配良好。</p>
+<p>如表5.5和5.6所示，不带切换控制模式的DC和FC混合仿真的跟踪略优于PMC混合仿真期间底部执行器的跟踪。一个原因是PMC的跟踪不太好，是因为当MTS-STS控制器切换控制模式时，测量值会瞬间尖峰。PMC混合仿真期间顶部执行器在DC模式下的跟踪与DC混合仿真结果大致相同。</p>
+<p>表5.1：各种时间积分方法在有限元分析水平上2自由度设置非线性PMC混合仿真的节点1位移结果绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME (英寸)</p></th>
+<th class="head"><p>αOS (英寸)</p></th>
+<th class="head"><p>NMF (英寸)</p></th>
+<th class="head"><p>NMR (英寸)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PMC:Broyden-最小值</p></td>
+<td><p>2.97×10⁻⁷</p></td>
+<td><p>7.79×10⁻⁸</p></td>
+<td><p>1.05×10⁻⁵</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Broyden-平均值</p></td>
+<td><p>0.0882</p></td>
+<td><p>0.165</p></td>
+<td><p>0.125</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Broyden-最大值</p></td>
+<td><p>0.247</p></td>
+<td><p>0.326</p></td>
+<td><p>0.355</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最小值</p></td>
+<td><p>2.97×10⁻⁷</p></td>
+<td><p>1.20×10⁻⁷</p></td>
+<td><p>3.2-×10⁻⁵</p></td>
+<td><p>1.96×10⁻⁵</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:BFGS-平均值</p></td>
+<td><p>0.301</p></td>
+<td><p>0.411</p></td>
+<td><p>0.319</p></td>
+<td><p>0.263</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最大值</p></td>
+<td><p>0.593</p></td>
+<td><p>0.710</p></td>
+<td><p>0.618</p></td>
+<td><p>0.585</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最小值</p></td>
+<td><p>4.52×10⁻⁸</p></td>
+<td><p>6.56×10⁻⁸</p></td>
+<td><p>7.64×10⁻⁶</p></td>
+<td><p>1.23×10⁻⁵</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Intrinsic-平均值</p></td>
+<td><p>0.229</p></td>
+<td><p>0.207</p></td>
+<td><p>0.167</p></td>
+<td><p>0.156</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最大值</p></td>
+<td><p>0.463</p></td>
+<td><p>0.399</p></td>
+<td><p>0.415</p></td>
+<td><p>0.330</p></td>
+</tr>
+</tbody>
+</table>
+<p>表5.2：各种时间积分方法在有限元分析水平上2自由度设置PMC非线性混合仿真的节点2位移结果绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME (英寸)</p></th>
+<th class="head"><p>αOS (英寸)</p></th>
+<th class="head"><p>NMF (英寸)</p></th>
+<th class="head"><p>NMR (英寸)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PMC:Broyden-最小值</p></td>
+<td><p>2.98×10⁻⁷</p></td>
+<td><p>1.45×10⁻⁷</p></td>
+<td><p>2.49×10⁻⁶</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Broyden-平均值</p></td>
+<td><p>0.688</p></td>
+<td><p>0.926</p></td>
+<td><p>0.827</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Broyden-最大值</p></td>
+<td><p>1.63</p></td>
+<td><p>1.78</p></td>
+<td><p>2.04</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最小值</p></td>
+<td><p>2.98×10⁻⁷</p></td>
+<td><p>3.23×10⁻⁷</p></td>
+<td><p>7.23×10⁻⁵</p></td>
+<td><p>3.75×10⁻⁵</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:BFGS-平均值</p></td>
+<td><p>1.49</p></td>
+<td><p>2.14</p></td>
+<td><p>1.92</p></td>
+<td><p>1.73</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最大值</p></td>
+<td><p>2.80</p></td>
+<td><p>3.78</p></td>
+<td><p>3.43</p></td>
+<td><p>3.44</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最小值</p></td>
+<td><p>6.36×10⁻⁸</p></td>
+<td><p>2.80×10⁻⁷</p></td>
+<td><p>2.65×10⁻⁶</p></td>
+<td><p>3.32×10⁻⁵</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Intrinsic-平均值</p></td>
+<td><p>1.30</p></td>
+<td><p>1.10</p></td>
+<td><p>0.715</p></td>
+<td><p>1.04</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最大值</p></td>
+<td><p>2.39</p></td>
+<td><p>2.04</p></td>
+<td><p>1.86</p></td>
+<td><p>1.97</p></td>
+</tr>
+</tbody>
+</table>
+<p>表5.3：各种时间积分方法在有限元分析水平上2自由度设置非线性PMC混合仿真的节点1力结果绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME (千磅)</p></th>
+<th class="head"><p>αOS (千磅)</p></th>
+<th class="head"><p>NMF (千磅)</p></th>
+<th class="head"><p>NMR (千磅)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PMC:Broyden-最小值</p></td>
+<td><p>1.37×10⁻⁴</p></td>
+<td><p>7.10×10⁻⁶</p></td>
+<td><p>0.00152</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Broyden-平均值</p></td>
+<td><p>0.769</p></td>
+<td><p>0.764</p></td>
+<td><p>1.79</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Broyden-最大值</p></td>
+<td><p>3.53</p></td>
+<td><p>3.85</p></td>
+<td><p>6.97</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最小值</p></td>
+<td><p>5.30×10⁻⁵</p></td>
+<td><p>6.00×10⁻⁶</p></td>
+<td><p>0.00248</p></td>
+<td><p>3.44×10⁻⁴</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:BFGS-平均值</p></td>
+<td><p>0.803</p></td>
+<td><p>0.708</p></td>
+<td><p>1.47</p></td>
+<td><p>1.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最大值</p></td>
+<td><p>3.34</p></td>
+<td><p>3.07</p></td>
+<td><p>5.02</p></td>
+<td><p>3.62</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最小值</p></td>
+<td><p>1.14×10⁻⁴</p></td>
+<td><p>6.06×10⁻⁵</p></td>
+<td><p>0.00153</p></td>
+<td><p>0.00302</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Intrinsic-平均值</p></td>
+<td><p>0.865</p></td>
+<td><p>0.769</p></td>
+<td><p>1.56</p></td>
+<td><p>1.15</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最大值</p></td>
+<td><p>3.82</p></td>
+<td><p>3.70</p></td>
+<td><p>5.20</p></td>
+<td><p>4.22</p></td>
+</tr>
+</tbody>
+</table>
+<p>表5.4：各种时间积分方法在有限元分析水平上2自由度设置非线性PMC混合仿真的节点2力结果绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME (千磅)</p></th>
+<th class="head"><p>αOS (千磅)</p></th>
+<th class="head"><p>NMF (千磅)</p></th>
+<th class="head"><p>NMR (千磅)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PMC:Broyden-最小值</p></td>
+<td><p>1.00×10⁻⁶</p></td>
+<td><p>7.10×10⁻⁶</p></td>
+<td><p>4.02×10⁻⁴</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Broyden-平均值</p></td>
+<td><p>0.175</p></td>
+<td><p>0.202</p></td>
+<td><p>0.300</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Broyden-最大值</p></td>
+<td><p>0.555</p></td>
+<td><p>0.781</p></td>
+<td><p>1.08</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最小值</p></td>
+<td><p>3.00×10⁻⁷</p></td>
+<td><p>1.05×10⁻⁵</p></td>
+<td><p>8.82×10⁻⁴</p></td>
+<td><p>6.00×10⁻⁶</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:BFGS-平均值</p></td>
+<td><p>0.167</p></td>
+<td><p>0.189</p></td>
+<td><p>0.239</p></td>
+<td><p>0.196</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最大值</p></td>
+<td><p>0.671</p></td>
+<td><p>0.871</p></td>
+<td><p>0.745</p></td>
+<td><p>0.618</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最小值</p></td>
+<td><p>6.86×10⁻⁶</p></td>
+<td><p>2.00×10⁻⁵</p></td>
+<td><p>3.00×10⁻⁵</p></td>
+<td><p>9.98×10⁻⁵</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Intrinsic-平均值</p></td>
+<td><p>0.170</p></td>
+<td><p>0.182</p></td>
+<td><p>0.254</p></td>
+<td><p>0.196</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最大值</p></td>
+<td><p>0.626</p></td>
+<td><p>0.679</p></td>
+<td><p>0.867</p></td>
+<td><p>0.611</p></td>
+</tr>
+</tbody>
+</table>
+<p>表5.5：各种时间积分方案在控制系统水平上2自由度设置非线性PMC混合仿真的底部执行器绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME</p></th>
+<th class="head"><p>αOS</p></th>
+<th class="head"><p>NMF</p></th>
+<th class="head"><p>NMR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PMC:Broyden-最小值 (英寸)</p></td>
+<td><p>9.37×10⁻⁸</p></td>
+<td><p>1.22×10⁻⁸</p></td>
+<td><p>1.30×10⁻⁸</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Broyden-平均值 (英寸)</p></td>
+<td><p>7.65×10⁻⁴</p></td>
+<td><p>7.70×10⁻⁴</p></td>
+<td><p>8.04×10⁻⁴</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Broyden-最大值 (英寸)</p></td>
+<td><p>0.00333</p></td>
+<td><p>0.00378</p></td>
+<td><p>0.00900</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Broyden-最小值 (千磅)</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Broyden-平均值 (千磅)</p></td>
+<td><p>0.0330</p></td>
+<td><p>0.138</p></td>
+<td><p>0.0317</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Broyden-最大值 (千磅)</p></td>
+<td><p>0.185</p></td>
+<td><p>0.837</p></td>
+<td><p>0.211</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:BFGS-最小值 (英寸)</p></td>
+<td><p>4.99×10⁻⁹</p></td>
+<td><p>6.79×10⁻⁹</p></td>
+<td><p>1.51×10⁻⁷</p></td>
+<td><p>6.52×10⁻⁶</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-平均值 (英寸)</p></td>
+<td><p>6.65×10⁻⁴</p></td>
+<td><p>6.55×10⁻⁴</p></td>
+<td><p>9.03×10⁻⁴</p></td>
+<td><p>0.00216</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:BFGS-最大值 (英寸)</p></td>
+<td><p>0.00386</p></td>
+<td><p>0.00325</p></td>
+<td><p>0.00332</p></td>
+<td><p>0.00515</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最小值 (千磅)</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:BFGS-平均值 (千磅)</p></td>
+<td><p>0.0286</p></td>
+<td><p>0.0764</p></td>
+<td><p>0.0507</p></td>
+<td><p>0.0368</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最大值 (千磅)</p></td>
+<td><p>0.253</p></td>
+<td><p>0.306</p></td>
+<td><p>0.219</p></td>
+<td><p>0.277</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最小值 (英寸)</p></td>
+<td><p>4.82×10⁻⁸</p></td>
+<td><p>5.02×10⁻⁸</p></td>
+<td><p>2.50×10⁻⁸</p></td>
+<td><p>1.66×10⁻⁸</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Intrinsic-平均值 (英寸)</p></td>
+<td><p>8.84×10⁻⁴</p></td>
+<td><p>8.38×10⁻⁴</p></td>
+<td><p>0.00140</p></td>
+<td><p>7.06×10⁻⁴</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最大值 (英寸)</p></td>
+<td><p>0.00375</p></td>
+<td><p>0.00354</p></td>
+<td><p>0.00557</p></td>
+<td><p>0.00324</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Intrinsic-最小值 (千磅)</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-平均值 (千磅)</p></td>
+<td><p>0.0281</p></td>
+<td><p>0.0472</p></td>
+<td><p>0.0563</p></td>
+<td><p>0.0419</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Intrinsic-最大值 (千磅)</p></td>
+<td><p>0.178</p></td>
+<td><p>0.227</p></td>
+<td><p>0.398</p></td>
+<td><p>0.323</p></td>
+</tr>
+</tbody>
+</table>
+<p>表5.6：各种时间积分方案在控制系统水平上2自由度设置非线性PMC混合仿真的顶部执行器绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME</p></th>
+<th class="head"><p>αOS</p></th>
+<th class="head"><p>NMF</p></th>
+<th class="head"><p>NMR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PMC:Broyden-最小值 (英寸)</p></td>
+<td><p>1.41×10⁻⁸</p></td>
+<td><p>1.25×10⁻⁹</p></td>
+<td><p>8.67×10⁻¹¹</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Broyden-平均值 (英寸)</p></td>
+<td><p>7.38×10⁻⁴</p></td>
+<td><p>9.33×10⁻⁴</p></td>
+<td><p>6.20×10⁻⁴</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Broyden-最大值 (英寸)</p></td>
+<td><p>0.00587</p></td>
+<td><p>0.0475</p></td>
+<td><p>0.00570</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最小值 (英寸)</p></td>
+<td><p>1.68×10⁻⁹</p></td>
+<td><p>4.84×10⁻⁹</p></td>
+<td><p>1.06×10⁻⁸</p></td>
+<td><p>1.98×10⁻¹¹</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:BFGS-平均值 (英寸)</p></td>
+<td><p>5.53×10⁻⁴</p></td>
+<td><p>5.67×10⁻⁴</p></td>
+<td><p>5.40×10⁻⁴</p></td>
+<td><p>5.57×10⁻⁴</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:BFGS-最大值 (英寸)</p></td>
+<td><p>0.00642</p></td>
+<td><p>0.00497</p></td>
+<td><p>0.00528</p></td>
+<td><p>0.00684</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最小值 (英寸)</p></td>
+<td><p>9.74×10⁻⁹</p></td>
+<td><p>5.14×10⁻⁹</p></td>
+<td><p>2.72×10⁻⁹</p></td>
+<td><p>3.32×10⁻⁹</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMC:Intrinsic-平均值 (英寸)</p></td>
+<td><p>7.47×10⁻⁴</p></td>
+<td><p>6.12×10⁻⁴</p></td>
+<td><p>0.00144</p></td>
+<td><p>8.13×10⁻⁴</p></td>
+</tr>
+<tr class="row-even"><td><p>PMC:Intrinsic-最大值 (英寸)</p></td>
+<td><p>0.00579</p></td>
+<td><p>0.00469</p></td>
+<td><p>0.00565</p></td>
+<td><p>0.00564</p></td>
+</tr>
+</tbody>
+</table>
+<p>图5.5显示了使用NME的PMC:Broyden的底部执行器力-时间历程曲线和混合仿真测试期间的控制模式。当控制模式为零时，MTS-STS控制器处于DC模式，当它不为零时处于FC模式。这</p>
+<p>最匹配数值结果。相比之下，图5.6中的图显示了最差的结果，它使用αOS与BGFS。从图E.10中，BFGS方法在1.5到2秒标记之间开始与数值结果相比向相反方向漂移。这是试件第一次进入非线性区域。通过检查图5.5和5.6，使用NME的PMC:Broyden在此时间段处于DC模式，使用αOS的PMC:BFGS处于FC模式。否则，两者产生几乎相同的控制模式。</p>
+<p><img alt="" src="Appendix2/images/dda21dc3de781301da8f81ace91638ffa1b2956becbc6b57e364dcac2c06bec8.jpg" /><br />
+图5.5：使用NME的PMC:Broyden的底部执行器控制模式和试算力随时间变化的图。</p>
+<p><img alt="" src="../_images/4c1fae42b66bc3a2fe9cefe19b4e98c4c855a75e1d2b6d288c16799ca894f7e8.jpg" /><br />
+图5.6：使用αOS的PMC:BFGS的底部执行器控制模式和试算力随时间变化的图。</p>
+</section>
+<section id="id9">
+<h3>5.4.2 基于割线刚度切换的MC混合仿真<a class="headerlink" href="#id9" title="链接到此标题。"></a></h3>
+<p>本节介绍使用基于割线刚度切换（SMC）的MC混合仿真结果。割线刚度切换限制设置为50千磅/英寸。<span class="math notranslate nohighlight">\(k_d = 45\)</span>千磅/英寸。和<span class="math notranslate nohighlight">\(k_f = 55\)</span>千磅/英寸。初始刚度矩阵的<span class="math notranslate nohighlight">\(k_{11}\)</span>为81千磅/英寸。表5.7和5.8分别包含节点1和2的绝对位移误差。NMF和NMR结果正确捕捉漂移，除了SMC:BFGS方法。NME和αOS与数值结果匹配不佳。表5.9和5.10显示力误差与DC、FC和PMC混合仿真结果大致处于同一水平。检查力误差时，没有方法或时间积分方案真正突出。表5.11和5.12显示了MTS-STS控制系统的跟踪性能。跟踪性能与其他相似。</p>
+<p>表5.7：各种时间积分方法在有限元分析水平上2自由度设置非线性SMC混合仿真的节点1位移结果绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME (英寸)</p></th>
+<th class="head"><p>αOS (英寸)</p></th>
+<th class="head"><p>NMF (英寸)</p></th>
+<th class="head"><p>NMR (英寸)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMC:Broyden-最小值</p></td>
+<td><p>0</p></td>
+<td><p>3.45×10⁻⁷</p></td>
+<td><p>9.73×10⁻⁶</p></td>
+<td><p>1.68×10⁻⁵</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Broyden-平均值</p></td>
+<td><p>0.422</p></td>
+<td><p>0.262</p></td>
+<td><p>0.0529</p></td>
+<td><p>0.0677</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Broyden-最大值</p></td>
+<td><p>0.738</p></td>
+<td><p>0.505</p></td>
+<td><p>0.271</p></td>
+<td><p>0.221</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最小值</p></td>
+<td><p>5.63×10⁻⁸</p></td>
+<td><p>6.28×10⁻⁸</p></td>
+<td><p>6.39×10⁻⁵</p></td>
+<td><p>5.59×10⁻⁵</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:BFGS-平均值</p></td>
+<td><p>0.309</p></td>
+<td><p>0.188</p></td>
+<td><p>0.0731</p></td>
+<td><p>0.400</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最大值</p></td>
+<td><p>0.617</p></td>
+<td><p>0.436</p></td>
+<td><p>0.316</p></td>
+<td><p>0.687</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最小值</p></td>
+<td><p>2.97×10⁻⁷</p></td>
+<td><p>3.20×10⁻⁸</p></td>
+<td><p>2.46×10⁻⁵</p></td>
+<td><p>2.19×10⁻⁵</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Intrinsic-平均值</p></td>
+<td><p>0.356</p></td>
+<td><p>0.137</p></td>
+<td><p>0.162</p></td>
+<td><p>0.0962</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最大值</p></td>
+<td><p>0.675</p></td>
+<td><p>0.341</p></td>
+<td><p>0.403</p></td>
+<td><p>0.305</p></td>
+</tr>
+</tbody>
+</table>
+<p>SMC混合仿真的最佳时间积分方案是NMF。以下图检查了切线刚度估计。Broyden方法（图5.7）最活跃，其次是BFGS（图5.8），然后是Intrinsic（图5.9）。控制模式</p>
+<p>表5.8：各种时间积分方法在有限元分析水平上2自由度设置SMC非线性混合仿真的节点2位移结果绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME (英寸)</p></th>
+<th class="head"><p>αOS (英寸)</p></th>
+<th class="head"><p>NMF (英寸)</p></th>
+<th class="head"><p>NMR (英寸)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMC:Broyden-最小值</p></td>
+<td><p>2.98×10⁻⁷</p></td>
+<td><p>6.10×10⁻⁷</p></td>
+<td><p>5.09×10⁻⁵</p></td>
+<td><p>5.05×10⁻⁵</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Broyden-平均值</p></td>
+<td><p>2.07</p></td>
+<td><p>1.91</p></td>
+<td><p>0.279</p></td>
+<td><p>0.416</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Broyden-最大值</p></td>
+<td><p>3.59</p></td>
+<td><p>3.62</p></td>
+<td><p>1.19</p></td>
+<td><p>1.16</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最小值</p></td>
+<td><p>2.98×10⁻⁷</p></td>
+<td><p>3.33×10⁻⁷</p></td>
+<td><p>7.32×10⁻⁵</p></td>
+<td><p>4.71×10⁻⁵</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:BFGS-平均值</p></td>
+<td><p>1.52</p></td>
+<td><p>0.864</p></td>
+<td><p>0.355</p></td>
+<td><p>1.84</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最大值</p></td>
+<td><p>3.02</p></td>
+<td><p>2.08</p></td>
+<td><p>1.37</p></td>
+<td><p>3.29</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最小值</p></td>
+<td><p>2.98×10⁻⁷</p></td>
+<td><p>1.51×10⁻⁷</p></td>
+<td><p>9.40×10⁻⁶</p></td>
+<td><p>6.46×10⁻⁵</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Intrinsic-平均值</p></td>
+<td><p>1.60</p></td>
+<td><p>0.542</p></td>
+<td><p>0.717</p></td>
+<td><p>0.693</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最大值</p></td>
+<td><p>3.05</p></td>
+<td><p>1.40</p></td>
+<td><p>1.82</p></td>
+<td><p>1.85</p></td>
+</tr>
+</tbody>
+</table>
+<p>表5.9：各种时间积分方法在有限元分析水平上2自由度设置非线性SMC混合仿真的节点1力结果绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME (千磅)</p></th>
+<th class="head"><p>αOS (千磅)</p></th>
+<th class="head"><p>NMF (千磅)</p></th>
+<th class="head"><p>NMR (千磅)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMC:Broyden-最小值</p></td>
+<td><p>5.87×10⁻⁶</p></td>
+<td><p>1.74×10⁻⁴</p></td>
+<td><p>9.05×10⁻⁴</p></td>
+<td><p>0.00237</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Broyden-平均值</p></td>
+<td><p>0.776</p></td>
+<td><p>1.19</p></td>
+<td><p>1.46</p></td>
+<td><p>1.04</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Broyden-最大值</p></td>
+<td><p>3.55</p></td>
+<td><p>4.27</p></td>
+<td><p>5.02</p></td>
+<td><p>4.87</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最小值</p></td>
+<td><p>4.03×10⁻⁴</p></td>
+<td><p>2.85×10⁻⁴</p></td>
+<td><p>6.51×10⁻⁴</p></td>
+<td><p>0.00336</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:BFGS-平均值</p></td>
+<td><p>0.814</p></td>
+<td><p>1.28</p></td>
+<td><p>1.42</p></td>
+<td><p>1.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最大值</p></td>
+<td><p>3.68</p></td>
+<td><p>4.82</p></td>
+<td><p>5.13</p></td>
+<td><p>3.87</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最小值</p></td>
+<td><p>9.52×10⁻⁵</p></td>
+<td><p>9.04×10⁻⁵</p></td>
+<td><p>2.38×10⁻⁴</p></td>
+<td><p>2.56×10⁻⁴</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Intrinsic-平均值</p></td>
+<td><p>0.798</p></td>
+<td><p>0.984</p></td>
+<td><p>1.38</p></td>
+<td><p>0.894</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最大值</p></td>
+<td><p>3.35</p></td>
+<td><p>4.45</p></td>
+<td><p>5.03</p></td>
+<td><p>3.40</p></td>
+</tr>
+</tbody>
+</table>
+<p>表5.10：各种时间积分方法在有限元分析水平上2自由度设置非线性SMC混合仿真的节点2力结果绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME (千磅)</p></th>
+<th class="head"><p>αOS (千磅)</p></th>
+<th class="head"><p>NMF (千磅)</p></th>
+<th class="head"><p>NMR (千磅)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMC:Broyden-最小值</p></td>
+<td><p>7.40×10⁻⁶</p></td>
+<td><p>9.00×10⁻⁶</p></td>
+<td><p>7.14×10⁻⁴</p></td>
+<td><p>6.94×10⁻⁵</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Broyden-平均值</p></td>
+<td><p>0.175</p></td>
+<td><p>0.208</p></td>
+<td><p>0.268</p></td>
+<td><p>0.221</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Broyden-最大值</p></td>
+<td><p>0.865</p></td>
+<td><p>0.704</p></td>
+<td><p>0.887</p></td>
+<td><p>0.870</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最小值</p></td>
+<td><p>5.83×10⁻⁵</p></td>
+<td><p>1.30×10⁻⁵</p></td>
+<td><p>2.93×10⁻⁴</p></td>
+<td><p>3.37×10⁻⁴</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:BFGS-平均值</p></td>
+<td><p>0.175</p></td>
+<td><p>0.299</p></td>
+<td><p>0.263</p></td>
+<td><p>0.219</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最大值</p></td>
+<td><p>0.671</p></td>
+<td><p>1.06</p></td>
+<td><p>0.848</p></td>
+<td><p>0.987</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最小值</p></td>
+<td><p>1.49×10⁻⁵</p></td>
+<td><p>2.90×10⁻⁵</p></td>
+<td><p>1.21×10⁻⁴</p></td>
+<td><p>2.86×10⁻⁴</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Intrinsic-平均值</p></td>
+<td><p>0.171</p></td>
+<td><p>0.240</p></td>
+<td><p>0.245</p></td>
+<td><p>0.176</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最大值</p></td>
+<td><p>0.610</p></td>
+<td><p>0.962</p></td>
+<td><p>0.881</p></td>
+<td><p>0.695</p></td>
+</tr>
+</tbody>
+</table>
+<p>表5.11：各种时间积分方案在控制系统水平上2自由度设置非线性SMC混合仿真的底部执行器绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME</p></th>
+<th class="head"><p>αOS</p></th>
+<th class="head"><p>NMF</p></th>
+<th class="head"><p>NMR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMC:Broyden-最小值 (英寸)</p></td>
+<td><p>5.24×10⁻¹⁰</p></td>
+<td><p>2.02×10⁻⁸</p></td>
+<td><p>4.31×10⁻⁹</p></td>
+<td><p>3.04×10⁻⁹</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Broyden-平均值 (英寸)</p></td>
+<td><p>9.96×10⁻⁴</p></td>
+<td><p>8.40×10⁻⁴</p></td>
+<td><p>7.85×10⁻⁴</p></td>
+<td><p>9.18×10⁻⁴</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Broyden-最大值 (英寸)</p></td>
+<td><p>0.00694</p></td>
+<td><p>0.00493</p></td>
+<td><p>0.00431</p></td>
+<td><p>0.00671</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Broyden-最小值 (千磅)</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Broyden-平均值 (千磅)</p></td>
+<td><p>0.0167</p></td>
+<td><p>0.0362</p></td>
+<td><p>0.0130</p></td>
+<td><p>0.0260</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Broyden-最大值 (千磅)</p></td>
+<td><p>0.163</p></td>
+<td><p>0.172</p></td>
+<td><p>0.0877</p></td>
+<td><p>0.213</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:BFGS-最小值 (英寸)</p></td>
+<td><p>2.47×10⁻⁹</p></td>
+<td><p>6.75×10⁻⁹</p></td>
+<td><p>1.60×10⁻⁹</p></td>
+<td><p>1.08×10⁻⁶</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-平均值 (英寸)</p></td>
+<td><p>0.00127</p></td>
+<td><p>0.00130</p></td>
+<td><p>0.00139</p></td>
+<td><p>0.00159</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:BFGS-最大值 (英寸)</p></td>
+<td><p>0.00515</p></td>
+<td><p>0.00676</p></td>
+<td><p>0.00498</p></td>
+<td><p>0.00329</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最小值 (千磅)</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:BFGS-平均值 (千磅)</p></td>
+<td><p>0.0318</p></td>
+<td><p>0.0471</p></td>
+<td><p>0.0306</p></td>
+<td><p>0.0448</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最大值 (千磅)</p></td>
+<td><p>0.165</p></td>
+<td><p>0.220</p></td>
+<td><p>0.138</p></td>
+<td><p>0.250</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最小值 (英寸)</p></td>
+<td><p>3.68×10⁻⁹</p></td>
+<td><p>1.29×10⁻⁹</p></td>
+<td><p>3.61×10⁻⁹</p></td>
+<td><p>2.79×10⁻¹⁰</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Intrinsic-平均值 (英寸)</p></td>
+<td><p>0.00104</p></td>
+<td><p>0.00119</p></td>
+<td><p>7.80×10⁻⁴</p></td>
+<td><p>9.88×10⁻⁴</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最大值 (英寸)</p></td>
+<td><p>0.00671</p></td>
+<td><p>0.00524</p></td>
+<td><p>0.00409</p></td>
+<td><p>0.00536</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Intrinsic-最小值 (千磅)</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-平均值 (千磅)</p></td>
+<td><p>0.0178</p></td>
+<td><p>0.0194</p></td>
+<td><p>0.290</p></td>
+<td><p>0.0295</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Intrinsic-最大值 (千磅)</p></td>
+<td><p>0.117</p></td>
+<td><p>0.171</p></td>
+<td><p>0.178</p></td>
+<td><p>0.240</p></td>
+</tr>
+</tbody>
+</table>
+<p>表5.12：各种时间积分方案在控制系统水平上2自由度设置非线性SMC混合仿真的顶部执行器绝对误差。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>控制方法</p></th>
+<th class="head"><p>NME</p></th>
+<th class="head"><p>αOS</p></th>
+<th class="head"><p>NMF</p></th>
+<th class="head"><p>NMR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMC:Broyden-最小值 (英寸)</p></td>
+<td><p>4.69×10⁻⁹</p></td>
+<td><p>2.19×10⁻⁸</p></td>
+<td><p>5.99×10⁻⁹</p></td>
+<td><p>4.15×10⁻⁹</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Broyden-平均值 (英寸)</p></td>
+<td><p>7.75×10⁻⁴</p></td>
+<td><p>5.92×10⁻⁴</p></td>
+<td><p>6.88×10⁻⁴</p></td>
+<td><p>0.00134</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Broyden-最大值 (英寸)</p></td>
+<td><p>0.00532</p></td>
+<td><p>0.00609</p></td>
+<td><p>0.00531</p></td>
+<td><p>0.00603</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最小值 (英寸)</p></td>
+<td><p>8.53×10⁻¹⁰</p></td>
+<td><p>6.34×10⁻⁹</p></td>
+<td><p>6.88×10⁻⁹</p></td>
+<td><p>1.98×10⁻⁰⁹</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:BFGS-平均值 (英寸)</p></td>
+<td><p>6.57×10⁻⁴</p></td>
+<td><p>5.09×10⁻⁴</p></td>
+<td><p>6.35×10⁻⁴</p></td>
+<td><p>6.03×10⁻⁴</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:BFGS-最大值 (英寸)</p></td>
+<td><p>0.00487</p></td>
+<td><p>0.00538</p></td>
+<td><p>0.00552</p></td>
+<td><p>0.00546</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最小值 (英寸)</p></td>
+<td><p>6.97×10⁻¹⁰</p></td>
+<td><p>1.42×10⁻⁸</p></td>
+<td><p>4.71×10⁻¹⁰</p></td>
+<td><p>6.81×10⁻⁹</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMC:Intrinsic-平均值 (英寸)</p></td>
+<td><p>5.53×10⁻⁴</p></td>
+<td><p>5.42×10⁻⁴</p></td>
+<td><p>5.53×10⁻⁴</p></td>
+<td><p>6.22×10⁻⁴</p></td>
+</tr>
+<tr class="row-even"><td><p>SMC:Intrinsic-最大值 (英寸)</p></td>
+<td><p>0.00459</p></td>
+<td><p>0.00415</p></td>
+<td><p>0.00485</p></td>
+<td><p>0.00501</p></td>
+</tr>
+</tbody>
+</table>
+<p>在使用BFGS方法时切换最频繁。其他方法仅切换一次控制模式。在这三种方法中，Broyden方法在有限元分析水平上产生最佳结果，但它并不比BFGS方法好多少。Intrinsic方法的误差是BFGS方法误差的两倍。</p>
+<p><img alt="" src="../_images/a9c24987fa8bd8a09a2948bc588a8889ced97ec88f669b8a5f2794a6d778073b.jpg" /></p>
+<p><img alt="" src="Appendix2/images/4d8ab4caee7ac13ce3124ce93c5f95f24a5620e9670c01668f885756bb5e5bf2.jpg" /></p>
+<p><img alt="" src="../_images/7132ec75792a2053f3955c061edeb3f70d0a1f3fa0f770fda1a0eaa1b69dcde5.jpg" /></p>
+<p><img alt="" src="../_images/d9747cfdb4325f64be2812c4b8b33df4e2d98e1d9ebd50e365dce8e4b29444c6.jpg" /><br />
+图5.7：使用NME的PMC:Broyden的底部执行器控制模式和试算力随时间变化的图。</p>
+<p><img alt="" src="../_images/921158486681de2566fe45778ee86c848206d20969a050ab1818465a2d12195e.jpg" /></p>
+<p><img alt="" src="../_images/bf6e2e94f556f66798fe33a94709e7129787f1c2c69fb1163f6c09e22044377c.jpg" /></p>
+<p><img alt="" src="../_images/187abb632a7a3e86eed6d3b1b6803f94c928472f4f73cafbec34806b0632fa4a.jpg" /></p>
+<p><img alt="" src="../_images/ced00ac6bf31eb6d10c79bfb7ce2c57c063c23f5b3a6245f4f9816b0f71ede3d.jpg" /><br />
+图5.8：使用αOS的PMC:BFGS的底部执行器控制模式和试算力随时间变化的图。</p>
+<p><img alt="" src="../_images/0d062bb4bf95ffe01157978b3d8a4ab1ee2692d0749ead805783562f72bf428f.jpg" /></p>
+<p><img alt="" src="../_images/17dfdebf11de18259958534be5c74dbaef7bdc5ce5351740fb55040f9be57054.jpg" /></p>
+<p><img alt="" src="../_images/c6b1dc8aa6cf4527e38fdc768c814b8c2a6dfb724b3bde3877351fa1b913476c.jpg" /></p>
+<p><img alt="" src="../_images/0c3ae19ff62497a81786bd22459988a055bed36ef378b74e180998ed8fae194d.jpg" /><br />
+图5.9：使用αOS的PMC:BFGS的底部执行器控制模式和试算力随时间变化的图。</p>
+</section>
+<section id="id10">
+<h3>5.4.3 实验结果总结<a class="headerlink" href="#id10" title="链接到此标题。"></a></h3>
+<p>这些实验结果表明，即使结果不是最好的，MC混合仿真也是可行的混合仿真类型。特别是，PMC混合仿真结果总体上略优于SMC混合仿真结果。PMC似乎比SMC更好地捕捉试件行为的变化。这可能是由几个原因造成的。割线刚度值限制太高，切线刚度估计不准确。可能只是这些原因之一，或者两者共同作用。MC混合仿真不比第3章中的DC和FC混合仿真提供更好的控制系统跟踪性能。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="ch4.html" class="btn btn-neutral float-left" title="第 4 章 换控制混合仿真" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="ch6.html" class="btn btn-neutral float-right" title="第 6 章 结论" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

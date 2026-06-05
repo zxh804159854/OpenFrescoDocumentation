@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9.4. SignalFilter 记录器 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="9.5. Site 记录器" href="Site.html" />
+    <link rel="prev" title="9.3. Setup 记录器" href="Setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">9. expRecorder 命令</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="expRecorder.html">9.1. expRecorder 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Control.html">9.2. Control 记录器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setup.html">9.3. Setup 记录器</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.4. SignalFilter 记录器</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">9.4.1. 命令</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Site.html">9.5. Site 记录器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TangentStiff.html">9.6. TangentStiff 记录器</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix2/index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">9. </span>expRecorder 命令</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">9.4. </span>SignalFilter 记录器</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expRecorder/SignalFilter.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="signalfilter">
+<h1><span class="section-number">9.4. </span>SignalFilter 记录器<a class="headerlink" href="#signalfilter" title="链接到此标题。"></a></h1>
+<p>此命令用于构造实验信号滤波器记录器对象。它用于记录实验信号滤波器中的数据。</p>
+<section id="id1">
+<h2><span class="section-number">9.4.1. </span>命令<a class="headerlink" href="#id1" title="链接到此标题。"></a></h2>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">expRecorder</span><span class="w"> </span>SignalFilter<span class="w"> </span><span class="o">&lt;-</span>file<span class="w"> </span><span class="nv">$fileName</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>csv<span class="w"> </span><span class="nv">$fileName</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>xml<span class="w"> </span><span class="nv">$fileName</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>binary<span class="w"> </span><span class="nv">$fileName</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>database<span class="w"> </span><span class="nv">$tableName</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>time<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>dt<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>filter<span class="w"> </span><span class="nv">$filterTag</span><span class="w"> </span>...<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>filterRange<span class="w"> </span><span class="nv">$startTag</span><span class="w"> </span><span class="nv">$endTag</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;-</span>filter<span class="w"> </span>all<span class="o">&gt;</span><span class="w"> </span>respType
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>参数</p></th>
+<th class="head text-left"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>-file</p></td>
+<td class="text-left"><p>以无标题的 ASCII 格式将数据记录到文件（可选：仅使用 -file、-csv、-xml、-binary、-database 之一）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>-csv</p></td>
+<td class="text-left"><p>以无标题的 ASCII 逗号分隔格式将数据记录到文件（可选：仅使用 -file、-csv、-xml、-binary、-database 之一）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>-xml</p></td>
+<td class="text-left"><p>以包含元数据的 ASCII 格式将数据记录到文件（可选：仅使用 -file、-csv、-xml、-binary、-database 之一）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>-binary</p></td>
+<td class="text-left"><p>以二进制格式将数据记录到文件（可选：仅使用 -file、-csv、-xml、-binary、-database 之一）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>-database</p></td>
+<td class="text-left"><p>将数据记录到数据库（可选：仅使用 -file、-csv、-xml、-binary、-database 之一）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$fileName</p></td>
+<td class="text-left"><p>存储结果的文件。文件的每一行包含实验测试提交状态的结果。</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>$tableName</p></td>
+<td class="text-left"><p>存储结果的数据库表名。表的每一行包含实验测试提交状态的结果。</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>-time</p></td>
+<td class="text-left"><p>将分析的时间或伪时间放在第一数据列中（可选）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>-dt</p></td>
+<td class="text-left"><p>以不同于分析时间步长的时间增量记录数据（这应该是分析时间步长的倍数）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$filterTag</p></td>
+<td class="text-left"><p>要记录的实验信号滤波器的标签</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(startTag, \)</span>endTag</p></td>
+<td class="text-left"><p>要记录的实验信号滤波器范围的起始和结束标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>all</p></td>
+<td class="text-left"><p>记录所有实验信号滤波器对象（注意：此选项仅建议用于 xml 文件输出，因为 OpenFresco 可能会更改实验信号滤波器对象的顺序）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>respType</p></td>
+<td class="text-left"><p>定义要记录的响应类型。由于这取决于实验信号滤波器的类型，可能的参数在信号滤波器命令中描述。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="Setup.html" class="btn btn-neutral float-left" title="9.3. Setup 记录器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Site.html" class="btn btn-neutral float-right" title="9.5. Site 记录器" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

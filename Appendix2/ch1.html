@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第 1 章 引言 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 2 章 位移控制混合仿真" href="ch2.html" />
+    <link rel="prev" title="混合仿真的先进控制方法的开发与实现" href="ch0.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ch0.html">混合仿真的先进控制方法的开发与实现</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">第 1 章 引言</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.1 混合仿真的组成部分</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.1.1 计算驱动程序</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.1.2 物理传递系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">1.1.3 中间件</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.2 动机</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">1.3 组织和范围</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html">第 2 章 位移控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html">第 3 章 力控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4.html">第 4 章 换控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch5.html">第 5 章 混合控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html">第 6 章 结论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html#id9">参考文献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html">附录A 用于FC、SC和MC混合仿真的OpenFresco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#b-nees">附录B µ-NEES实验设置的调谐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#c-fc">附录C FC混合仿真实验结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#d-sc">附录D SC混合仿真实验结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#e-mc">附录E MC混合仿真实验结果</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+      <li class="breadcrumb-item active">第 1 章 引言</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Appendix2/ch1.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第 1 章 引言<a class="headerlink" href="#id1" title="链接到此标题。"></a></h1>
+<p>预测结构（如建筑物和桥梁）在动力荷载尤其是地震荷载作用下的行为，仍然是结构工程中的一个挑战。研究人员采用各种方法来研究结构在此类荷载条件下的行为。最常用的方法是通过计算机软件进行模拟。当今的结构计算机分析应用程序比以往任何时候都更强大，计算机的处理能力也在持续增长。这些因素使工程师能够在相对较短的时间内分析更大、更复杂的模型。然而，分析结果的可靠性取决于模型的准确性。当结构包含高度非线性的结构构件或子装配件时，计算模拟可能无法产生真实的结果。在这些情况下，使用动力测试方法（如振动台测试方法）对结构进行实验测试，可以更准确地预测其行为。振动台测试不像计算模拟那样普遍进行，因为它们昂贵且耗时。振动台模型通常要缩小尺寸以适应台面，因此尺寸、缩尺率和速率效应成为问题。</p>
+<p>混合仿真因其将计算机模拟与实验测试相结合而日益普及。一个结构被划分为两个不同的部分。一部分是结构中被很好理解或可以在结构分析软件包中良好建模的部分。另一部分则由无法使用计算机程序良好模拟的部分组成。因此，这些部分的结构需要进行实验测试。计算部分与实验部分相互作用，以产生结构在动力荷载下更真实的模拟。除了模拟结果之外，使用混合仿真还有许多好处。它利用了结构分析软件和计算能力的最新进展。此外，它不像振动台测试那样昂贵或需要那么多设备和资源。因此，不难理解为什么研究人员更喜欢混合仿真。</p>
+<p>混合仿真由 Takanashi 等人 [27] 于 1975 年构想。Mahin 和 Nakashima 从 80 年代初开始进一步开创了该方法。它当时被称为拟动力测试，因为只考虑了试件的恢复力，而其他率相关效应则没有考虑。在 80 年代末，Shing 和 Mahin [23, 24] 研究了误差和试件加载速率对拟动力测试结果的影响。Nakashima 等人 [16] 于 1990 年开发了用于拟动力测试的算子分裂（OS）时间积分方案，以最大限度地减少误差。这是当今混合仿真中使用最广泛的时间积分方案。在此期间，研究人员进行了许多成功的拟动力测试。</p>
+<p>混合仿真仍然是结构工程和地震工程中一个活跃的研究领域。一些研究人员正在研究快速或“实时”混合仿真 [25]，其中不仅要考虑试件的恢复力，还要考虑惯性力和传递系统的影响。其他人正在探索改进 OS 时间积分方案 [1, 6, 10] 并开发全新的时间积分算法。一些人在研究不同的控制方法，如力控制、开关 [7] 和混合控制 [18]。开发用于执行混合仿真的系统性可定制软件框架 [26] 是另一个研究领域。事实上，混合仿真中仍然存在许多需要解决的挑战。</p>
+<section id="id2">
+<h2>1.1 混合仿真的组成部分<a class="headerlink" href="#id2" title="链接到此标题。"></a></h2>
+<p>混合仿真包含三个主要部分。对这些部分的解释提供了良好的混合仿真介绍和入门知识。这三个部分是计算驱动程序、物理传递系统和中间件。</p>
+<section id="id3">
+<h3>1.1.1 计算驱动程序<a class="headerlink" href="#id3" title="链接到此标题。"></a></h3>
+<p>在混合仿真过程中，结构的分析部分在计算驱动程序中进行建模。这是结构中行为相对较好理解且可以使用计算机软件良好模拟的部分。该组件在多个方面驱动混合仿真。它首先启动仿真。然后在仿真期间，它将命令信号发送到传递系统，并且可以根据积分方案使用反馈与否，将仿真推进到下一个积分时间步。仿真结束后，它清理进程并关闭通信。</p>
+<p>计算驱动程序实际上可以有多种形式。通常使用商业有限元分析（FEA）软件。FEA 软件必须足够灵活，以便可以对新的用户定义单元进行编程，并且该用户定义单元必须能够与外部程序通信。在本论文中，OpenSees 被用作 FEA 计算驱动程序。计算驱动程序不限于 FEA 程序。例如，Matlab 和基于 Matlab 的程序也可以用作计算驱动程序。基于 Matlab 的混合仿真程序 UI-SimCor [14] 已成功用作计算驱动程序 [21]。在本论文中，运行简单基于力的结构分析的 Matlab 脚本也被用作计算驱动程序。只要一种语言能够执行或协调结构分析并与外部程序通信，它就可以用作混合仿真中的计算驱动程序。计算驱动程序是混合仿真的关键必要组件。</p>
+</section>
+<section id="id4">
+<h3>1.1.2 物理传递系统<a class="headerlink" href="#id4" title="链接到此标题。"></a></h3>
+<p>传递系统用于将来自计算驱动程序的命令信号施加到结构的物理部分。本论文中考虑的命令信号是位移和力。然后它将测得的反馈（位移和力）发送回计算驱动程序。一个典型的传递系统包括一个控制系统、数据采集（DAQ）系统和一个包括被测试件在内的物理实验装置。</p>
+<p>控制系统通常具有硬件和软件组件。软件组件是硬件组件的图形用户界面。通常，PID 控制器用于控制混合仿真的作动器。DAQ 系统用于在测试过程中收集数据。它使用各种设备，如载荷传感器、线性可变差动变压器（LVDT）和加速度计。它也有类似控制系统的硬件和软件组件。实验装置通常包括载荷边界元件、作动器和 DAQ 设备。</p>
+<p>试件被制造出来代表结构中无法在计算驱动程序中良好建模的部分。它可能是一个复杂的非线性子结构单元。它可能是一个新的创新结构构件，其计算机模型从未被验证过。无论哪种情况，都需要物理试件来提供结构构件更真实的行为。本论文中使用的传递系统的详细信息在附录 B 中提供。</p>
+</section>
+<section id="id5">
+<h3>1.1.3 中间件<a class="headerlink" href="#id5" title="链接到此标题。"></a></h3>
+<p>混合仿真需要一个组件来协调计算驱动程序和传递系统之间的交互。这称为中间件。该中间件通常是为每个混合仿真实验和测试实验室定制编程的计算机程序。这使得研究人员难以协作和移植他人已经完成的工作。这是开发 OpenFresco 的动力。OpenFresco 是用于混合仿真的透明可扩展软件框架。附录 A 提供了关于 OpenFresco 的更多信息。本论文中使用 OpenFresco 作为中间件。</p>
+</section>
+</section>
+<section id="id6">
+<h2>1.2 动机<a class="headerlink" href="#id6" title="链接到此标题。"></a></h2>
+<p>本研究的动机是扩展混合仿真技术，希望混合仿真能继续成为一种有效的结构测试方法。用计算机软件模拟结构的能力对结构工程师非常重要。一些结构和结构构件无法仅使用数值模型进行良好模拟。这些构件需要进行实验测试。因此，使用混合仿真。</p>
+<p>当前混合仿真的需求源于控制系统的局限性。在混合仿真过程中，控制器常常被推到极限。通常在控制系统处于位移控制模式下进行混合仿真。这在许多情况下会产生良好的结果并且相当有效。然而，有些试件仅靠位移控制模式是不够的。控制系统难以准确地施加指令位移。这导致测试无法提供可靠的结果，并浪费了大量时间、金钱和精力。随着结构构件和组合件变得越来越复杂，这个问题可能比以往任何时候都更常见。因此，为混合仿真探索其他控制模式，不仅是为了满足当前需求，也是为了预测未来的需求，并在概念上完善混合仿真的形成。</p>
+</section>
+<section id="id7">
+<h2>1.3 组织和范围<a class="headerlink" href="#id7" title="链接到此标题。"></a></h2>
+<p>本论文分为六个主要章节。第 1 章对论文进行了总体介绍。它概述了混合仿真和进一步研究的动机。第 2 章解释了位移控制混合仿真。本章未提出新的研究。第 2 章为其余章节提供了背景。它解释了混合仿真通常如何执行，以及后续章节中的其他类型的混合仿真与位移控制混合仿真有何不同。</p>
+<p>接下来的三章分别涵盖力控制、开关控制和混合控制混合仿真。每种类型各有一章专门介绍。这些章明确定义了所使用的术语。然后它们提出了动机，开发了方法，并通过混合仿真测试验证了这些方法。OpenFresco、<span class="math notranslate nohighlight">\(\mu\)</span>-NEES 实验装置、MTS-STS 控制器和 xPC-Target 实时操作系统被用于测试。在实现和测试这些方法的过程中，在 OpenFresco 中开发了一个新类。最后，最后一章总结了本论文并给出了未来研究的建议。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="ch0.html" class="btn btn-neutral float-left" title="混合仿真的先进控制方法的开发与实现" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="ch2.html" class="btn btn-neutral float-right" title="第 2 章 位移控制混合仿真" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

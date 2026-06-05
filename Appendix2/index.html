@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appendix2: Development and implementation of advanced control methods for hybrid simulation &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="混合仿真的先进控制方法的开发与实现" href="ch0.html" />
+    <link rel="prev" title="7 结论和建议" href="../Appendix1/ConclusionsAndRecommendations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch0.html">混合仿真的先进控制方法的开发与实现</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html">第 1 章 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html">第 2 章 位移控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html">第 3 章 力控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4.html">第 4 章 换控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch5.html">第 5 章 混合控制混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html">第 6 章 结论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html#id9">参考文献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html">附录A 用于FC、SC和MC混合仿真的OpenFresco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#b-nees">附录B µ-NEES实验设置的调谐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#c-fc">附录C FC混合仿真实验结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#d-sc">附录D SC混合仿真实验结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#e-mc">附录E MC混合仿真实验结果</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Appendix2: Development and implementation of advanced control methods for hybrid simulation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Appendix2/index.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendix2-development-and-implementation-of-advanced-control-methods-for-hybrid-simulation">
+<h1>Appendix2: Development and implementation of advanced control methods for hybrid simulation<a class="headerlink" href="#appendix2-development-and-implementation-of-advanced-control-methods-for-hybrid-simulation" title="链接到此标题。"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ch0.html">混合仿真的先进控制方法的开发与实现</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch0.html#id2">版权所有</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch0.html#id3">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch0.html#id4">目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch0.html#id5">表格列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch0.html#id6">图形列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch0.html#id7">算法列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch0.html#id8">符号和缩略词列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch0.html#id9">致谢</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch1.html">第 1 章 引言</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#id2">1.1 混合仿真的组成部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#id6">1.2 动机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1.html#id7">1.3 组织和范围</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch2.html">第 2 章 位移控制混合仿真</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#id2">2.1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#id3">2.2 计算驱动程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#id4">2.3 物理传递系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#openfresco">2.4 OpenFresco 中间件混合仿真框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#dc">2.5 DC 混合仿真的顺序过程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2.html#id8">2.6 DC 混合仿真的优点与局限性</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch3.html">第 3 章 力控制混合仿真</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html#id2">3.1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html#id6">3.2 获取试验力的方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html#id11">3.3 实现</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3.html#id14">3.4 实验结果与验证</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch4.html">第 4 章 换控制混合仿真</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch4.html#id2">4.1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4.html#sc">4.2 SC混合仿真的方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4.html#id8">4.3 实现</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4.html#id11">4.4 实验结果与验证</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch5.html">第 5 章 混合控制混合仿真</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch5.html#id2">5.1 引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch5.html#mc">5.2 MC混合仿真的方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch5.html#id6">5.3 实现</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch5.html#id7">5.4 实验结果与验证</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch6.html">第 6 章 结论</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html#id2">6.1 力控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html#id3">6.2 切换控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html#id4">6.3 混合控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch6.html#id5">6.4 未来工作方向</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch6.html#id9">参考文献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch7.html">附录A 用于FC、SC和MC混合仿真的OpenFresco</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#a-1-openfresco">A.1 OpenFresco软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#a-2-openfresco">A.2 OpenFresco类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#a-3-openfresco">A.3 力控制混合仿真的OpenFresco代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch7.html#b-nees">附录B µ-NEES实验设置的调谐</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#b-1-mts-sts3">B.1 MTS-STS通道3的调谐：底部执行器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#b-2-mts-sts4">B.2 MTS-STS通道4的调谐：顶部执行器</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch7.html#c-fc">附录C FC混合仿真实验结果</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#c-1-1">C.1 1自由度设置：线性混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#c-2-1">C.2 1自由度设置：非线性混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#c-3-2">C.3 2自由度设置：线性混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#c-4-2">C.4 2自由度设置：非线性混合仿真</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch7.html#d-sc">附录D SC混合仿真实验结果</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch7.html#e-mc">附录E MC混合仿真实验结果</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#e-1">E.1 点切换混合仿真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch7.html#e-2">E.2 割线切换混合仿真</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../Appendix1/ConclusionsAndRecommendations.html" class="btn btn-neutral float-left" title="7 结论和建议" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="ch0.html" class="btn btn-neutral float-right" title="混合仿真的先进控制方法的开发与实现" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

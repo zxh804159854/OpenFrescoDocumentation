@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. expSetup 命令 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="4.1. expSetup 简介" href="expSetup.html" />
+    <link rel="prev" title="3.9. 梁柱单元坐标体系及变换关系" href="../expElement/BC.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. expSetup 命令</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="expSetup.html">4.1. expSetup 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aggregator.html">4.2. Aggregator 实验装置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FourActuators.html">4.3. FourActuators 实验装置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InvertedVBrace.html">4.4. InvertedVBrace 实验装置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InvertedVBraceJntOff.html">4.5. InvertedVBraceJntOff 实验装置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NoTransformation.html">4.6. NoTransformation 实验装置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OneActuator.html">4.7. OneActuator 实验装置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThreeActuators.html">4.8. ThreeActuators 实验装置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThreeActuatorsJntOff.html">4.9. ThreeActuatorsJntOff 实验装置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TwoActuators.html">4.10. TwoActuators 实验装置</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous/index.html">11. 其他命令</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix2/index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>expSetup 命令</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/expSetup/index.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="expsetup">
+<h1><span class="section-number">4. </span>expSetup 命令<a class="headerlink" href="#expsetup" title="链接到此标题。"></a></h1>
+<p>这些命令用于构造 expSetup 对象。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="expSetup.html">4.1. expSetup 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aggregator.html">4.2. Aggregator 实验装置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Aggregator.html#id1">4.2.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aggregator.html#id2">4.2.2. 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="FourActuators.html">4.3. FourActuators 实验装置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="FourActuators.html#id1">4.3.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FourActuators.html#id2">4.3.2. 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="InvertedVBrace.html">4.4. InvertedVBrace 实验装置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="InvertedVBrace.html#id1">4.4.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InvertedVBrace.html#id2">4.4.2. 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="InvertedVBraceJntOff.html">4.5. InvertedVBraceJntOff 实验装置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="InvertedVBraceJntOff.html#id1">4.5.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InvertedVBraceJntOff.html#id2">4.5.2. 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="NoTransformation.html">4.6. NoTransformation 实验装置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="NoTransformation.html#id1">4.6.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NoTransformation.html#id2">4.6.2. 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="OneActuator.html">4.7. OneActuator 实验装置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="OneActuator.html#id1">4.7.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OneActuator.html#id2">4.7.2. 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ThreeActuators.html">4.8. ThreeActuators 实验装置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ThreeActuators.html#id1">4.8.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThreeActuators.html#id2">4.8.2. 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ThreeActuatorsJntOff.html">4.9. ThreeActuatorsJntOff 实验装置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ThreeActuatorsJntOff.html#id1">4.9.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ThreeActuatorsJntOff.html#id2">4.9.2. 示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TwoActuators.html">4.10. TwoActuators 实验装置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TwoActuators.html#id1">4.10.1. 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TwoActuators.html#id2">4.10.2. 示例</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../expElement/BC.html" class="btn btn-neutral float-left" title="3.9. 梁柱单元坐标体系及变换关系" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="expSetup.html" class="btn btn-neutral float-right" title="4.1. expSetup 简介" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

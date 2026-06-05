@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.1. OpenSees建模命令 &mdash; OpenFrescoDocumentation 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="11.2. OpenFresco其他命令" href="OpenFresco.html" />
+    <link rel="prev" title="11. 其他命令" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenFrescoDocumentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">1. Introduction引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControl/index.html">2. expControl 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expElement/index.html">3. expElement 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSetup/index.html">4. expSetup 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSignalFilter/index.html">5. expSignalFilter 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expSite/index.html">6. expSite 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expTangentStiff/index.html">7. expTangentStiff 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expControlPoint/index.html">8. expControlPoint 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../expRecorder/index.html">9. expRecorder 命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Server/index.html">10. Server 命令</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. 其他命令</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.1. OpenSees建模命令</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-openfresco-package">11.1.1. Load OpenFresco Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-model-builder">11.1.2. Basic Model Builder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">11.1.3. Basic Model Builder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">11.1.3.1. 示例：</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#node">11.1.4. Node 命令</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="OpenFresco.html">11.2. OpenFresco其他命令</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">附录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix1/index.html">Appendix1: Advanced Implementation of Hybrid Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix2/index.html">Appendix2: Development and implementation of advanced control methods for hybrid simulation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenFrescoDocumentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">11. </span>其他命令</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11.1. </span>OpenSees建模命令</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Miscellaneous/OpenSees.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="opensees">
+<h1><span class="section-number">11.1. </span>OpenSees建模命令<a class="headerlink" href="#opensees" title="链接到此标题。"></a></h1>
+<p>这部分命令用于基础建模，已经包含在OpenFresco源码里面，这与 OpenSees 中可用的命令相同。源代码位置SRC/interpreter/tcl/TclWrapper.cpp</p>
+<p>包括下面命令</p>
+<ul class="simple">
+<li><p>model</p></li>
+<li><p>logFile</p></li>
+<li><p>metaData</p></li>
+<li><p>defaultUnits</p></li>
+<li><p>start</p></li>
+<li><p>stop</p></li>
+<li><p>node</p></li>
+<li><p>fix</p></li>
+<li><p>fixX</p></li>
+<li><p>fixY</p></li>
+<li><p>fixZ</p></li>
+<li><p>uniaxialMaterial</p></li>
+<li><p>geomTransf</p></li>
+<li><p>rayleigh</p></li>
+<li><p>setElementRayleighDampingFactors</p></li>
+</ul>
+<section id="load-openfresco-package">
+<h2><span class="section-number">11.1.1. </span>Load OpenFresco Package<a class="headerlink" href="#load-openfresco-package" title="链接到此标题。"></a></h2>
+<p>当使用 OpenSees 作为有限元软件时，需要此命令。DLL 需要与 OpenSees 可执行文件位于同一文件夹中。&quot;OpenFresco 安装与入门指南&quot;包含所需 dll 的列表。(这个命令与本节其他命令不同，其在OpenSees里面，不在OpenFresco 中)</p>
+<p><strong>命令</strong></p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># 老版</span>
+<span class="nv">loadPackage</span><span class="w"> </span>OpenFresco
+<span class="c"># 新版</span>
+<span class="nv">loadPackage</span><span class="w"> </span>OpenFrescoTcl
+</pre></div>
+</div>
+<p><strong>参考：</strong>
+<a class="reference external" href="https://openfresco.berkeley.edu/">https://openfresco.berkeley.edu/</a></p>
+<p>上述网站提供 OpenFresco 安装与入门指南。</p>
+</section>
+<section id="basic-model-builder">
+<h2><span class="section-number">11.1.2. </span>Basic Model Builder<a class="headerlink" href="#basic-model-builder" title="链接到此标题。"></a></h2>
+<p>此命令用于构造 BasicBuilder 对象。这与 OpenSees 中可用的命令相同。</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span><span class="w"> </span>BasicBuilder<span class="w"> </span><span class="o">-</span>ndm<span class="w"> </span><span class="nv">$ndm</span><span class="w"> </span><span class="o">&lt;-</span>ndf<span class="w"> </span><span class="nv">$ndf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>参数</p></th>
+<th class="head text-left"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>$ndm</p></td>
+<td class="text-left"><p>模型维度（1、2 或 3）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$ndf</p></td>
+<td class="text-left"><p>节点的自由度数（可选）（默认值取决于 ndm 的值：ndm=1 -&gt; ndf=1；ndm=2 -&gt; ndf=3；ndm=3 -&gt; ndf=6）</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id1">
+<h2><span class="section-number">11.1.3. </span>Basic Model Builder<a class="headerlink" href="#id1" title="链接到此标题。"></a></h2>
+<p>此命令用于构造 BasicBuilder 对象。这与 OpenSees 中可用的命令相同。</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span><span class="w"> </span>BasicBuilder<span class="w"> </span><span class="o">-</span>ndm<span class="w"> </span><span class="nv">$ndm</span><span class="w"> </span><span class="o">&lt;-</span>ndf<span class="w"> </span><span class="nv">$ndf</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>参数</p></th>
+<th class="head text-left"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>$ndm</p></td>
+<td class="text-left"><p>模型维度（1、2 或 3）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$ndf</p></td>
+<td class="text-left"><p>节点的自由度数（可选）（默认值取决于 ndm 的值：ndm=1 -&gt; ndf=1；ndm=2 -&gt; ndf=3；ndm=3 -&gt; ndf=6）</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id2">
+<h3><span class="section-number">11.1.3.1. </span>示例：<a class="headerlink" href="#id2" title="链接到此标题。"></a></h3>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span><span class="w"> </span>BasicBuilder<span class="w"> </span><span class="o">-</span>ndm<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span>ndf<span class="w"> </span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>此示例创建一个具有两个维度和每个节点 2 个自由度的模型。</p>
+</section>
+</section>
+<section id="node">
+<h2><span class="section-number">11.1.4. </span>Node 命令<a class="headerlink" href="#node" title="链接到此标题。"></a></h2>
+<p>此命令用于构造 Node 对象。它为 Node 对象分配坐标。这与 OpenSees 中可用的命令相同。</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">node</span><span class="w"> </span><span class="nv">$nodeTag</span><span class="w"> </span><span class="k">(</span><span class="nv">ndm</span><span class="w"> </span><span class="nv">$coords</span><span class="k">)</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>参数</p></th>
+<th class="head text-left"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>$nodeTag</p></td>
+<td class="text-left"><p>标识节点的整数标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>$coords</p></td>
+<td class="text-left"><p>节点坐标（ndm 个参数）</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">node</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>此示例在二维原点上创建标签为 1 的节点。</p>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span><span class="w"> </span>BasicBuilder<span class="w"> </span><span class="o">-</span>ndm<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span>ndf<span class="w"> </span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>此示例创建一个具有两个维度和每个节点 2 个自由度的模型。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="11. 其他命令" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="OpenFresco.html" class="btn btn-neutral float-right" title="11.2. OpenFresco其他命令" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, ZXH。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
