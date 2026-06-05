@@ -1,6 +1,6 @@
 # generic 实验单元
 ## 命令
-构建通用实验单元，支持任意节点数与自由度。这个单元不进行任何
+构建通用实验单元，支持任意节点数与自由度。这个单元不进行任何坐标变换。
 
 **site模式**
 ```tcl
@@ -59,6 +59,14 @@ $
 - 控制位移/速度/加速度
 - 数据采集位移/速度/加速度
 
+## openfresco自带案例
+案例位置 OpenFresco/EXAMPLES/OneByOneBayFrame/OpenSees/GenericExpElem
+/OneByOneBayFrame_Client.tcl
+
+```tcl
+# expElement  generic    eleTag    -node Ndi ...    -dof dofNdi ...   -site siteTag    -initStif Kij    <-iMod>    <-noRayleigh>    <-mass Mij> 
+expElement  generic       1  -node 5  -dof 1  2  -server 8090  -initStif +1.500000E-02 +0.000000E+00 +0.000000E+00 +1.500000E-02 
+```
 
 ## 完整示例(2025)
 >这里仅用了一个节点作为generic的单元，可以查看台湾2023的案例是两个节点作为generic单元。

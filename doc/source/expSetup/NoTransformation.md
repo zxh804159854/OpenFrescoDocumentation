@@ -1,5 +1,8 @@
 # NoTransformation 实验装置
 此命令用于构造 NoTransformation 实验装置对象。此实验装置由最多六个作动器组成，设置为控制试件的任何基本自由度。
+顾名思义，ESNoTransformation类是一个虚拟试验设置，不执行从基本单元自由度到作动器自由度的任何变换。但是，它允许重新排序自由度而不对其进行变换。如果试验控制和数据采集系统直接执行所有必要的变换，意味着不需要在试验设置对象中实现额外的变换，则应采用此试验设置。
+当使用的是expElement beamColumn，使用的是下图的坐标系。
+当使用的是expElement generic，使用的是全局坐标系。
 ## 命令
 ```tcl
 expSetup NoTransformation $tag <-control $ctrlTag> -dir $dirs ... -sizeTrialOut $sizeTrial $sizeOut <-trialDispFact $f> <-trialVelFact $f> <-trialAccelFact $f> <-trialForceFact $f> <-trialTimeFact $f> <-outDispFact $f> <-outVelFact $f> <-outAccelFact $f> <-outForceFact $f> <-outTimeFact $f> 
